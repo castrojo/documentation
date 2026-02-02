@@ -24,3 +24,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 QWEN.md
+
+# Beads metadata (managed on beads-metadata branch only)
+# Feature branches should never track .beads/ changes
+.beads/

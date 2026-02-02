@@ -128,18 +128,9 @@ Use labels to categorize work:
 - `reports`, `monthly-reports`, `community-engagement`
 - `documentation`, `automation`, `workflow`
 
-### Historical Planning Context
+### Work Tracking
 
-The `.planning-archive/` directory contains historical project artifacts from v1.0 and v1.1 milestones (both shipped). This includes:
-
-- Milestone documentation and requirements
-- Phase work verification records
-- Research and technical notes
-- Decision history and rationale
-
-**See `.planning-archive/MIGRATION.md` for migration details from the old planning system to Beads.**
-
-**Note**: The planning archive used a different workflow (markdown files + TodoWrite tool). Current workflow uses beads exclusively with sync branch isolation.
+All work is tracked in beads issues. Use `bd` commands to manage tasks, features, bugs, and dependencies. See the Beads section above for workflow details.
 
 ## Fork Workflow
 

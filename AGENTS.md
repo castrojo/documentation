@@ -33,6 +33,78 @@ bd ready
 bd dep <issue-id> <depends-on-id>
 ```
 
+### Sync Branch Workflow
+
+**This repository uses a sync branch strategy to isolate beads metadata from feature branches.**
+
+- **beads-metadata branch**: All beads commits go here (managed via daemon)
+- **feature/\* branches**: Code-only changes (clean for upstream PRs)
+- **main branch**: Periodically merge beads-metadata for local tracking
+
+**Why**: Ensures PRs to upstream (projectbluefin/documentation) contain only code changes, not issue tracking metadata.
+
+#### Daily Workflow
+
+**Working on a feature**:
+
+```bash
+# Start from clean main
+git checkout main
+git pull --rebase
+
+# Create feature branch
+git checkout -b feature/my-feature
+
+# Make code changes
+[edit files]
+git add <files>
+git commit -m "feat: add feature"
+
+# Push to your fork (origin)
+git push origin feature/my-feature
+
+# Note: .beads/ directory is NOT tracked on feature branches (in .gitignore)
+```
+
+**Tracking work in beads**:
+
+```bash
+# Beads operations work from ANY branch
+bd create --title "Add feature X" --type feature --priority 1
+bd update <issue-id> --status in_progress
+bd close <issue-id> --reason "Completed"
+
+# Daemon automatically exports changes to beads-metadata branch
+# Manual sync to remote: bd sync
+```
+
+**Submitting PRs to upstream**:
+
+```bash
+# From your feature branch
+gh pr create --repo projectbluefin/documentation --web
+
+# PR will contain ONLY code changes
+# No .beads/ directory included (filtered by .gitignore)
+```
+
+**Syncing beads metadata to main** (periodic):
+
+```bash
+git checkout main
+
+# Merge beads-metadata into main
+bd sync --merge
+
+# Update database from merged JSONL
+bd import
+
+# Push updated main to your fork
+git push origin main
+
+# This keeps main in sync with beads state (optional, for local reference)
+```
+
 ### Issue Types
 
 - `task` - General work item (default)
@@ -66,6 +138,8 @@ The `.planning-archive/` directory contains historical project artifacts from v1
 - Decision history and rationale
 
 **See `.planning-archive/MIGRATION.md` for migration details from the old planning system to Beads.**
+
+**Note**: The planning archive used a different workflow (markdown files + TodoWrite tool). Current workflow uses beads exclusively with sync branch isolation.
 
 ## Fork Workflow
 
@@ -139,6 +213,8 @@ git push origin main
 
 ### Required Workflow
 
+**Exception**: Beads metadata commits are handled automatically by the daemon on the `beads-metadata` branch. The rules below apply to CODE changes on feature branches.
+
 1. **ALWAYS work in a feature branch**
 
    ```bash
@@ -168,10 +244,12 @@ git push origin main
 
 ### What NOT to Do
 
-- ❌ NEVER `git push origin main` or `git push origin HEAD:main`
-- ❌ NEVER commit directly to main branch
+- ❌ NEVER `git push origin main` or `git push origin HEAD:main` (FOR CODE CHANGES)
+- ❌ NEVER commit directly to main branch (FOR CODE CHANGES)
 - ❌ NEVER merge PRs without explicit user instruction
 - ❌ NEVER use `--force` or `--force-with-lease` on main branch
+
+**Note**: Beads daemon automatically commits to `beads-metadata` branch - this is expected behavior and separate from code workflow.
 
 ### Exception Cases
 

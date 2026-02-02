@@ -25,6 +25,31 @@ yarn-debug.log*
 yarn-error.log*
 QWEN.md
 
-# Beads metadata (managed on beads-metadata branch only)
-# Feature branches should never track .beads/ changes
-.beads/
+# Beads: Ignore runtime files but allow issues.jsonl for sync branch
+.beads/*.db
+.beads/*.db?*
+.beads/*.db-journal
+.beads/*.db-wal
+.beads/*.db-shm
+.beads/daemon.lock
+.beads/daemon.log
+.beads/daemon.pid
+.beads/bd.sock
+.beads/sync-state.json
+.beads/last-touched
+.beads/.local_version
+.beads/db.sqlite
+.beads/bd.db
+.beads/redirect
+.beads/beads.base.jsonl
+.beads/beads.base.meta.json
+.beads/beads.left.jsonl
+.beads/beads.left.meta.json
+.beads/beads.right.jsonl
+.beads/beads.right.meta.json
+.beads/.sync.lock
+.beads/sync_base.jsonl
+.beads/export-state/
+
+# Note: issues.jsonl is NOT ignored - needed for sync branch workflow
+# Feature branches won't see it because it only exists on beads-metadata branch

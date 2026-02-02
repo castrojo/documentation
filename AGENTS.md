@@ -665,37 +665,100 @@ bd list --status=in_progress  # Should be empty or updated
 
 ## Fork Workflow
 
-**This repository is configured as a working fork:**
+**IMPORTANT: This repository (castrojo/documentation) is YOUR primary working repository.**
 
-- **Origin (working fork):** `git@github.com:castrojo/documentation.git`
-- **Upstream (main project):** `git@github.com:projectbluefin/documentation.git`
+- **Origin (YOUR working repo):** `git@github.com:castrojo/documentation.git`
+- **Upstream (reference project):** `git@github.com:projectbluefin/documentation.git`
+
+**Critical Understanding:**
+
+- This is a standard fork workflow - you DO submit PRs to upstream for **documentation improvements**
+- BUT: Upstream does NOT use beads - beads is YOUR internal tracking system
+- The sync branch workflow keeps beads metadata (.beads/ directory) out of upstream PRs
+- Feature branches have .beads/ in .gitignore, so PRs are clean (code only, no tracking metadata)
+
+### What Goes Upstream vs What Stays in Your Fork
+
+**Submit to upstream (projectbluefin/documentation):**
+
+- ✅ Documentation content changes (docs/, blog/, reports/)
+- ✅ Bug fixes to the Docusaurus site
+- ✅ New features for the documentation site
+- ✅ Improvements to build system, CI/CD, scripts
+
+**NEVER submit to upstream:**
+
+- ❌ Beads configuration (.beads/ directory)
+- ❌ Beads documentation (AGENTS.md beads sections)
+- ❌ Internal workflow documentation (this section you're reading)
+- ❌ Auto-generated files (static/data/, static/feeds/)
 
 ### Daily Development Workflow
 
-All work happens in your fork (`castrojo/documentation`):
+**Standard workflow:**
 
-1. **Create feature branch** for your work
+1. **Create feature branch** from main
+
+   ```bash
+   git checkout main
+   git pull --rebase
+   git checkout -b feature/my-work
+   ```
+
 2. **Make changes** and commit locally
-3. **Push to your fork** (origin)
-4. **Test thoroughly** before submitting upstream
+
+   ```bash
+   git add <files>
+   git commit -m "type: description"
+   ```
+
+3. **Decision point: Does this go upstream?**
+
+   **If YES (documentation improvements):**
+
+   ```bash
+   # Push to your fork
+   git push origin feature/my-work
+
+   # Create PR to upstream
+   gh pr create --repo projectbluefin/documentation --web
+   ```
+
+   **If NO (beads/internal tracking changes):**
+
+   ```bash
+   # Merge to your main branch
+   git checkout main
+   git merge feature/my-work
+   git push origin main
+   git branch -d feature/my-work
+   ```
 
 ### Submitting Pull Requests Upstream
 
-When ready to contribute back to the main project:
+**When to submit upstream:**
 
-1. **Squash commits** into logical units:
+- User-facing documentation improvements
+- Bug fixes to the documentation site
+- New features that benefit all users
+- Build system improvements
+
+**Before submitting:**
+
+1. Verify .beads/ directory is NOT in your changes (should be gitignored on feature branches)
+2. Ensure no beads-specific content in commit
+3. Run validation: `npm run typecheck && npm run build`
+4. Test locally: `npm run start`
+
+**Submission process:**
+
+1. **Push to your fork**:
 
    ```bash
-   git rebase -i HEAD~N  # where N is number of commits to squash
+   git push origin feature/branch-name
    ```
 
-2. **Push to your fork**:
-
-   ```bash
-   git push origin <branch-name>
-   ```
-
-3. **Open browser for PR submission**:
+2. **Create PR to upstream**:
 
    ```bash
    gh pr create --repo projectbluefin/documentation --web
@@ -705,6 +768,40 @@ When ready to contribute back to the main project:
    - Add the PR title
    - Write the PR description
    - Submit when ready
+
+3. **After merge**: Update your fork
+   ```bash
+   git checkout main
+   git pull upstream main
+   git push origin main
+   git branch -d feature/branch-name
+   ```
+
+### Why Beads Stays in Your Fork
+
+**The Problem:** Upstream doesn't use beads for issue tracking. If `.beads/` directory or beads-specific documentation goes upstream, it pollutes their repository with tracking metadata they don't use.
+
+**The Solution:**
+
+- `.beads/` is gitignored on feature branches (see .gitignore)
+- Feature branches create clean PRs (code only, no tracking metadata)
+- Beads metadata lives on `beads-metadata` branch (never submitted upstream)
+- Beads documentation (like this section) stays in castrojo/documentation main
+
+**Visual:**
+
+```
+castrojo/documentation                    projectbluefin/documentation
+
+main (has beads + docs)                   main (docs only)
+  ↓ checkout -b feature/name                ↑
+  ↓                                         │
+feature/fix-typo                            │
+(.beads/ gitignored)                        │
+  ↓ git push origin                         │
+  └──────── gh pr create ──────────────────┘
+           (PR has NO .beads/ directory)
+```
 
 ### Syncing with Upstream
 

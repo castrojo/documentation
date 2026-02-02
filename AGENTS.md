@@ -132,6 +132,537 @@ Use labels to categorize work:
 
 All work is tracked in beads issues. Use `bd` commands to manage tasks, features, bugs, and dependencies. See the Beads section above for workflow details.
 
+## Beads Deep Dive for Agents
+
+This section provides comprehensive beads knowledge for AI agents working on this repository. The maintainer is an expert in git/CI/CD but new to beads, so this serves as both reference and learning material.
+
+### What is Beads?
+
+**Beads** is a git-native issue tracking system that stores issues in a local SQLite database with JSONL export/import for version control.
+
+**Key Characteristics:**
+
+- **Git-native**: Issues are versioned alongside code
+- **Distributed**: No server dependency (works offline)
+- **Lightweight**: SQLite database + JSONL for git
+- **CLI-first**: Designed for terminal and agent workflows
+
+**Why Beads in This Repo:**
+
+- Keeps issues versioned with documentation
+- No GitHub dependency for internal task tracking
+- Git-based sync enables fork workflow isolation
+- Agent-friendly (structured JSON output, scriptable)
+
+### Data Model
+
+```
+Repository Structure:
+├── .beads/
+│   ├── db.sqlite              # Local database (gitignored)
+│   └── export/
+│       └── issues.jsonl       # Git-tracked export (on beads-metadata branch)
+├── static/data/
+│   └── contributors-history.json  # Auto-generated (gitignored)
+└── (feature branches have .beads/ in .gitignore)
+```
+
+**Storage Strategy:**
+
+- **Local work**: SQLite database (`.beads/db.sqlite`)
+- **Version control**: JSONL export (`.beads/export/issues.jsonl`) on `beads-metadata` branch
+- **Feature branches**: `.beads/` directory NOT tracked (in .gitignore)
+- **Sync mechanism**: `bd sync --from-main` pulls beads metadata from main into feature branches
+
+### Core Concepts
+
+#### Issues
+
+Every work item is an issue with these properties:
+
+| **Property**  | **Description**      | **Values**                                                         |
+| ------------- | -------------------- | ------------------------------------------------------------------ |
+| `id`          | Unique identifier    | `bluefin-docs-XXX` (auto-generated)                                |
+| `title`       | Short description    | String (required)                                                  |
+| `description` | Detailed explanation | Markdown text (optional)                                           |
+| `status`      | Current state        | `open`, `in_progress`, `closed`, `cancelled`                       |
+| `priority`    | Urgency level        | `0` (critical), `1` (high), `2` (medium), `3` (low), `4` (backlog) |
+| `issue_type`  | Category             | `task`, `bug`, `feature`, `epic`, `chore`                          |
+| `labels`      | Tags for grouping    | Array of strings                                                   |
+| `owner`       | Assigned person      | Email address                                                      |
+| `created_at`  | Creation timestamp   | ISO 8601 datetime                                                  |
+| `updated_at`  | Last modification    | ISO 8601 datetime                                                  |
+
+#### Priority System
+
+**IMPORTANT:** Use numeric priorities (0-4) NOT text labels ("high"/"medium"/"low")
+
+| **Priority** | **Label** | **Meaning**              | **When to Use**                           |
+| ------------ | --------- | ------------------------ | ----------------------------------------- |
+| `0` (P0)     | Critical  | Urgent, blocking work    | Site down, build broken, security issue   |
+| `1` (P1)     | High      | Important features/fixes | New major features, important bugs        |
+| `2` (P2)     | Medium    | Normal work              | Default priority, regular tasks           |
+| `3` (P3)     | Low       | Nice to have             | Minor improvements, optional enhancements |
+| `4` (P4)     | Backlog   | Future consideration     | Ideas, long-term goals, low-impact items  |
+
+#### Status Lifecycle
+
+```
+     create
+        ↓
+      open ──→ cancelled (abandoned)
+        ↓
+   in_progress ──→ cancelled (abandoned)
+        ↓
+      closed (completed)
+```
+
+**Status Transitions:**
+
+- `open`: Issue created, not yet started
+- `in_progress`: Someone is actively working on it
+- `closed`: Work completed successfully
+- `cancelled`: Issue abandoned or no longer relevant
+
+#### Dependencies
+
+Issues can depend on each other, creating a directed acyclic graph (DAG):
+
+```bash
+# Syntax: bd dep add <from-issue> <to-issue>
+# Meaning: "from-issue" depends on "to-issue" (to-issue blocks from-issue)
+
+bd dep add bluefin-docs-e34 bluefin-docs-e33
+# Translation: e34 depends on e33 (e33 must be completed before e34 can start)
+# Also expressed as: e33 blocks e34
+```
+
+**Dependency Visualization:**
+
+```
+Epic: Add community engagement section (bluefin-docs-e33)
+  ↓ blocks
+Task: Research GitHub API queries (bluefin-docs-e35)
+  ↓ blocks
+Task: Implement engagement scoring (bluefin-docs-e36)
+  ↓ blocks
+Task: Update markdown generator (bluefin-docs-e37)
+```
+
+**Finding Ready Work:**
+
+```bash
+bd ready
+# Returns issues with status=open and NO blocking dependencies
+```
+
+### Complete Command Reference
+
+This table includes ALL beads commands used in this repository workflow.
+
+| **Category**        | **Command**                                               | **Description**                         | **Example**                                                                                 |
+| ------------------- | --------------------------------------------------------- | --------------------------------------- | ------------------------------------------------------------------------------------------- |
+| **Finding Work**    |
+|                     | `bd ready --json`                                         | List issues ready to work (no blockers) | `bd ready`                                                                                  |
+|                     | `bd list --status=open --json`                            | List all open issues                    | `bd list --status=open`                                                                     |
+|                     | `bd list --status=in_progress --json`                     | List active work                        | `bd list --status=in_progress`                                                              |
+|                     | `bd show <id> --json`                                     | Show detailed issue information         | `bd show bluefin-docs-e33`                                                                  |
+|                     | `bd blocked --json`                                       | Show all blocked issues                 | `bd blocked`                                                                                |
+| **Creating Issues** |
+|                     | `bd create --title "..." --type TYPE --priority N --json` | Create new issue                        | `bd create --title "Fix typo" --type task --priority 2`                                     |
+|                     | `bd create --title "..." --description "..." --json`      | Create with description                 | `bd create --title "Feature" --description "Details here" --type feature --priority 1`      |
+|                     | `bd create --title "..." --labels "label1,label2" --json` | Create with labels                      | `bd create --title "Monthly report" --labels "reports,automation" --type task --priority 2` |
+| **Updating Issues** |
+|                     | `bd update <id> --status STATUS --json`                   | Update status                           | `bd update bluefin-docs-e33 --status in_progress`                                           |
+|                     | `bd update <id> --priority N --json`                      | Change priority                         | `bd update bluefin-docs-e33 --priority 1`                                                   |
+|                     | `bd update <id> --title "..." --json`                     | Change title                            | `bd update bluefin-docs-e33 --title "New title"`                                            |
+|                     | `bd update <id> --description "..." --json`               | Update description                      | `bd update bluefin-docs-e33 --description "New details"`                                    |
+|                     | `bd update <id> --notes "..." --json`                     | Add notes                               | `bd update bluefin-docs-e33 --notes "Progress update"`                                      |
+|                     | `bd update <id> --assignee EMAIL --json`                  | Assign to person                        | `bd update bluefin-docs-e33 --assignee jorge.castro@gmail.com`                              |
+| **Closing Issues**  |
+|                     | `bd close <id> --json`                                    | Close issue                             | `bd close bluefin-docs-e33`                                                                 |
+|                     | `bd close <id> --reason "..." --json`                     | Close with reason                       | `bd close bluefin-docs-e33 --reason "Completed in PR #123"`                                 |
+|                     | `bd close <id1> <id2> <id3> --json`                       | Close multiple issues                   | `bd close bluefin-docs-e33 bluefin-docs-e34`                                                |
+|                     | `bd reopen <id> --json`                                   | Reopen closed issue                     | `bd reopen bluefin-docs-e33`                                                                |
+| **Dependencies**    |
+|                     | `bd dep add <from> <to> --json`                           | Add dependency                          | `bd dep add bluefin-docs-e34 bluefin-docs-e33`                                              |
+|                     | `bd dep add <from> <to> --type TYPE --json`               | Add typed dependency                    | `bd dep add bluefin-docs-e34 bluefin-docs-e33 --type blocks`                                |
+| **Sync Operations** |
+|                     | `bd sync --from-main`                                     | Pull beads metadata from main           | `bd sync --from-main` (use on feature branches)                                             |
+|                     | `bd sync --status`                                        | Check sync status                       | `bd sync --status`                                                                          |
+|                     | `bd sync --merge`                                         | Merge beads-metadata into main          | `bd sync --merge` (periodic maintenance)                                                    |
+|                     | `bd sync`                                                 | Push to beads-metadata branch           | `bd sync` (daemon handles automatically)                                                    |
+| **Diagnostics**     |
+|                     | `bd stats --json`                                         | Show project statistics                 | `bd stats`                                                                                  |
+|                     | `bd doctor`                                               | Check for problems                      | `bd doctor`                                                                                 |
+|                     | `bd list --json`                                          | List all issues (default)               | `bd list`                                                                                   |
+
+**Critical Agent Guidelines:**
+
+❌ **NEVER use `bd edit`**
+
+- Opens $EDITOR (vim/nano) which blocks agent execution
+- Use `bd update <id> --field value` instead for inline editing
+
+✅ **ALWAYS use `--json` flag**
+
+- Provides structured output for parsing
+- Example: `bd list --status=open --json`
+
+✅ **Use inline updates**
+
+- Prefer: `bd update <id> --title "New title"`
+- Avoid: `bd edit <id>` (interactive, blocks agents)
+
+✅ **Batch close when possible**
+
+- Efficient: `bd close bluefin-docs-e33 bluefin-docs-e34 bluefin-docs-e35`
+- Less efficient: Three separate `bd close` commands
+
+### Sync Branch Workflow (The Complex Part)
+
+This is unique to this repository and CRITICAL for agents to understand.
+
+#### The Three-Branch Model
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│ main (castrojo/documentation main branch)                   │
+│ ├── Contains: Code + periodic beads metadata merges         │
+│ ├── Purpose: Your working baseline                          │
+│ └── Updates: git pull --rebase + bd sync --merge (periodic) │
+└─────────────────────────────────────────────────────────────┘
+                          ↓ checkout -b
+┌─────────────────────────────────────────────────────────────┐
+│ feature/* (code-only branches)                              │
+│ ├── Contains: Code changes ONLY                             │
+│ ├── Purpose: Clean PRs to upstream (projectbluefin/docs)    │
+│ ├── .beads/ is gitignored on these branches                 │
+│ └── Updates: bd sync --from-main (before committing)        │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ beads-metadata (daemon-managed branch)                      │
+│ ├── Contains: Beads JSONL exports ONLY                      │
+│ ├── Purpose: Version control for issue tracking             │
+│ ├── NEVER touch directly (daemon manages this)              │
+│ └── Updates: bd daemon (automatic)                          │
+└─────────────────────────────────────────────────────────────┘
+```
+
+#### Why This Design?
+
+**Problem:** Upstream (projectbluefin/documentation) doesn't use beads. If beads metadata (`.beads/` directory) is included in PRs, it pollutes upstream with tracking data they don't need.
+
+**Solution:** Isolate beads metadata on a separate branch (`beads-metadata`), keep feature branches clean (`.beads/` in `.gitignore`), and sync metadata separately.
+
+**Benefit:** PRs to upstream contain ONLY code changes. No `.beads/` directory appears in diffs.
+
+**Tradeoff:** Requires sync discipline. Must run `bd sync --from-main` before committing to avoid metadata staleness.
+
+#### Visual Workflow (ASCII for Agents)
+
+```
+Fork Relationship:
+You (castrojo/documentation)          Upstream (projectbluefin/documentation)
+
+main ←─────────────────── pull ────── main (upstream)
+  ↓ checkout -b feature/name            ↑
+  ↓                                     │
+feature/my-change                       │
+  ↓ git add/commit                      │
+  ↓ git push origin                     │
+  └──────── gh pr create ──────────────┘
+           (PR contains ONLY code, no .beads/)
+
+Beads Metadata Sync:
+beads-metadata ←── bd daemon ──→ .beads/db.sqlite (local)
+  ↑ automatic export                    ↓
+  │                                     ↓ bd sync --from-main (manual)
+  └─── bd sync --merge ───→ main      feature/my-change
+       (periodic sync)                  (pulls latest beads metadata)
+```
+
+#### When to Use Each Command
+
+| **Situation**           | **Branch**        | **Command**                                                    | **Why**                                       |
+| ----------------------- | ----------------- | -------------------------------------------------------------- | --------------------------------------------- |
+| Starting new work       | main              | `git checkout main && git pull --rebase`                       | Get latest code                               |
+| Creating feature branch | main → feature/\* | `git checkout -b feature/name`                                 | Isolate changes                               |
+| Before committing code  | feature/\*        | `bd sync --from-main`                                          | Pull latest beads metadata to avoid conflicts |
+| After finishing work    | feature/\*        | `git push origin feature/name`                                 | Push to YOUR fork                             |
+| Submitting upstream     | feature/\*        | `gh pr create --repo projectbluefin/documentation --web`       | PR to upstream                                |
+| Periodic maintenance    | main              | `git checkout main && bd sync --merge && git push origin main` | Keep main in sync with beads                  |
+
+#### Common Sync Scenarios
+
+**Scenario 1: Starting Work on Feature Branch**
+
+```bash
+# 1. Ensure main is up to date
+git checkout main
+git pull --rebase
+
+# 2. Create feature branch
+git checkout -b feature/add-workflow-docs
+
+# 3. Mark issue in progress
+bd update bluefin-docs-5le --status in_progress
+
+# 4. Do your work (edit files, test)
+# ...
+
+# 5. BEFORE COMMITTING: Sync beads metadata from main
+bd sync --from-main
+
+# 6. Now commit (includes updated beads state)
+git add docs/contributing.md
+git commit -m "docs: add workflow documentation"
+
+# 7. Push to your fork
+git push origin feature/add-workflow-docs
+```
+
+**Scenario 2: Periodic Main Branch Sync**
+
+```bash
+# This keeps main in sync with beads metadata (optional, for reference)
+# Only needed periodically, not every session
+
+git checkout main
+bd sync --merge        # Merge beads-metadata branch into main
+bd import              # Update database from merged JSONL
+git push origin main   # Push updated main to your fork
+```
+
+**Scenario 3: Recovering from Sync Issues**
+
+```bash
+# Check sync status
+bd sync --status
+
+# If out of sync, diagnose
+bd doctor
+
+# Force sync from main (if needed)
+bd sync --from-main
+
+# If database corrupted, reimport
+bd import
+```
+
+### Agent-Specific Beads Patterns
+
+#### Pattern 1: Bulk Issue Creation (Use Parallel Subagents)
+
+When creating multiple related issues (e.g., epic → tasks), use parallel subagents for efficiency:
+
+```bash
+# INEFFICIENT (sequential, one at a time):
+bd create --title "Epic: Add feature" --type epic --priority 1
+bd create --title "Task 1: Research" --type task --priority 2
+bd create --title "Task 2: Implement" --type task --priority 2
+bd create --title "Task 3: Test" --type task --priority 2
+
+# EFFICIENT (parallel subagents):
+# Launch multiple Task tool calls in single message
+# Each subagent creates one issue independently
+# Returns all issue IDs in single response
+```
+
+#### Pattern 2: Dependency Chain Creation
+
+When creating dependent tasks, create all issues first, THEN add dependencies:
+
+```bash
+# Step 1: Create all issues (can be parallel)
+bd create --title "Epic: Add engagement" --type epic --priority 1
+# Returns: bluefin-docs-e33
+
+bd create --title "Task: Research API" --type task --priority 2
+# Returns: bluefin-docs-e35
+
+bd create --title "Task: Implement scoring" --type task --priority 2
+# Returns: bluefin-docs-e36
+
+# Step 2: Add dependencies (must be sequential)
+bd dep add bluefin-docs-e35 bluefin-docs-e33  # Task depends on Epic
+bd dep add bluefin-docs-e36 bluefin-docs-e35  # Scoring depends on Research
+```
+
+#### Pattern 3: Session Close Batch Closure
+
+When ending a session with multiple completed issues, close them in one command:
+
+```bash
+# Check what's been completed
+bd list --status=in_progress
+
+# Close all completed work in one command
+bd close bluefin-docs-e33 bluefin-docs-e34 bluefin-docs-e35 --reason "Completed in session"
+```
+
+#### Pattern 4: Pre-Commit Beads Sync Check
+
+ALWAYS run this before committing on feature branches:
+
+```bash
+# Pre-commit checklist (in order)
+bd sync --from-main           # Pull latest beads metadata
+git status                    # Check what changed
+git add <files>               # Stage code changes
+git commit -m "type: message" # Commit with conventional format
+```
+
+### Troubleshooting Beads Issues
+
+#### Issue: "Beads metadata out of sync"
+
+**Symptoms:**
+
+- `bd` commands show different state than expected
+- Conflicts when merging beads-metadata
+
+**Solution:**
+
+```bash
+# Check sync status
+bd sync --status
+
+# Reimport from JSONL
+bd import
+
+# Verify database state
+bd stats
+bd list --status=open
+```
+
+#### Issue: "Database corrupted or unreadable"
+
+**Symptoms:**
+
+- `bd` commands fail with database errors
+- SQLite errors in output
+
+**Solution:**
+
+```bash
+# Delete local database
+rm .beads/db.sqlite
+
+# Reimport from JSONL (if exists)
+bd import
+
+# Or reinitialize (if no JSONL)
+bd init bluefin-docs
+```
+
+#### Issue: "Forgot to run `bd sync --from-main` before committing"
+
+**Symptoms:**
+
+- Committed code without syncing beads metadata
+- Beads state may be stale on feature branch
+
+**Solution:**
+
+```bash
+# If NOT pushed yet:
+bd sync --from-main
+git add .beads/  # If .beads/ is tracked on this branch
+git commit --amend --no-edit
+git push origin feature/branch-name
+
+# If ALREADY pushed:
+# No immediate problem - beads metadata is on separate branch
+# Just remember to sync next time
+```
+
+#### Issue: "Can't find issue that was just created"
+
+**Symptoms:**
+
+- Created issue with `bd create` but `bd show` can't find it
+- Issue ID not in database
+
+**Solution:**
+
+```bash
+# Check that creation succeeded
+bd list --json | grep "title"
+
+# Verify database is readable
+bd stats
+
+# If issue missing, check if daemon is running
+bd doctor
+
+# Reimport if needed
+bd import
+```
+
+### Beads Best Practices for Agents
+
+#### DO:
+
+✅ Always use `--json` flag for structured output
+✅ Use `bd sync --from-main` before committing on feature branches
+✅ Close issues with `--reason` to document completion
+✅ Use numeric priorities (0-4) not text labels
+✅ Batch close multiple issues when possible
+✅ Create dependencies AFTER creating all issues
+✅ Use inline updates (`bd update --field value`)
+✅ Check `bd ready` to find available work
+✅ Use `bd doctor` to diagnose problems
+
+#### DON'T:
+
+❌ Never use `bd edit` (opens interactive editor, blocks agents)
+❌ Never use priority labels "high"/"medium"/"low" (use 0-4)
+❌ Never commit on feature branch without `bd sync --from-main` first
+❌ Never touch `beads-metadata` branch directly (daemon manages it)
+❌ Never assume issue exists without verifying with `bd show`
+❌ Never create cyclic dependencies (DAG validation will fail)
+
+### Beads Integration with Landing the Plane
+
+The "Landing the Plane" session close protocol integrates beads commands:
+
+```bash
+# MANDATORY WORKFLOW FOR CODE CHANGES:
+
+# 1. Run validation
+npm run typecheck
+npm run prettier-lint
+npm run build
+
+# 2. Sync beads metadata
+bd sync --from-main
+
+# 3. Stage code changes
+git add <files>
+
+# 4. Commit with conventional format
+git commit -m "type(scope): description
+
+Body text explaining changes.
+
+Assisted-by: Claude Sonnet 4.5 via GitHub Copilot"
+
+# 5. Push to YOUR fork
+git push origin feature/branch-name
+
+# 6. Create PR to upstream
+gh pr create --repo projectbluefin/documentation --web
+
+# 7. Close beads issue
+bd close <issue-id> --reason "Completed in PR #XYZ"
+
+# 8. Verify clean state
+git status
+bd list --status=in_progress  # Should be empty or updated
+```
+
 ## Fork Workflow
 
 **This repository is configured as a working fork:**

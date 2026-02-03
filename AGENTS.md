@@ -693,6 +693,38 @@ bd list --status=in_progress  # Should be empty or updated
 - ❌ Internal workflow documentation (this section you're reading)
 - ❌ Auto-generated files (static/data/, static/feeds/)
 
+### Feature Branch Naming
+
+**CRITICAL: Always create a new branch for each feature, bug fix, or task.**
+
+**Branch naming convention:**
+
+- `feature/descriptive-name` - For new features
+- `fix/descriptive-name` - For bug fixes
+- `docs/descriptive-name` - For documentation changes
+- `chore/descriptive-name` - For maintenance tasks
+
+**Examples:**
+
+- `feature/community-engagement-metrics`
+- `fix/changelog-feed-timeout`
+- `docs/improve-installation-guide`
+- `chore/update-dependencies`
+
+**Why separate branches matter:**
+
+- Isolates changes for clean PR reviews
+- Allows parallel work on multiple features
+- Makes it easy to abandon work without affecting main
+- Keeps git history organized and traceable
+- Required for branch protection rules and merge queue
+
+**Never:**
+
+- ❌ Work directly on main branch
+- ❌ Reuse feature branches for multiple unrelated changes
+- ❌ Push code changes directly to main
+
 ### Daily Development Workflow
 
 **Standard workflow:**
@@ -702,7 +734,7 @@ bd list --status=in_progress  # Should be empty or updated
    ```bash
    git checkout main
    git pull --rebase
-   git checkout -b feature/my-work
+   git checkout -b feature/descriptive-name
    ```
 
 2. **Make changes** and commit locally
@@ -2375,21 +2407,46 @@ feat(components)!: redesign ProjectCard with stats API
 1. **File beads issues for remaining work** - Create issues for anything that needs follow-up
 2. **Run quality gates** (if code changed) - Tests, linters, builds
 3. **Update beads issue status** - Close finished work, update in-progress items
-4. **COMMIT TO FEATURE BRANCH** - This is MANDATORY:
+4. **SQUASH COMMITS** - Clean up commit history before PR:
+
    ```bash
-   git status                              # Check what changed
-   git add <files>                         # Stage code changes
-   bd sync --from-main                     # Pull beads updates from main
-   git commit -m "conventional commit"     # Commit with conventional format
-   git push origin feature/branch-name     # Push to your fork
+   # Check how many commits on your branch
+   git log --oneline feature/branch-name ^main
+
+   # Squash all commits into one (replace N with number of commits)
+   git reset --soft HEAD~N
+
+   # Or squash from main branch point
+   git reset --soft main
+
+   # Remove research/planning files (only commit implementation)
+   git reset HEAD IMPLEMENTATION-PLAN.md scripts/research-*.mjs
+
+   # Create single clean commit
+   git commit -m "conventional commit message"
+
+   # Force push squashed commit
+   git push --force-with-lease origin feature/branch-name
    ```
-5. **CREATE PULL REQUEST** - Always use feature branches:
+
+   **Why squash?**
+   - Clean git history (one commit per feature)
+   - Easier to review and revert
+   - Removes WIP/debug commits
+   - Professional contribution to upstream
+
+5. **COMMIT TO FEATURE BRANCH** - After squashing:
    ```bash
-   gh pr create --repo projectbluefin/documentation --web
-   # Opens browser with PR form - add title and description
+   git status                              # Verify clean state
+   git log --oneline feature/branch-name ^main  # Should show 1 commit
    ```
-6. **NEVER PUSH DIRECTLY TO MAIN** - All code changes go through PRs
-7. **Hand off** - Provide PR URL and context for next session
+6. **CREATE PULL REQUEST** - Always use feature branches:
+   ```bash
+   gh pr create --repo projectbluefin/documentation --head castrojo:feature/branch-name --title "..." --body "..."
+   # Or use --web flag to open browser
+   ```
+7. **NEVER PUSH DIRECTLY TO MAIN** - All code changes go through PRs
+8. **Hand off** - Provide PR URL and context for next session
 
 **CRITICAL RULES:**
 

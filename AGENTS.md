@@ -743,33 +743,75 @@ bd list --status=in_progress  # Should be empty or updated
 - New features that benefit all users
 - Build system improvements
 
+**CRITICAL: Always branch from upstream/main for upstream PRs**
+
+To ensure PRs contain NO fork-specific files (beads metadata, etc.), ALWAYS create feature branches from `upstream/main`:
+
+```bash
+# Fetch latest upstream
+git fetch upstream main
+
+# Create branch from upstream (NOT origin/main)
+git checkout -b feature/branch-name upstream/main
+
+# Make your changes
+# Edit files...
+
+# Commit (use --no-verify to skip beads hook if needed)
+git add <files>
+git commit --no-verify -m "type: description"
+
+# Push to your fork
+git push origin feature/branch-name
+
+# Create PR to upstream
+gh pr create --repo projectbluefin/documentation --head castrojo:feature/branch-name --title "Title" --body "Description"
+```
+
+**Why this matters:**
+
+- Branching from `origin/main` (your fork) includes beads metadata committed to your fork
+- Branching from `upstream/main` starts clean - no fork-specific files
+- The `--no-verify` flag skips beads git hooks (which expect .beads/ directory)
+
 **Before submitting:**
 
-1. Verify .beads/ directory is NOT in your changes (should be gitignored on feature branches)
-2. Ensure no beads-specific content in commit
+1. **Verify clean diff**: `git diff --name-only upstream/main` should show ONLY your intended changes
+2. **No beads files**: Ensure no `.beads/` files, `AGENTS.md` beads sections, or internal docs
 3. Run validation: `npm run typecheck && npm run build`
 4. Test locally: `npm run start`
 
 **Submission process:**
 
-1. **Push to your fork**:
+1. **Verify branch base**:
+
+   ```bash
+   # Check that branch is based on upstream/main
+   git log --oneline --graph --decorate -5
+   # Should show upstream/main as base
+   ```
+
+2. **Push to your fork**:
 
    ```bash
    git push origin feature/branch-name
    ```
 
-2. **Create PR to upstream**:
+3. **Create PR to upstream**:
 
    ```bash
-   gh pr create --repo projectbluefin/documentation --web
+   gh pr create --repo projectbluefin/documentation --head castrojo:feature/branch-name --title "Title" --body "Description"
    ```
 
-   The `--web` flag opens your browser with the PR form pre-filled. You will:
-   - Add the PR title
-   - Write the PR description
-   - Submit when ready
+4. **Verify PR is clean**:
 
-3. **After merge**: Update your fork
+   ```bash
+   # Check files in PR
+   gh pr view <pr-number> --repo projectbluefin/documentation --json files --jq '.files[].path'
+   # Should show ONLY your intended files (no .beads/, no fork-specific docs)
+   ```
+
+5. **After merge**: Update your fork
    ```bash
    git checkout main
    git pull upstream main
@@ -2379,22 +2421,44 @@ feat(components)!: redesign ProjectCard with stats API
    ```bash
    git status                              # Check what changed
    git add <files>                         # Stage code changes
-   bd sync --from-main                     # Pull beads updates from main
-   git commit -m "conventional commit"     # Commit with conventional format
+   bd sync --from-main                     # Pull beads updates from main (if on fork branch)
+   git commit --no-verify -m "conventional commit"  # Skip beads hook if on upstream branch
    git push origin feature/branch-name     # Push to your fork
    ```
-5. **CREATE PULL REQUEST** - Always use feature branches:
+5. **CREATE PULL REQUEST** - CRITICAL: Branch strategy depends on destination:
+
+   **For upstream PRs (projectbluefin/documentation):**
+
    ```bash
-   gh pr create --repo projectbluefin/documentation --web
-   # Opens browser with PR form - add title and description
+   # MUST branch from upstream/main (not origin/main)
+   git fetch upstream main
+   git checkout -b feature/branch-name upstream/main
+   # Make changes, commit with --no-verify
+   git push origin feature/branch-name
+   gh pr create --repo projectbluefin/documentation --head castrojo:feature/branch-name --title "Title" --body "Description"
+   # Verify PR contains NO .beads/ files:
+   gh pr view <pr-number> --repo projectbluefin/documentation --json files --jq '.files[].path'
    ```
-6. **NEVER PUSH DIRECTLY TO MAIN** - All code changes go through PRs
+
+   **For fork-only changes (beads/internal docs):**
+
+   ```bash
+   # Branch from origin/main
+   git checkout -b feature/branch-name origin/main
+   # Make changes, commit normally
+   git push origin feature/branch-name
+   # Merge directly to fork main (no upstream PR)
+   ```
+
+6. **NEVER PUSH DIRECTLY TO MAIN** - All code changes go through PRs or explicit feature branch merges
 7. **Hand off** - Provide PR URL and context for next session
 
 **CRITICAL RULES:**
 
 - **ALWAYS use feature branches** - Never commit code directly to main
 - **ALL code changes require PRs** - This is a fork workflow (castrojo → projectbluefin)
+- **Branch from upstream/main for upstream PRs** - Prevents beads metadata leaking to upstream
+- **Use --no-verify when on upstream branches** - Skips beads git hooks
 - Work is NOT complete until PR is created
 - NEVER say "ready to push when you are" - YOU must create the PR
 - Exception: Beads metadata commits happen automatically on beads-metadata branch

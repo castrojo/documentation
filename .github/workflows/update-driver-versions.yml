@@ -1,7 +1,7 @@
 name: Update Driver Versions
 
 # Weekly automation to keep driver version documentation current
-# Tracks kernel, NVIDIA, and Mesa versions across Bluefin streams (stable, GTS, LTS)
+# Tracks kernel, NVIDIA, and Mesa versions across Bluefin streams (stable, LTS)
 on:
   schedule:
     # Run every Wednesday at 10:00 AM UTC

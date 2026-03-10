@@ -1389,7 +1389,7 @@ npm run start
 
 ## Monthly Reports System
 
-The monthly reports system automatically generates transparent, data-driven summaries of completed work, active contributors, and project momentum from monitored Bluefin repositories. Reports are published on the last day of each month covering the entire month's activity.
+The monthly reports system automatically generates transparent, data-driven summaries of completed work, active contributors, and project momentum from monitored Bluefin repositories. Reports are published on the first Monday of each month covering the prior month's activity.
 
 ### Architecture Overview
 
@@ -1407,7 +1407,7 @@ The monthly reports system automatically generates transparent, data-driven summ
 **Data Flow:**
 
 ```
-GitHub Actions Cron (monthly on last day)
+GitHub Actions Cron (monthly on first Monday)
   ↓
 Fetch closed PRs from projectbluefin/common (planned work)
   ↓
@@ -1443,7 +1443,7 @@ Build and deploy via GitHub Pages
 
 **Cron Schedule:**
 
-- Workflow runs on the last day of each month at 10:00 UTC
+- Workflow runs on the first Monday of each month at 10:00 UTC (cron: `0 10 1-7 * 1`)
 - Script calculates month date range (first day to last day)
 - Reports cover entire month's completed items
 - Single report generated per month
@@ -1453,7 +1453,7 @@ Build and deploy via GitHub Pages
 - Uses `date-fns` library for date manipulation
 - Month boundaries: startOfMonth to endOfMonth
 - Filters merged PRs with mergedAt/closedAt within month range
-- Report filename: YYYY-MM-DD-report.mdx (last day of month)
+- Report filename: YYYY-MM-DD-report.mdx (last day of prior month)
 
 **Repository Data Fetching:**
 

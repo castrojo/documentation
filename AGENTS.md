@@ -1267,6 +1267,7 @@ git push
 ## Dependencies
 
 - **Node.js**: Version 20+ required (see package.json engines field)
+  - **CI/CD parity gap**: Local devcontainer uses `typescript-node:3-22-bookworm` (Node 22); CI workflow (`.github/workflows/pages.yml`) uses `node-version: 20`. To align, either update the devcontainer image to Node 20 or update CI to Node 22. Track this before upgrading Node APIs.
 - **Package Manager**: npm (standard across development and CI/CD)
 - **Docker**: Optional for containerized development
 - **OS**: Works on Linux, macOS, Windows
@@ -2462,3 +2463,60 @@ feat(components)!: redesign ProjectCard with stats API
 - Work is NOT complete until PR is created
 - NEVER say "ready to push when you are" - YOU must create the PR
 - Exception: Beads metadata commits happen automatically on beads-metadata branch
+
+## Known Gaps and Outstanding Work
+
+These items were identified during the onboarding audit loop (March 2026) and have not yet been resolved.
+
+### Justfile non-compliant with personal workflow standards
+
+The current `Justfile` at repo root is minimal and does not meet the required standards from global `AGENTS.md`:
+
+- Missing `set shell := ["bash", "-euo", "pipefail", "-c"]` at the top
+- Missing `default` recipe that runs `just --list`
+- `serve` recipe does not open the browser via `xdg-open` and is not on a single recipe line
+- `build` recipe does not run `npm install` first (not self-contained on clean host)
+
+**Required fix** (do not commit to upstream — Justfile is fork-only):
+
+```justfile
+set shell := ["bash", "-euo", "pipefail", "-c"]
+
+default:
+    just --list
+
+build:
+    npm install --legacy-peer-deps && npm run build
+
+serve:
+    xdg-open http://localhost:3000 & sleep 1 && npm run start
+
+dev:
+    npm run start
+```
+
+### opencode.json missing — Docusaurus MCP not configured
+
+No `opencode.json` exists at the repo root. Per global workflow rules, web projects should configure an MCP server for the framework docs to get accurate API information.
+
+A Docusaurus MCP server would prevent using stale or hallucinated API patterns. Until configured, always refer to [Docusaurus 3.x docs](https://docusaurus.io/docs) directly before touching `docusaurus.config.ts`, `src/`, or plugin configuration.
+
+**To fix**: Create `opencode.json` with a Docusaurus MCP entry if one becomes available.
+
+### No image optimization pipeline
+
+The build pipeline has no image optimization step. Images in `static/img/` are served as-is. For a documentation site this has minor impact but is worth noting for future performance work.
+
+**Known workaround**: Manually optimize images before committing using `optipng`, `jpegoptim`, or similar. No automated pipeline is in place.
+
+### editUrl in docusaurus.config.ts is stale
+
+The `editUrl` config in `docusaurus.config.ts` may point to the old `ublue-os/bluefin-docs` repo instead of `projectbluefin/documentation`. This affects the "Edit this page" links shown on documentation pages.
+
+**To fix**: Verify `docusaurus.config.ts` editUrl and update to:
+
+```
+https://github.com/projectbluefin/documentation/tree/main/
+```
+
+Submit as a PR to upstream (`projectbluefin/documentation`).

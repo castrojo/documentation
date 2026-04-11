@@ -4,7 +4,9 @@ import firehoseData from "@site/static/data/firehose-apps.json";
 import bluefinReleasesData from "@site/static/feeds/bluefin-releases.json";
 import bluefinLtsReleasesData from "@site/static/feeds/bluefin-lts-releases.json";
 import type { FirehoseApp, FirehoseRelease, FirehoseFilterState } from "../types/firehose";
-import type { OsReleaseEvent, AppTimelineEvent, FlatTimelineEvent } from "../types/os-feed";
+import type { OsReleaseEvent, AppTimelineEvent, FlatTimelineEvent, ParsedMajorPackage } from "../types/os-feed";
+import sbomAttestationsData from "@site/static/data/sbom-attestations-frontend.json";
+import type { SbomAttestationsData, PackageVersions } from "../types/sbom";
 import { parseOsRelease } from "../utils/parseOsRelease";
 import FirehoseCard from "./FirehoseCard";
 import OsReleaseCard from "./OsReleaseCard";
@@ -49,15 +51,126 @@ function loadOsEvents(
   return events;
 }
 
-// All parsed events from both feeds, sorted newest-first
-const BLUEFIN_OS_EVENTS: OsReleaseEvent[] = loadOsEvents(bluefinReleasesData);
-const LTS_OS_EVENTS: OsReleaseEvent[] = loadOsEvents(bluefinLtsReleasesData, "lts");
+// ── SBOM enrichment ───────────────────────────────────────────────────────────
+//
+// All package version chips on OS release cards are sourced from the SBOM
+// attestation cache (Pipeline B — authoritative). Release notes data
+// (majorPackages from the HTML/Markdown parser) is supplemented by SBOM
+// but never used as the sole source for missing packages.
+// Dakota is the only stream that uses hardcoded placeholder versions.
+
+const SBOM_CACHE = sbomAttestationsData as unknown as SbomAttestationsData;
+
+/** Map from lowercase HEADER_CHIP_NAMES to their PackageVersions field. */
+const CHIP_TO_SBOM: Array<{ chipName: string; displayName: string; field: keyof PackageVersions }> = [
+  { chipName: "kernel",   displayName: "Kernel",   field: "kernel" },
+  { chipName: "gnome",    displayName: "Gnome",    field: "gnome" },
+  { chipName: "mesa",     displayName: "Mesa",     field: "mesa" },
+  { chipName: "podman",   displayName: "Podman",   field: "podman" },
+  { chipName: "bootc",    displayName: "bootc",    field: "bootc" },
+  { chipName: "systemd",  displayName: "systemd",  field: "systemd" },
+  { chipName: "pipewire", displayName: "pipewire", field: "pipewire" },
+  { chipName: "flatpak",  displayName: "flatpak",  field: "flatpak" },
+];
+
+/**
+ * Convert a ParsedOsRelease tag + stream to the SBOM cache key + stream ID.
+ *
+ * release.tag is normalised by parseOsRelease (e.g. "stable-daily-20260331"),
+ * but SBOM cacheKeys use the original GitHub release tag format ("stable-20260331").
+ */
+function sbomKeyForRelease(tag: string, stream: string): { streamId: string; cacheKey: string } | null {
+  const dateMatch = tag.match(/(\d{8})/);
+  if (!dateMatch) return null;
+  const date = dateMatch[1];
+  if (stream === "lts") return { streamId: "bluefin-lts", cacheKey: `lts-${date}` };
+  if (stream === "stable" || stream === "stable-daily") {
+    return { streamId: "bluefin-stable", cacheKey: `stable-${date}` };
+  }
+  return null;
+}
+
+/**
+ * Enrich each OS release event's majorPackages with versions from the SBOM cache.
+ * Packages already present in majorPackages (from release notes) are kept as-is;
+ * missing tracked packages are appended from SBOM packageVersions.
+ *
+ * Only applies to stable/LTS events. Dakota uses hardcoded placeholders.
+ */
+function enrichFromSbom(events: OsReleaseEvent[]): OsReleaseEvent[] {
+  return events.map((event) => {
+    const key = sbomKeyForRelease(event.release.tag, event.stream);
+    if (!key) return event;
+
+    const packages = SBOM_CACHE?.streams?.[key.streamId]?.releases?.[key.cacheKey]?.packageVersions;
+    if (!packages) return event;
+
+    const existingNames = new Set(event.release.majorPackages.map((p) => p.name.toLowerCase()));
+    const toAdd: ParsedMajorPackage[] = [];
+
+    for (const { chipName, displayName, field } of CHIP_TO_SBOM) {
+      if (existingNames.has(chipName)) continue;
+      const version = packages[field] as string | null | undefined;
+      if (!version) continue;
+      toAdd.push({ name: displayName, version, prevVersion: null });
+    }
+
+    if (toAdd.length === 0) return event;
+    return {
+      ...event,
+      release: { ...event.release, majorPackages: [...event.release.majorPackages, ...toAdd] },
+    };
+  });
+}
+
+/**
+ * LTS has no SBOM pipeline. Carry forward package versions last seen in fullDiff
+ * across the release history so each LTS card shows its most-recently-observed version.
+ * Processes events oldest→newest, maintaining a running "last known" state per package,
+ * then restores the original newest-first order.
+ */
+function enrichLtsFromHistory(events: OsReleaseEvent[]): OsReleaseEvent[] {
+  const TRACKED = ["systemd", "bootc", "pipewire", "flatpak"];
+  const sorted = [...events].sort((a, b) => a.dateMs - b.dateMs);
+  const running: Record<string, string> = {};
+
+  const enriched = sorted.map((event) => {
+    // Update running state from majorPackages listed in release notes
+    for (const pkg of event.release.majorPackages) {
+      const lower = pkg.name.toLowerCase();
+      if (TRACKED.includes(lower)) running[lower] = pkg.version;
+    }
+    // Update from fullDiff (packages that changed in this release)
+    for (const entry of event.release.fullDiff) {
+      const lower = entry.name.toLowerCase();
+      if (TRACKED.includes(lower) && entry.newVersion) running[lower] = entry.newVersion;
+    }
+
+    const existingNames = new Set(event.release.majorPackages.map((p) => p.name.toLowerCase()));
+    const toAdd: ParsedMajorPackage[] = [];
+    for (const name of TRACKED) {
+      if (!existingNames.has(name) && running[name]) {
+        toAdd.push({ name, version: running[name], prevVersion: null });
+      }
+    }
+    if (toAdd.length === 0) return event;
+    return { ...event, release: { ...event.release, majorPackages: [...event.release.majorPackages, ...toAdd] } };
+  });
+
+  return enriched.sort((a, b) => b.dateMs - a.dateMs);
+}
+
+// All parsed events from both feeds, enriched with SBOM package versions
+const BLUEFIN_OS_EVENTS: OsReleaseEvent[] = enrichFromSbom(loadOsEvents(bluefinReleasesData));
+const LTS_OS_EVENTS: OsReleaseEvent[] = enrichLtsFromHistory(enrichFromSbom(loadOsEvents(bluefinLtsReleasesData, "lts")));
 const ALL_OS_STREAM_EVENTS: OsReleaseEvent[] = [
   ...BLUEFIN_OS_EVENTS,
   ...LTS_OS_EVENTS,
 ].sort((a, b) => b.dateMs - a.dateMs);
 
-// Dakota placeholder — upstream repo has no releases yet
+// Dakota placeholder — upstream repo has no releases yet; versions sourced from
+// BuildStream junction pins in ~/src/dakota/elements/*.bst (no SBOM pipeline).
+// Update when junction refs change: freedesktop-sdk-25.08.8 + gnome-build-meta gnome-50
 const DAKOTA_PLACEHOLDER_EVENT: OsReleaseEvent = {
   kind: "os",
   stream: "dakota",
@@ -69,11 +182,18 @@ const DAKOTA_PLACEHOLDER_EVENT: OsReleaseEvent = {
     fedoraVersion: null,
     centosVersion: null,
     majorPackages: [
-      { name: "Kernel", version: "TBD", prevVersion: null },
-      { name: "Gnome", version: "TBD", prevVersion: null },
-      { name: "Mesa", version: "TBD", prevVersion: null },
+      { name: "Kernel", version: "6.18.7", prevVersion: null },
+      { name: "Gnome", version: "50.0", prevVersion: null },
+      { name: "Mesa", version: "25.3.5", prevVersion: null },
+      { name: "Podman", version: "5.8.0", prevVersion: null },
+      { name: "bootc", version: "1.12.1", prevVersion: null },
+      { name: "systemd", version: "259.2", prevVersion: null },
+      { name: "pipewire", version: "1.6.1", prevVersion: null },
+      { name: "sudo-rs", version: "74e0db4", prevVersion: null },
+      { name: "uutils-coreutils", version: "e7f2fd9", prevVersion: null },
     ],
     dxPackages: [],
+    gdxPackages: [],
     commits: [],
     fullDiff: [],
   },
@@ -83,10 +203,10 @@ const DAKOTA_PLACEHOLDER_EVENT: OsReleaseEvent = {
 // All bluefin releases are stable-daily; synthesise a "stable"-streamed clone for
 // the pinned card so it shows the "Stable" badge while the stream shows "Daily".
 const PINNED_OS_EVENTS: OsReleaseEvent[] = (() => {
-  // Pinned Bluefin card: latest from the bluefin feed, displayed as "stable" stream
-  const pinnedStable: OsReleaseEvent | undefined = BLUEFIN_OS_EVENTS.length > 0
-    ? { ...BLUEFIN_OS_EVENTS[0], stream: "stable", release: { ...BLUEFIN_OS_EVENTS[0].release, stream: "stable" } }
-    : undefined;
+  // Pinned Bluefin card: most recent weekly stable release (stream === "stable").
+  // stable-daily builds (latest-YYYYMMDD, if published) appear in the timeline only.
+  const pinnedStable: OsReleaseEvent | undefined =
+    BLUEFIN_OS_EVENTS.find((e) => e.stream === "stable") ?? BLUEFIN_OS_EVENTS[0];
   // Pinned LTS card: latest from LTS feed
   const pinnedLts: OsReleaseEvent | undefined = LTS_OS_EVENTS.length > 0 ? LTS_OS_EVENTS[0] : undefined;
   return [pinnedStable, pinnedLts, DAKOTA_PLACEHOLDER_EVENT]

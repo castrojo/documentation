@@ -105,7 +105,7 @@ static/
   prompts/              # Copilot prompt files
 docusaurus.config.ts    # Main Docusaurus configuration
 sidebars.ts             # Sidebar navigation
-Justfile                # build, serve recipes
+Justfile                # build, dev, serve, fetch-data, fetch-sbom, fetch-images, fetch-images-force, typecheck, clear, test
 ```
 
 ---
@@ -359,12 +359,9 @@ Icon URLs: use `https://github.com/org-name.png` or `https://github.com/username
 
 ---
 
-## Active Worktrees (2026-05-04)
+## Active Worktrees
 
-| Worktree path | Branch | Purpose |
-|---|---|---|
-| `.worktrees/blog-announcement` | `feature/blog-f44-update-2` | Active blog post (bluefin-spring) + dark/light mode CSS fixes |
-| `.worktrees/sbom-flatpak-cache` | `fix/sbom-flatpak-cache` | SBOM flatpak cache re-extraction fix |
+None currently active. Use `git worktree list` to verify. Worktrees live at `.worktrees/<name>` when in use.
 
 ---
 

@@ -361,7 +361,11 @@ Icon URLs: use `https://github.com/org-name.png` or `https://github.com/username
 
 ## Active Worktrees
 
-None currently active. Use `git worktree list` to verify. Worktrees live at `.worktrees/<name>` when in use.
+| Worktree path | Branch | Purpose |
+|---|---|---|
+| `.worktrees/blog-spring` | `feature/blog-f44-update-2` | 3-part Bluefin Spring 2026 series + StoreCards/BlogSeries/BrewOsChart components |
+
+Use `git worktree list` to verify. Worktrees live at `.worktrees/<name>` when in use.
 
 ---
 

@@ -255,12 +255,14 @@ function enrichDakotaNvidiaFromSbom(events: OsReleaseEvent[]): OsReleaseEvent[] 
     const dateMatch = event.release.tag.match(/(\d{8})/);
     if (!dateMatch) return event;
     const cacheKey = `latest-${dateMatch[1]}`;
-    const allPackages =
-      getSbomCache()?.streams?.["dakota-nvidia-latest"]?.releases?.[cacheKey]
-        ?.packageVersions?.allPackages;
-    if (!allPackages) return event;
-    // BST SPDX uses "NVIDIA-Linux-x86" (upstream tarball name); Syft JSON uses "nvidia-driver".
-    const nvidiaVersion = allPackages["NVIDIA-Linux-x86"] ?? allPackages["nvidia-driver"];
+    // Prefer the typed nvidia field that extractBstPackageVersions populates;
+    // fall back to allPackages for forward-compat with any future SBOM format changes.
+    const nvidiaRelease =
+      getSbomCache()?.streams?.["dakota-nvidia-latest"]?.releases?.[cacheKey];
+    const nvidiaVersion =
+      nvidiaRelease?.packageVersions?.nvidia ??
+      nvidiaRelease?.packageVersions?.allPackages?.["NVIDIA-Linux-x86"] ??
+      nvidiaRelease?.packageVersions?.allPackages?.["nvidia-driver"];
     if (!nvidiaVersion) return event;
     return {
       ...event,

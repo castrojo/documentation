@@ -381,6 +381,60 @@ Do not add `fetch-sbom` to the `fetch-data` chain. `pages.yml` installs cosign/o
 
 ---
 
+## Contributors Page Management
+
+**File:** `docs/donations/contributors.mdx`  
+**Profiles fetch config:** `scripts/fetch-github-profiles.js` → `HARDCODED_USERNAMES`
+
+Every `GitHubProfileCard` uses the `titles` array (colored dot chip) and optional `nickname` (italic lore text). The role taxonomy and colors match `ReleaseContributors.tsx` exactly.
+
+### Card format
+
+```mdx
+<GitHubProfileCard
+  username="login"
+  titles={[{ label: "Role Label", color: "#hexcolor" }]}
+  nickname="personality / lore text"   {/* optional — italic below name */}
+  sponsorUrl="https://..."              {/* optional */}
+  highlight="gold|silver|diamond"       {/* omit for no foil */}
+/>
+```
+
+### Role → foil + color reference
+
+| Section | `highlight` | Dot color | Label |
+|---|---|---|---|
+| Current Maintainers | `gold` | `#ffd700` | `Bluefin Maintainer` (or specific role) |
+| Artists | `diamond` | `#b15e9c` | `Bluefin Artist` / `Art Director` |
+| Maintainers Emeritus | `diamond` | `#8a9db5` | `Bluefin Maintainer Emeritus` (or specific role) |
+| Special Guests — GNOME OS/Foundation | `silver` | `#4a86cf` | `GNOME OS Team` / `GNOME OS Member` / `GNOME OS Developer` / `GNOME Foundation` |
+| Special Guests — GNOME Design | `silver` | `#b15e9c` | `GNOME Design` |
+| Special Guests — independent/installer | `silver` | `#6366f1` | freeform |
+| Special Guests — general advisor | `silver` | `#6b9ac4` | `Technical Writer & Advisor` |
+| Advisors & Mentors | *(none)* | `#6b9ac4` | `Advisor & Mentor` |
+| Universal Blue | *(none)* | `#1a7fd4` | `Universal Blue Contributor` |
+
+Source of truth for colors/foil: `src/components/ReleaseContributors.tsx` (`RoleLegendColor`, `RoleHighlight`).
+
+### Adding a person — checklist
+
+1. Add `<GitHubProfileCard>` to the correct section in `docs/donations/contributors.mdx` with `titles`, `highlight`, and optional `nickname`/`sponsorUrl`.
+2. Add the username to `HARDCODED_USERNAMES` in `scripts/fetch-github-profiles.js` under the matching comment block.
+3. If the blog-spring worktree is active, sync: `cp docs/donations/contributors.mdx .worktrees/blog-spring/docs/donations/contributors.mdx`
+4. Special Guests who are also credited in a blog post thanks line — check `.worktrees/blog-spring/blog/` for their name and add there too if needed.
+
+### Removing a person — checklist
+
+1. Delete their `<GitHubProfileCard>` block from `docs/donations/contributors.mdx`.
+2. Remove their username from `HARDCODED_USERNAMES` in `scripts/fetch-github-profiles.js`.
+3. Sync to worktree if active (step 3 above).
+
+### Known username gotcha
+
+`alateira` (Jordan Petridis) — e before i. Previous typo `alatiera` has been corrected. Do not reintroduce.
+
+---
+
 ## Troubleshooting
 
 | Symptom | Cause | Fix |

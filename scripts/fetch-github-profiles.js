@@ -68,9 +68,15 @@ const HARDCODED_USERNAMES = [
   "rothgar",
 
   // Special Guests
-  "alatiera",
+  "alateira",
+  "AdrianVovk",
   "kolunmi",
   "madonuko",
+  "mairin",
+  "pojntfx",
+  "valentindavid",
+  "sramkrishna",
+  "xe",
 
   // Report Contributors
   "AlexanderVanhee",
@@ -151,9 +157,23 @@ const HARDCODED_USERNAMES = [
   // Universal Blue Team
   "antheas",
   "dreamyukii",
+  "gerblesh",
   "HikariKnight",
   "KyleGospo",
+  "ledif",
   "noelmiller",
+  "valerie-tar-gz",
+  "Zeglius",
+
+  // Maintainers Emeritus (not covered above)
+  "adamisrael",
+
+  // Advisors and Mentors (not covered above)
+  "amandakatona",
+  "krisnova",
+  "rochaporto",
+  "stormypeters",
+  "tpepper",
 ];
 
 const OUTPUT_DIR = path.join(__dirname, "..", "static", "data");

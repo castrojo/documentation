@@ -303,21 +303,21 @@ const STREAM_SPECS = [
     label: "Dakota Latest",
     org: "projectbluefin",
     package: "dakota",
-    // Date-stamped tags: latest.YYYYMMDD (normalised to latest-YYYYMMDD by normaliseLtsTag).
-    // Switched from usesLatestTag:true to streamPrefix:"latest" so all dated builds
-    // accumulate in history instead of only keeping the current :latest.
-    streamPrefix: "latest",
+    // Uses :latest floating tag + commit-SHA tags for historical backfill.
+    // usesLatestTag: true routes through processLatestTagStream() which handles
+    // both the current :latest and the 40-char commit-SHA image tags.
     keyRepo: "projectbluefin/dakota",
     keyless: true,
+    usesLatestTag: true,
   },
   {
     id: "dakota-nvidia-latest",
     label: "Dakota Nvidia Latest",
     org: "projectbluefin",
     package: "dakota-nvidia",
-    streamPrefix: "latest",
     keyRepo: "projectbluefin/dakota",
     keyless: true,
+    usesLatestTag: true,
   },
 ];
 
@@ -414,6 +414,79 @@ async function processLatestTagStream(spec, existing) {
     };
   }
 
+  // Historical backfill: process commit-SHA image tags.
+  // Dakota stopped using latest.YYYYMMDD tags after 2026-02-12 and switched to
+  // 40-char git commit SHA tags. Each SHA tag is a distinct dated build.
+  // We use getImageCreatedDate() to extract the build date from the manifest,
+  // then process the SBOM for any date not already in the cache.
+  // Limit to MAX_COMMIT_BACKFILL most-recent SHAs per run to keep CI time bounded.
+  const MAX_COMMIT_BACKFILL = 30;
+  const LOOKBACK_MS = 90 * 24 * 60 * 60 * 1000;
+  const commitCutoff = Date.now() - LOOKBACK_MS;
+  try {
+    const allTags = await fetchGhcrTags(spec.org, spec.package);
+    const commitTags = allTags.filter((t) => /^[0-9a-f]{40}$/.test(t));
+    console.log(`  ${spec.id}: found ${commitTags.length} commit-SHA tags for backfill`);
+
+    let backfilled = 0;
+    // Iterate newest-first (last in the array tends to be most recent by push order).
+    for (const commitSha of [...commitTags].reverse()) {
+      if (backfilled >= MAX_COMMIT_BACKFILL) break;
+      const commitRef = `ghcr.io/${spec.org}/${spec.package}:${commitSha}`;
+      const commitDateStr = await getImageCreatedDate(commitRef);
+      if (!commitDateStr) continue;
+      const commitMs = Date.parse(
+        `${commitDateStr.slice(0, 4)}-${commitDateStr.slice(4, 6)}-${commitDateStr.slice(6, 8)}T00:00:00Z`,
+      );
+      if (isNaN(commitMs) || commitMs < commitCutoff) continue;
+
+      const ck = `latest-${commitDateStr}`;
+      if (releases[ck]) continue; // already cached for this date
+
+      console.log(`    ${ck}: fetching historical SBOM (${commitSha.slice(0, 12)})`);
+      const rawAtt = await verifyAttestation(commitRef, spec);
+      const att = {
+        present: rawAtt.present,
+        verified: rawAtt.verified,
+        predicateType: rawAtt.predicateType,
+        slsaType: SLSA_TYPE,
+        ...(rawAtt.errorKind !== undefined && { errorKind: rawAtt.errorKind }),
+        error: rawAtt.error,
+      };
+      let pkgVersions = null;
+      let sbomP = null;
+      let tmpD = null;
+      try {
+        sbomP = await downloadSbom(commitRef);
+        if (sbomP) {
+          tmpD = path.dirname(sbomP);
+          pkgVersions = extractPackageVersions(sbomP);
+          if (pkgVersions) {
+            console.log(
+              `    ${ck}: extracted (gnome: ${pkgVersions.gnome}, kernel: ${pkgVersions.kernel})`,
+            );
+          }
+        }
+      } catch (err) {
+        console.warn(`    ${ck}: SBOM error \u2014 ${err.message}`);
+      } finally {
+        if (tmpD) { try { fs.rmSync(tmpD, { recursive: true, force: true }); } catch { /* ignore */ } }
+      }
+      releases[ck] = {
+        tag: commitSha,
+        imageRef: commitRef,
+        digest: null,
+        attestation: att,
+        packageVersions: pkgVersions,
+        checkedAt: new Date().toISOString(),
+      };
+      backfilled++;
+    }
+    if (backfilled > 0) console.log(`  ${spec.id}: backfilled ${backfilled} historical entries`);
+  } catch (err) {
+    console.warn(`  ${spec.id}: commit backfill error \u2014 ${err.message}`);
+  }
+
   return {
     id: spec.id,
     label: spec.label,
@@ -425,10 +498,6 @@ async function processLatestTagStream(spec, existing) {
     releases,
   };
 }
-
-// ---------------------------------------------------------------------------
-// Per-stream scanning
-// ---------------------------------------------------------------------------
 
 /**
  * Build the result object for a single stream.

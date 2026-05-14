@@ -88,8 +88,7 @@ function extractDateFromTag(tag) {
 function normaliseLtsTag(tag) {
   // lts.20260501       → lts-20260501
   // lts-hwe.20260501   → lts-hwe-20260501
-  // latest.20260501    → latest-20260501  (Dakota date-stamped tags)
-  return tag.replace(/^((?:lts|latest)[a-z-]*)\.(\d{8})/, "$1-$2");
+  return tag.replace(/^(lts[a-z-]*)\.(\d{8})/, "$1-$2");
 }
 
 /**

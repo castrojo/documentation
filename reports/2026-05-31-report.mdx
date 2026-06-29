@@ -14,7 +14,7 @@ import GitHubProfileCard from '@site/src/components/GitHubProfileCard';
 |--------|-------|
 | **Total Items** | 290 (33 planned, 257 opportunistic) |
 | **Automation** | 53.4% (332 bot PRs out of 622 total PRs) |
-| **Contributors** | 37 total, 17 new |
+| **Contributors** | 37 total, 0 new |
 
 
 ## Desktop
@@ -239,16 +239,16 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 
 - chore(hwe): bump kernel to 6.19.12-200.fc43 and coreos stable to 43 by [@​castrojo](https://github.com/castrojo) in [#1334](https://github.com/ublue-os/bluefin-lts/pull/1334)
 - chore(hwe): bump kernel pin to 6.19.12-100.fc42 by [@​castrojo](https://github.com/castrojo) in [#1333](https://github.com/ublue-os/bluefin-lts/pull/1333)
-- fix(sbom): store cacheKey as tag so nvidia overlay matches correctly by [@​castrojo](https://github.com/castrojo) in [#840](https://github.com/projectbluefin/documentation/pull/840)
 - fix(changelogs): fall back to most-recent nvidia SBOM entry for Dakota by [@​castrojo](https://github.com/castrojo) in [#815](https://github.com/projectbluefin/documentation/pull/815)
+- data(sbom): update sbom-attestations.json seed with GDX nvidia versions by [@​castrojo](https://github.com/castrojo) in [#805](https://github.com/projectbluefin/documentation/pull/805)
+- fix: extract nvidia-driver from GDX SBOM, remove release-notes fallback by [@​castrojo](https://github.com/castrojo) in [#804](https://github.com/projectbluefin/documentation/pull/804)
+- fix: install oras in pages.yml so Dakotaraptor driver versions populate by [@​castrojo](https://github.com/castrojo) in [#807](https://github.com/projectbluefin/documentation/pull/807)
+- fix(sbom): store cacheKey as tag so nvidia overlay matches correctly by [@​castrojo](https://github.com/castrojo) in [#840](https://github.com/projectbluefin/documentation/pull/840)
+- fix: add dakota-nvidia SBOM stream and BST nvidia-driver extraction by [@​castrojo](https://github.com/castrojo) in [#808](https://github.com/projectbluefin/documentation/pull/808)
+- fix: add bluefin-nvidia-open-stable SBOM stream for stable nvidia driver versions by [@​castrojo](https://github.com/castrojo) in [#806](https://github.com/projectbluefin/documentation/pull/806)
 - fix(changelogs): populate LTS HWE Kernel from lts-hwe SBOM stream by [@​castrojo](https://github.com/castrojo) in [#779](https://github.com/projectbluefin/documentation/pull/779)
 - fix(driver-versions): detect kernel and mesa patch-level version bumps by [@​castrojo](https://github.com/castrojo) in [#776](https://github.com/projectbluefin/documentation/pull/776)
 - fix(driver-versions): populate LTS HWE kernel from lts-hwe SBOM stream by [@​castrojo](https://github.com/castrojo) in [#778](https://github.com/projectbluefin/documentation/pull/778)
-- fix: add dakota-nvidia SBOM stream and BST nvidia-driver extraction by [@​castrojo](https://github.com/castrojo) in [#808](https://github.com/projectbluefin/documentation/pull/808)
-- fix: install oras in pages.yml so Dakotaraptor driver versions populate by [@​castrojo](https://github.com/castrojo) in [#807](https://github.com/projectbluefin/documentation/pull/807)
-- fix: add bluefin-nvidia-open-stable SBOM stream for stable nvidia driver versions by [@​castrojo](https://github.com/castrojo) in [#806](https://github.com/projectbluefin/documentation/pull/806)
-- data(sbom): update sbom-attestations.json seed with GDX nvidia versions by [@​castrojo](https://github.com/castrojo) in [#805](https://github.com/projectbluefin/documentation/pull/805)
-- fix: extract nvidia-driver from GDX SBOM, remove release-notes fallback by [@​castrojo](https://github.com/castrojo) in [#804](https://github.com/projectbluefin/documentation/pull/804)
 
 ##### Dakota (GNOME OS Prototype)
 
@@ -298,6 +298,8 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 - fix(casks): restore CI/CD health and unblock automated updates by [@​nklowns](https://github.com/nklowns) in [#419](https://github.com/ublue-os/homebrew-tap/pull/419)
 - Remove buildstream by [@​jumpyvi](https://github.com/jumpyvi) in [#393](https://github.com/ublue-os/homebrew-experimental-tap/pull/393)
 - Add Justfile for local CI testing by [@​hanthor](https://github.com/hanthor) in [#373](https://github.com/ublue-os/homebrew-experimental-tap/pull/373)
+- fix(css): restore cardPlayIcon properties — unclosed block broke build by [@​castrojo](https://github.com/castrojo) in [#819](https://github.com/projectbluefin/documentation/pull/819)
+- ci: add Playwright e2e test workflow by [@​castrojo](https://github.com/castrojo) in [#793](https://github.com/projectbluefin/documentation/pull/793)
 - fix(ci): run Playwright E2E tests on push to main and PRs by [@​hanthor](https://github.com/hanthor) in [#894](https://github.com/projectbluefin/documentation/pull/894)
 - ci: add copilot-setup-steps with Wrangler (Cloudflare CLI) by [@​castrojo](https://github.com/castrojo) in [#901](https://github.com/projectbluefin/documentation/pull/901)
 - feat(ci): auto-open GitHub Discussion when blog post merges to main by [@​castrojo](https://github.com/castrojo) in [#892](https://github.com/projectbluefin/documentation/pull/892)
@@ -312,9 +314,7 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 - 🔧 fix(ci): remove auto-merge step from monthly-reports workflow by [@​kubestellar-hive](https://github.com/kubestellar-hive) in [#849](https://github.com/projectbluefin/documentation/pull/849)
 - fix(build): add missing BrewOsChart component by [@​castrojo](https://github.com/castrojo) in [#825](https://github.com/projectbluefin/documentation/pull/825)
 - fix(lint): remove unused imports and vars blocking build by [@​castrojo](https://github.com/castrojo) in [#824](https://github.com/projectbluefin/documentation/pull/824)
-- fix(css): restore cardPlayIcon properties — unclosed block broke build by [@​castrojo](https://github.com/castrojo) in [#819](https://github.com/projectbluefin/documentation/pull/819)
 - ci: fix SBOM cache miss condition to use cache-matched-key by [@​castrojo](https://github.com/castrojo) in [#802](https://github.com/projectbluefin/documentation/pull/802)
-- ci: add Playwright e2e test workflow by [@​castrojo](https://github.com/castrojo) in [#793](https://github.com/projectbluefin/documentation/pull/793)
 - docs: clarify LTS breakage affects all flavors including GDX (#51) by [@​hanthor](https://github.com/hanthor) in [#57](https://github.com/projectbluefin/iso/pull/57)
 - docs: add Intel Optane/RST troubleshooting to README by [@​hanthor](https://github.com/hanthor) in [#56](https://github.com/projectbluefin/iso/pull/56)
 - docs: add Intel RST/Optane pre-installation warning by [@​hanthor](https://github.com/hanthor) in [#55](https://github.com/projectbluefin/iso/pull/55)
@@ -397,6 +397,37 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 
 #### Opportunistic Work
 
+- fix(changelogs): remove text OS app cards, keep graphical OsReleaseCa… by [@​castrojo](https://github.com/castrojo) in [#814](https://github.com/projectbluefin/documentation/pull/814)
+- fix(changelogs): remove OS release cards from Updates Stream; fix Dak… by [@​castrojo](https://github.com/castrojo) in [#813](https://github.com/projectbluefin/documentation/pull/813)
+- feat(changelogs,images): wire Dakota into changelogs stream and fix i… by [@​castrojo](https://github.com/castrojo) in [#812](https://github.com/projectbluefin/documentation/pull/812)
+- blog: spring 2026 — remaining components and styles by [@​castrojo](https://github.com/castrojo) in [#826](https://github.com/projectbluefin/documentation/pull/826)
+- refactor: decompose fetch-github-sbom.js into focused modules by [@​castrojo](https://github.com/castrojo) in [#788](https://github.com/projectbluefin/documentation/pull/788)
+- refactor: extract shared request-queue module from fetch scripts by [@​castrojo](https://github.com/castrojo) in [#787](https://github.com/projectbluefin/documentation/pull/787)
+- refactor: extract helpers and lazy-load feeds in FirehoseFeed by [@​castrojo](https://github.com/castrojo) in [#792](https://github.com/projectbluefin/documentation/pull/792)
+- refactor: decompose ArtworkGallery.tsx into focused subcomponents by [@​castrojo](https://github.com/castrojo) in [#786](https://github.com/projectbluefin/documentation/pull/786)
+- feat(blog): publish Making Our Own Fate — Dakota Alpha 2 by [@​castrojo](https://github.com/castrojo) in [#835](https://github.com/projectbluefin/documentation/pull/835)
+- perf: cache card images based on SBOM content hash by [@​castrojo](https://github.com/castrojo) in [#790](https://github.com/projectbluefin/documentation/pull/790)
+- blog: publish hummingbird (spring 2026 part 3) by [@​castrojo](https://github.com/castrojo) in [#827](https://github.com/projectbluefin/documentation/pull/827)
+- fix(blog): spring 2026 part 2 formatting fixes by [@​castrojo](https://github.com/castrojo) in [#833](https://github.com/projectbluefin/documentation/pull/833)
+- fix: regenerate bluefin-lazy-days thumbnail to 16:9 (480×270) by [@​castrojo](https://github.com/castrojo) in [#798](https://github.com/projectbluefin/documentation/pull/798)
+- fix(images): source last-published date from SBOM checkedAt by [@​castrojo](https://github.com/castrojo) in [#794](https://github.com/projectbluefin/documentation/pull/794)
+- fix(series): update hummingbird slug and title, mark parts 2+3 published by [@​castrojo](https://github.com/castrojo) in [#830](https://github.com/projectbluefin/documentation/pull/830)
+- fix(blog): add discussion thread link to hummingbird post by [@​castrojo](https://github.com/castrojo) in [#831](https://github.com/projectbluefin/documentation/pull/831)
+- fix(test): wait for hero image decode before reading naturalWidth by [@​castrojo](https://github.com/castrojo) in [#797](https://github.com/projectbluefin/documentation/pull/797)
+- fix(blog): render HTML links in DocsFeatureGrid body prop by [@​castrojo](https://github.com/castrojo) in [#832](https://github.com/projectbluefin/documentation/pull/832)
+- fix(sbom): restore usesLatestTag:true for Dakota specs by [@​castrojo](https://github.com/castrojo) in [#839](https://github.com/projectbluefin/documentation/pull/839)
+- fix(sbom): remove dakota cosign-sign workaround — SLSA attestation live by [@​castrojo](https://github.com/castrojo) in [#795](https://github.com/projectbluefin/documentation/pull/795)
+- fix(sbom): patch tag:cacheKey on cache hits by [@​castrojo](https://github.com/castrojo) in [#842](https://github.com/projectbluefin/documentation/pull/842)
+- fix(sbom): fetch last 10 releases for Dakota history by [@​castrojo](https://github.com/castrojo) in [#838](https://github.com/projectbluefin/documentation/pull/838)
+- fix(artwork): regenerate bluefin-xe thumbnails at 16:9 aspect ratio by [@​castrojo](https://github.com/castrojo) in [#796](https://github.com/projectbluefin/documentation/pull/796)
+- fix(blog): fix alateira typo → alatiera, add discussion link #4607 by [@​castrojo](https://github.com/castrojo) in [#821](https://github.com/projectbluefin/documentation/pull/821)
+- fix(test): use relative URLs in artwork HTTP tests for baseURL portability by [@​castrojo](https://github.com/castrojo) in [#799](https://github.com/projectbluefin/documentation/pull/799)
+- docs(nav): reorganize sidebar into logical sections by [@​castrojo](https://github.com/castrojo) in [#800](https://github.com/projectbluefin/documentation/pull/800)
+- Feature/downloads design by [@​castrojo](https://github.com/castrojo) in [#801](https://github.com/projectbluefin/documentation/pull/801)
+- blog: Introducing Knuckle — Flatcar Container Linux for the Home by [@​castrojo](https://github.com/castrojo) in [#889](https://github.com/projectbluefin/documentation/pull/889)
+- feat(downloads-testing): add Dakota Alpha 2 ISOs to download page by [@​castrojo](https://github.com/castrojo) in [#834](https://github.com/projectbluefin/documentation/pull/834)
+- chore: upgrade Docusaurus 3.9.2 → 3.10.1 by [@​castrojo](https://github.com/castrojo) in [#785](https://github.com/projectbluefin/documentation/pull/785)
+- arch: add SBOM adapter layer and release-list emitter by [@​castrojo](https://github.com/castrojo) in [#789](https://github.com/projectbluefin/documentation/pull/789)
 - 📖 docs(contributing): add CONTRIBUTING.md with fork/clone/branch workflow and style guide by [@​clubanderson](https://github.com/clubanderson) in [#887](https://github.com/projectbluefin/documentation/pull/887)
 - perf(e2e): reduce E2E wall-clock time from ~2h to ~15min by [@​castrojo](https://github.com/castrojo) in [#902](https://github.com/projectbluefin/documentation/pull/902)
 - 📖 docs(contributing): add Contribution Workflow section with fork/clone/branch steps by [@​kubestellar-hive](https://github.com/kubestellar-hive) in [#886](https://github.com/projectbluefin/documentation/pull/886)
@@ -406,7 +437,6 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 - fix(hive): fall back to HTML snapshot while snapshot.json is not yet published by [@​castrojo](https://github.com/castrojo) in [#897](https://github.com/projectbluefin/documentation/pull/897)
 - feat(hive): read snapshot.json instead of HTML-parsing by [@​castrojo](https://github.com/castrojo) in [#896](https://github.com/projectbluefin/documentation/pull/896)
 - blog(knuckle): wrap intent statement in tip admonition by [@​castrojo](https://github.com/castrojo) in [#890](https://github.com/projectbluefin/documentation/pull/890)
-- blog: Introducing Knuckle — Flatcar Container Linux for the Home by [@​castrojo](https://github.com/castrojo) in [#889](https://github.com/projectbluefin/documentation/pull/889)
 - 📖 docs(knuckle): add cosign ISO verification step and update_strategy to headless example by [@​kubestellar-hive](https://github.com/kubestellar-hive) in [#880](https://github.com/projectbluefin/documentation/pull/880)
 - 📖 docs: surface Node.js prereq in README and add TRANSLATING.md link to CONTRIBUTING by [@​kubestellar-hive](https://github.com/kubestellar-hive) in [#882](https://github.com/projectbluefin/documentation/pull/882)
 - 🔍 test(scripts): add unit tests for previously untested fetch scripts by [@​kubestellar-hive](https://github.com/kubestellar-hive) in [#879](https://github.com/projectbluefin/documentation/pull/879)
@@ -426,24 +456,9 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 - docs(blog): add post Gradia Capture Comes to Bluefin by [@​coxde](https://github.com/coxde) in [#847](https://github.com/projectbluefin/documentation/pull/847)
 - Add ublue-os to the rebase command by [@​jumpyvi](https://github.com/jumpyvi) in [#845](https://github.com/projectbluefin/documentation/pull/845)
 - docs(contributing): removed GTS release channel from release channels section by [@​davicbtoliveira](https://github.com/davicbtoliveira) in [#844](https://github.com/projectbluefin/documentation/pull/844)
-- fix(sbom): patch tag:cacheKey on cache hits by [@​castrojo](https://github.com/castrojo) in [#842](https://github.com/projectbluefin/documentation/pull/842)
-- fix(sbom): restore usesLatestTag:true for Dakota specs by [@​castrojo](https://github.com/castrojo) in [#839](https://github.com/projectbluefin/documentation/pull/839)
-- fix(sbom): fetch last 10 releases for Dakota history by [@​castrojo](https://github.com/castrojo) in [#838](https://github.com/projectbluefin/documentation/pull/838)
 - fix(downloads-testing): add #dakotaraptor anchor for blog deep link by [@​castrojo](https://github.com/castrojo) in [#837](https://github.com/projectbluefin/documentation/pull/837)
-- feat(blog): publish Making Our Own Fate — Dakota Alpha 2 by [@​castrojo](https://github.com/castrojo) in [#835](https://github.com/projectbluefin/documentation/pull/835)
-- feat(downloads-testing): add Dakota Alpha 2 ISOs to download page by [@​castrojo](https://github.com/castrojo) in [#834](https://github.com/projectbluefin/documentation/pull/834)
-- fix(blog): spring 2026 part 2 formatting fixes by [@​castrojo](https://github.com/castrojo) in [#833](https://github.com/projectbluefin/documentation/pull/833)
-- fix(blog): render HTML links in DocsFeatureGrid body prop by [@​castrojo](https://github.com/castrojo) in [#832](https://github.com/projectbluefin/documentation/pull/832)
-- fix(blog): add discussion thread link to hummingbird post by [@​castrojo](https://github.com/castrojo) in [#831](https://github.com/projectbluefin/documentation/pull/831)
-- fix(series): update hummingbird slug and title, mark parts 2+3 published by [@​castrojo](https://github.com/castrojo) in [#830](https://github.com/projectbluefin/documentation/pull/830)
 - docs(agents): update worktrees table and blog publishing troubleshooting by [@​castrojo](https://github.com/castrojo) in [#829](https://github.com/projectbluefin/documentation/pull/829)
-- blog: spring 2026 — remaining components and styles by [@​castrojo](https://github.com/castrojo) in [#826](https://github.com/projectbluefin/documentation/pull/826)
-- blog: publish hummingbird (spring 2026 part 3) by [@​castrojo](https://github.com/castrojo) in [#827](https://github.com/projectbluefin/documentation/pull/827)
 - blog: publish spring 2026 part 2 and hummingbird by [@​castrojo](https://github.com/castrojo) in [#823](https://github.com/projectbluefin/documentation/pull/823)
-- fix(blog): fix alateira typo → alatiera, add discussion link #4607 by [@​castrojo](https://github.com/castrojo) in [#821](https://github.com/projectbluefin/documentation/pull/821)
-- fix(changelogs): remove text OS app cards, keep graphical OsReleaseCa… by [@​castrojo](https://github.com/castrojo) in [#814](https://github.com/projectbluefin/documentation/pull/814)
-- fix(changelogs): remove OS release cards from Updates Stream; fix Dak… by [@​castrojo](https://github.com/castrojo) in [#813](https://github.com/projectbluefin/documentation/pull/813)
-- feat(changelogs,images): wire Dakota into changelogs stream and fix i… by [@​castrojo](https://github.com/castrojo) in [#812](https://github.com/projectbluefin/documentation/pull/812)
 - fix(reports): correctly identify 11 new April contributors by [@​castrojo](https://github.com/castrojo) in [#774](https://github.com/projectbluefin/documentation/pull/774)
 - fix(cards): wire dakota SBOM enrichment and invalidate card cache on SBOM change by [@​castrojo](https://github.com/castrojo) in [#810](https://github.com/projectbluefin/documentation/pull/810)
 - fix(images): remove ARM from Bluefin supported architectures by [@​castrojo](https://github.com/castrojo) in [#803](https://github.com/projectbluefin/documentation/pull/803)
@@ -451,22 +466,7 @@ Use `ujust bbrew` to browse and install these packages. Follow [the tap instruct
 - feat(pin-indicators): show 📌 Pinned badge for intentionally-held component versions by [@​castrojo](https://github.com/castrojo) in [#780](https://github.com/projectbluefin/documentation/pull/780)
 - fix(images): polish card UI and fix Last Published date by [@​castrojo](https://github.com/castrojo) in [#775](https://github.com/projectbluefin/documentation/pull/775)
 - Feature/blog bluefin announcement by [@​castrojo](https://github.com/castrojo) in [#782](https://github.com/projectbluefin/documentation/pull/782)
-- Feature/downloads design by [@​castrojo](https://github.com/castrojo) in [#801](https://github.com/projectbluefin/documentation/pull/801)
-- docs(nav): reorganize sidebar into logical sections by [@​castrojo](https://github.com/castrojo) in [#800](https://github.com/projectbluefin/documentation/pull/800)
-- fix(test): use relative URLs in artwork HTTP tests for baseURL portability by [@​castrojo](https://github.com/castrojo) in [#799](https://github.com/projectbluefin/documentation/pull/799)
-- fix: regenerate bluefin-lazy-days thumbnail to 16:9 (480×270) by [@​castrojo](https://github.com/castrojo) in [#798](https://github.com/projectbluefin/documentation/pull/798)
-- fix(test): wait for hero image decode before reading naturalWidth by [@​castrojo](https://github.com/castrojo) in [#797](https://github.com/projectbluefin/documentation/pull/797)
-- fix(artwork): regenerate bluefin-xe thumbnails at 16:9 aspect ratio by [@​castrojo](https://github.com/castrojo) in [#796](https://github.com/projectbluefin/documentation/pull/796)
-- fix(sbom): remove dakota cosign-sign workaround — SLSA attestation live by [@​castrojo](https://github.com/castrojo) in [#795](https://github.com/projectbluefin/documentation/pull/795)
-- fix(images): source last-published date from SBOM checkedAt by [@​castrojo](https://github.com/castrojo) in [#794](https://github.com/projectbluefin/documentation/pull/794)
-- arch: add SBOM adapter layer and release-list emitter by [@​castrojo](https://github.com/castrojo) in [#789](https://github.com/projectbluefin/documentation/pull/789)
-- refactor: extract helpers and lazy-load feeds in FirehoseFeed by [@​castrojo](https://github.com/castrojo) in [#792](https://github.com/projectbluefin/documentation/pull/792)
 - refactor: rewrite FeedItems.tsx to consume SBOM data directly by [@​castrojo](https://github.com/castrojo) in [#791](https://github.com/projectbluefin/documentation/pull/791)
-- perf: cache card images based on SBOM content hash by [@​castrojo](https://github.com/castrojo) in [#790](https://github.com/projectbluefin/documentation/pull/790)
-- refactor: decompose fetch-github-sbom.js into focused modules by [@​castrojo](https://github.com/castrojo) in [#788](https://github.com/projectbluefin/documentation/pull/788)
-- refactor: extract shared request-queue module from fetch scripts by [@​castrojo](https://github.com/castrojo) in [#787](https://github.com/projectbluefin/documentation/pull/787)
-- refactor: decompose ArtworkGallery.tsx into focused subcomponents by [@​castrojo](https://github.com/castrojo) in [#786](https://github.com/projectbluefin/documentation/pull/786)
-- chore: upgrade Docusaurus 3.9.2 → 3.10.1 by [@​castrojo](https://github.com/castrojo) in [#785](https://github.com/projectbluefin/documentation/pull/785)
 - docs(blog): update f44/dakota-alpha-2 announcement draft by [@​castrojo](https://github.com/castrojo) in [#783](https://github.com/projectbluefin/documentation/pull/783)
 - docs: rename Bluefin LTS section to LTS and GDX by [@​castrojo](https://github.com/castrojo) in [#777](https://github.com/projectbluefin/documentation/pull/777)
 - reports: improve categorization and add ublue-os/artwork to monitoring by [@​castrojo](https://github.com/castrojo) in [#773](https://github.com/projectbluefin/documentation/pull/773)
@@ -812,8 +812,8 @@ Keep Bluefin healthy with green builds. Wranglers apply within!
 
 | Image | Success Rate | Successes | Failures | Monthly Change |
 |------|--------------|-----------|----------|----------------|
-| `bluefin:stable` | 76% | 190 | 60 | ![-19.7%](https://img.shields.io/badge/--19.7%25-critical?style=flat-square) |
-| `bluefin:latest` | 84.3% | 204 | 38 | ![-9.5%](https://img.shields.io/badge/--9.5%25-critical?style=flat-square) |
+| `bluefin:stable` | 78.8% | 190 | 51 | ![-16.7%](https://img.shields.io/badge/--16.7%25-critical?style=flat-square) |
+| `bluefin:latest` | 87.6% | 204 | 29 | ![-6%](https://img.shields.io/badge/--6%25-critical?style=flat-square) |
 | `bluefin:lts` | 46.3% | 119 | 138 | ![-50.3%](https://img.shields.io/badge/--50.3%25-critical?style=flat-square) |
 | `bluefin:lts-hwe` | 45.4% | 118 | 142 | ![-51.8%](https://img.shields.io/badge/--51.8%25-critical?style=flat-square) |
 | `bluefin-dx:lts` | 45.9% | 118 | 139 | ![-50.7%](https://img.shields.io/badge/--50.7%25-critical?style=flat-square) |
@@ -824,58 +824,12 @@ Keep Bluefin healthy with green builds. Wranglers apply within!
 
 | Metric | Value |
 |--------|-------|
-| 📊 **Total Builds** | 1783 builds across all images |
+| 📊 **Total Builds** | 1765 builds across all images |
 | 🏆 **Most Active** | `bluefin:lts-hwe` (260 builds) |
 | 💯 **100% Club** | _None. Vegeta is displeased._ |
 | ⏱️ **Avg Build Time** | 17 minutes across all variants |
 
 ## Contributors
-
-### New Lights
-
-We welcome our newest Guardians to the project.
-
-> "I do not know what the future holds. But I know this: with you at our side, there is nothing we cannot face."
-> 
-> —Commander Zavala
-
-<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
-
-<GitHubProfileCard username="pfanzola" highlight={true} />
-
-<GitHubProfileCard username="lazypower" highlight={true} />
-
-<GitHubProfileCard username="EsmeAioli" highlight={true} />
-
-<GitHubProfileCard username="ehsanullahjan" highlight={true} />
-
-<GitHubProfileCard username="fardragon" highlight={true} />
-
-<GitHubProfileCard username="Ilan-Sperber" highlight={true} />
-
-<GitHubProfileCard username="Lumaeris" highlight={true} />
-
-<GitHubProfileCard username="L0g0ff" highlight={true} />
-
-<GitHubProfileCard username="LijuanTang94" highlight={true} />
-
-<GitHubProfileCard username="DarkGhostHunter" highlight={true} />
-
-<GitHubProfileCard username="colindean" highlight={true} />
-
-<GitHubProfileCard username="daegalus" highlight={true} sponsorUrl="https://github.com/sponsors/daegalus" />
-
-<GitHubProfileCard username="clubanderson" highlight={true} />
-
-<GitHubProfileCard username="kubestellar-hive" highlight={true} />
-
-<GitHubProfileCard username="MD-Mushfiqur123" highlight={true} />
-
-<GitHubProfileCard username="davicbtoliveira" highlight={true} />
-
-<GitHubProfileCard username="axel-kaliff" highlight={true} />
-
-</div>
 
 ### Wayfinders
 
@@ -884,6 +838,8 @@ We welcome our newest Guardians to the project.
 > —Lord Saladin
 
 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
+
+<GitHubProfileCard username="pfanzola" />
 
 <GitHubProfileCard username="inffy" sponsorUrl="https://github.com/sponsors/inffy" />
 
@@ -897,19 +853,39 @@ We welcome our newest Guardians to the project.
 
 <GitHubProfileCard username="joshyorko" />
 
+<GitHubProfileCard username="lazypower" />
+
 <GitHubProfileCard username="tulilirockz" sponsorUrl="https://github.com/sponsors/tulilirockz" />
 
 <GitHubProfileCard username="coxde" />
 
 <GitHubProfileCard username="sebjag" />
 
+<GitHubProfileCard username="EsmeAioli" />
+
 <GitHubProfileCard username="salim-b" />
 
 <GitHubProfileCard username="repires" />
 
+<GitHubProfileCard username="ehsanullahjan" />
+
+<GitHubProfileCard username="fardragon" />
+
+<GitHubProfileCard username="Ilan-Sperber" />
+
+<GitHubProfileCard username="Lumaeris" />
+
+<GitHubProfileCard username="L0g0ff" />
+
+<GitHubProfileCard username="LijuanTang94" />
+
 <GitHubProfileCard username="leafyoung" />
 
 <GitHubProfileCard username="dylanmtaylor" />
+
+<GitHubProfileCard username="DarkGhostHunter" />
+
+<GitHubProfileCard username="colindean" />
 
 <GitHubProfileCard username="ahmedadan" sponsorUrl="https://github.com/sponsors/ahmedadan" />
 
@@ -917,13 +893,25 @@ We welcome our newest Guardians to the project.
 
 <GitHubProfileCard username="nklowns" />
 
+<GitHubProfileCard username="daegalus" sponsorUrl="https://github.com/sponsors/daegalus" />
+
 <GitHubProfileCard username="dreamyukii" />
 
 <GitHubProfileCard username="KiKaraage" />
 
+<GitHubProfileCard username="clubanderson" />
+
+<GitHubProfileCard username="kubestellar-hive" />
+
+<GitHubProfileCard username="MD-Mushfiqur123" />
+
+<GitHubProfileCard username="davicbtoliveira" />
+
 <GitHubProfileCard username="StorageB" />
 
 <GitHubProfileCard username="alatiera" />
+
+<GitHubProfileCard username="axel-kaliff" />
 
 </div>
 
@@ -935,5 +923,5 @@ We welcome our newest Guardians to the project.
 
 ---
 
-*Generated on 2026-06-01*  
+*Generated on 2026-06-29*  
 [View Project Board](https://todo.projectbluefin.io) | [Report an Issue](https://github.com/projectbluefin/common/issues/new)

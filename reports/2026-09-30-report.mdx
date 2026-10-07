@@ -1,0 +1,1177 @@
+---
+title: "Stegosaurus September 2026"
+date: 2026-09-30
+slug: /2026/09
+tags: [monthly-report, project-activity]
+---
+
+import GitHubProfileCard from '@site/src/components/GitHubProfileCard';
+
+
+# Summary
+
+| | |
+|--------|-------|
+| **Total Items** | 585 (106 planned, 479 opportunistic) |
+| **Automation** | 41.7% (419 bot PRs out of 1004 total PRs) |
+| **Contributors** | 30 total, 0 new |
+
+
+## Desktop
+
+![area/gnome](https://img.shields.io/badge/area%2Fgnome-28A745?style=flat-square) ![area/aurora](https://img.shields.io/badge/area%2Faurora-1D76DB?style=flat-square) ![area/bling](https://img.shields.io/badge/area%2Fbling-F9C74F?style=flat-square)
+
+*GNOME desktop environment, Aurora variant (KDE), and terminal enhancements*
+
+#### Planned Work
+
+- feat(wallpaper): ship original looping movie for Hidamari by [@​mendezr](https://github.com/mendezr) in [#1207](https://github.com/projectbluefin/common/pull/1207)
+- fix(brew): comment out kcl, use upstream kpt, remove aurora-wp by [@​KiKaraage](https://github.com/KiKaraage) in [#1131](https://github.com/projectbluefin/common/pull/1131)
+- feat(wallpaper): add Damask first-run setup hook and non-destructive defaults by [@​repires](https://github.com/repires) in [#1186](https://github.com/projectbluefin/common/pull/1186)
+- feat(chairlift): add wallpaper slideshow and video wallpaper brew bundles by [@​sramkrishna](https://github.com/sramkrishna) in [#1185](https://github.com/projectbluefin/common/pull/1185)
+- feat: Super+E should open a new Nautilus window on every press by [@​repires](https://github.com/repires) in [#1184](https://github.com/projectbluefin/common/pull/1184)
+- fix(cli): replace atuin and bash-preexec with starship and add tests by [@​castrojo](https://github.com/castrojo) in [#1113](https://github.com/projectbluefin/common/pull/1113)
+- test(dynamic-wallpaper): BATS coverage for the 20-dynamic-wallpaper.sh user-setup hook by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1138](https://github.com/projectbluefin/common/pull/1138)
+- fix(bling): ship working ujust completions for bash/zsh/fish by [@​KiKaraage](https://github.com/KiKaraage) in [#1129](https://github.com/projectbluefin/common/pull/1129)
+- fix(bling): rearm bash-preexec DEBUG trap on each prompt by [@​castrojo](https://github.com/castrojo) in [#943](https://github.com/projectbluefin/common/pull/943)
+
+#### Opportunistic Work
+
+- fix(ujust): provide working shell autocomplete in bash and zsh by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1236](https://github.com/projectbluefin/bluefin/pull/1236)
+- [quality] test: BATS coverage for build_scripts/21-build-gnome-extensions.sh — tests/unit/gnome_extensions_test.bats by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#608](https://github.com/projectbluefin/bluefin-lts/pull/608)
+- fix: restore terminal welcome banner by [@​TB516](https://github.com/TB516) in [#617](https://github.com/projectbluefin/bluefin-lts/pull/617)
+- feat(extensions): add Quick Settings Audio Panel gnome-shell extension by [@​mrbobbytables](https://github.com/mrbobbytables) in [#589](https://github.com/projectbluefin/bluefin-lts/pull/589)
+- test(unit): add BATS coverage for extensions and post-packages by [@​castrojo](https://github.com/castrojo) in [#593](https://github.com/projectbluefin/bluefin-lts/pull/593)
+- fix(rog-control-center): ensure base directories and shell nested icon paths by [@​nileshchakraborty](https://github.com/nileshchakraborty) in [#655](https://github.com/ublue-os/homebrew-tap/pull/655)
+- chore: remove aurora-wallpapers from brew tap by [@​inffy](https://github.com/inffy) in [#656](https://github.com/ublue-os/homebrew-tap/pull/656)
+- feat(leaderboards): add GNOME seasons and modern standings by [@​castrojo](https://github.com/castrojo) in [#1333](https://github.com/projectbluefin/documentation/pull/1333)
+- Embed YouTube video and update GNOME release note by [@​castrojo](https://github.com/castrojo) in [#1326](https://github.com/projectbluefin/documentation/pull/1326)
+- fix(gnome-extensions): render missing and unavailable extension data states by [@​castrojo](https://github.com/castrojo) in [#1177](https://github.com/projectbluefin/documentation/pull/1177)
+- feat(portal): harmonize design tokens, Inter font stack, and unified 956px/512px breakpoints by [@​castrojo](https://github.com/castrojo) in [#1203](https://github.com/projectbluefin/documentation/pull/1203)
+- feat(branding): add rotating monthly night wallpaper social preview card by [@​castrojo](https://github.com/castrojo) in [#1179](https://github.com/projectbluefin/documentation/pull/1179)
+- fix(gnome-extensions): render missing and unavailable extension data states by [@​castrojo](https://github.com/castrojo) in [#1122](https://github.com/projectbluefin/documentation/pull/1122)
+- feat(portal): generate bootc switch terminal command and copy button in PortalImageChooser by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1152](https://github.com/projectbluefin/documentation/pull/1152)
+- [architect] refactor: single source of truth for shell-lint scope — new .shellcheck-scope, Justfile:lint / shell-sources recipes by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#326](https://github.com/projectbluefin/finpilot/pull/326)
+
+##### Dakota (GNOME OS Prototype)
+
+- fix(gnome-shell): use portable unzip flags for extension installs by [@​ahmedadan](https://github.com/ahmedadan) in [#1628](https://github.com/projectbluefin/dakota/pull/1628)
+- fix(ujust): drop flatpak -y so polkit can prompt by [@​ahmedadan](https://github.com/ahmedadan) in [#1630](https://github.com/projectbluefin/dakota/pull/1630)
+- feat(ghostty): disable resize overlay by default to prevent Wayland loop by [@​castrojo](https://github.com/castrojo) in [#1571](https://github.com/projectbluefin/dakota/pull/1571)
+- chore(next): track gnome-build-meta master by [@​ahmedadan](https://github.com/ahmedadan) in [#1589](https://github.com/projectbluefin/dakota/pull/1589)
+- feat: GNOME 51 and freedesktop-sdk 26.08 on testing by [@​ahmedadan](https://github.com/ahmedadan) in [#1579](https://github.com/projectbluefin/dakota/pull/1579)
+- feat(extensions): update syncthing-toggle to bluefin-bling v2 by [@​castrojo](https://github.com/castrojo) in [#1557](https://github.com/projectbluefin/dakota/pull/1557)
+- fix(extensions): preserve metadata when extracting ZIPs by [@​ahmedadan](https://github.com/ahmedadan) in [#1518](https://github.com/projectbluefin/dakota/pull/1518)
+- feat(ghostty): configure dual-theme to track GNOME Dark/Light style by [@​castrojo](https://github.com/castrojo) in [#1514](https://github.com/projectbluefin/dakota/pull/1514)
+- feat(extensions): swap bluetooth-battery-meter for budslink-companion and preinstall flatpak by [@​castrojo](https://github.com/castrojo) in [#1512](https://github.com/projectbluefin/dakota/pull/1512)
+- feat(extensions): package and enable quick-settings-audio-panel by [@​castrojo](https://github.com/castrojo) in [#1511](https://github.com/projectbluefin/dakota/pull/1511)
+- feat(extensions): package curated gnome shell extensions by [@​castrojo](https://github.com/castrojo) in [#1510](https://github.com/projectbluefin/dakota/pull/1510)
+
+---
+
+## Development
+
+![area/dx](https://img.shields.io/badge/area%2Fdx-17A2B8?style=flat-square)
+
+*Development tools and IDE integrations*
+
+#### Planned Work
+
+- feat(bazaar): modernize curated layout and add Flathub IDE host integration hooks by [@​castrojo](https://github.com/castrojo) in [#1155](https://github.com/projectbluefin/common/pull/1155)
+
+#### Opportunistic Work
+
+- fix: antigravity-ide casks deprecated methods by [@​inffy](https://github.com/inffy) in [#623](https://github.com/ublue-os/homebrew-tap/pull/623)
+- refactor: full rewrite of the template by [@​castrojo](https://github.com/castrojo) in [#393](https://github.com/projectbluefin/finpilot/pull/393)
+- refactor: full rewrite of the template by [@​Siddhj2206](https://github.com/Siddhj2206) in [#383](https://github.com/projectbluefin/finpilot/pull/383)
+- fix(ujust): stop install-jetbrains-toolbox when the checksum fails by [@​Siddhj2206](https://github.com/Siddhj2206) in [#315](https://github.com/projectbluefin/finpilot/pull/315)
+
+### Homebrew
+
+#### New Applications
+
+The following applications were added to our Homebrew taps this month:
+
+| Application | Description | Status |
+|-------------|-------------|--------|
+| [**bluefin-contributor-tools**](https://github.com/ublue-os/homebrew-experimental-tap/pull/650) | Contributor and review tooling for Project Bluefin | ![Experimental](https://img.shields.io/badge/experimental-orange?style=flat-square) |
+| [**chairlift**](https://github.com/ublue-os/homebrew-tap/pull/635) | System management tool for bootc-based installations | ![Stable](https://img.shields.io/badge/stable-blue?style=flat-square) |
+| [**compass**](https://github.com/ublue-os/homebrew-experimental-tap/pull/719) | Fast, extensible command palette for the Linux desktop | ![Experimental](https://img.shields.io/badge/experimental-orange?style=flat-square) |
+| [**proton-pass-linux**](https://github.com/ublue-os/homebrew-experimental-tap/pull/627) | Open-source, end-to-end encrypted password manager | ![Experimental](https://img.shields.io/badge/experimental-orange?style=flat-square) |
+
+Use `ujust bbrew` to browse and install these packages. Follow [the tap instructions](https://github.com/ublue-os/homebrew-tap) if you want to do it by hand.
+
+#### Package Updates
+
+![Production Tap](https://img.shields.io/badge/production--tap-67%20updates-blue?style=flat-square) ![Experimental Tap](https://img.shields.io/badge/experimental--tap-114%20updates-orange?style=flat-square)
+
+**181 automated updates** this month via GitHub Actions. Homebrew tap version bumps ensure Bluefin users always have access to the latest stable releases.
+
+##### Quick Summary
+
+| Tap | Updates |
+|-----|---------|
+| production-tap | 67 |
+| experimental-tap | 114 |
+
+<details>
+<summary>View all production-tap updates (67)</summary>
+
+| Package | Versions | PR |
+|---------|----------|-----|
+| antigravity-cli-linux | 1.1.23 → 1.2.13 (20 updates) | [#707](https://github.com/ublue-os/homebrew-tap/pull/707) |
+| antigravity-linux | 2.13.0 → 2.18.1 (7 updates) | [#708](https://github.com/ublue-os/homebrew-tap/pull/708) |
+| visual-studio-code-linux | 1.136.0 → 1.139.1 (7 updates) | [#701](https://github.com/ublue-os/homebrew-tap/pull/701) |
+| zed-linux | 1.18.0 → 1.21.0 (6 updates) | [#695](https://github.com/ublue-os/homebrew-tap/pull/695) |
+| goose-linux | 1.49.0 → 1.52.0 (5 updates) | [#691](https://github.com/ublue-os/homebrew-tap/pull/691) |
+| lm-studio-linux | 0.4.24 → 0.4.25 (2 updates) | [#684](https://github.com/ublue-os/homebrew-tap/pull/684) |
+| jetbrains-toolbox-linux | 3.8.0.87909 → 3.8.1.88030 (2 updates) | [#676](https://github.com/ublue-os/homebrew-tap/pull/676) |
+| framework-tool | 0.6.6 | [#690](https://github.com/ublue-os/homebrew-tap/pull/690) |
+| 1password-gui-linux | 8.12.36 | [#646](https://github.com/ublue-os/homebrew-tap/pull/646) |
+| vscodium-linux | 1.135.06055 | [#645](https://github.com/ublue-os/homebrew-tap/pull/645) |
+| linux-mcp-server | 1.6.0 | [#630](https://github.com/ublue-os/homebrew-tap/pull/630) |
+
+</details>
+
+<details>
+<summary>View all experimental-tap updates (114)</summary>
+
+| Package | Versions | PR |
+|---------|----------|-----|
+| chatgpt-linux | 26.831.20005 → 26.928.20755 (16 updates) | [#729](https://github.com/ublue-os/homebrew-experimental-tap/pull/729) |
+| kiro-cli-linux | 2.20.2 → 2.26.0 (13 updates) | [#731](https://github.com/ublue-os/homebrew-experimental-tap/pull/731) |
+| cursor-linux | 3.19.13 → 3.22.12 (12 updates) | [#726](https://github.com/ublue-os/homebrew-experimental-tap/pull/726) |
+| claude-desktop-linux | 1.40609.1 → 2.9939.4 (11 updates) | [#725](https://github.com/ublue-os/homebrew-experimental-tap/pull/725) |
+| emdash-linux | 1.2.2 → 1.2.7 (6 updates) | [#723](https://github.com/ublue-os/homebrew-experimental-tap/pull/723) |
+| craft-agents-linux | 0.13.0 → 0.13.6 (6 updates) | [#722](https://github.com/ublue-os/homebrew-experimental-tap/pull/722) |
+| opencode-desktop-linux | 1.18.29 → 2.0.20 (5 updates) | [#732](https://github.com/ublue-os/homebrew-experimental-tap/pull/732) |
+| windsurf-linux | 3.10.23 → 3.10.48 (5 updates) | [#733](https://github.com/ublue-os/homebrew-experimental-tap/pull/733) |
+| tableplus-linux | 0.1.312 → 0.1.316 (3 updates) | [#711](https://github.com/ublue-os/homebrew-experimental-tap/pull/711) |
+| goland-linux | 2026.2.2 → 2026.2.3 (3 updates) | [#674](https://github.com/ublue-os/homebrew-experimental-tap/pull/674) |
+| datagrip-linux | 2026.2.5 → 2026.2.6 (2 updates) | [#730](https://github.com/ublue-os/homebrew-experimental-tap/pull/730) |
+| rider-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#728](https://github.com/ublue-os/homebrew-experimental-tap/pull/728) |
+| proton-pass-linux | 1.40.2 → 1.41.1 (2 updates) | [#716](https://github.com/ublue-os/homebrew-experimental-tap/pull/716) |
+| clion-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#704](https://github.com/ublue-os/homebrew-experimental-tap/pull/704) |
+| pycharm-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#693](https://github.com/ublue-os/homebrew-experimental-tap/pull/693) |
+| rubymine-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#694](https://github.com/ublue-os/homebrew-experimental-tap/pull/694) |
+| rustrover-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#685](https://github.com/ublue-os/homebrew-experimental-tap/pull/685) |
+| phpstorm-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#684](https://github.com/ublue-os/homebrew-experimental-tap/pull/684) |
+| webstorm-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#686](https://github.com/ublue-os/homebrew-experimental-tap/pull/686) |
+| gitkraken-linux | 12.4.1 → 12.5.0 (2 updates) | [#672](https://github.com/ublue-os/homebrew-experimental-tap/pull/672) |
+| intellij-idea-linux | 2026.2.2 → 2026.2.3 (2 updates) | [#675](https://github.com/ublue-os/homebrew-experimental-tap/pull/675) |
+| dockerd-linux | 29.8.0 → 29.8.1 (2 updates) | [#671](https://github.com/ublue-os/homebrew-experimental-tap/pull/671) |
+| proton-mail-bridge-linux | 3.27.0 | [#700](https://github.com/ublue-os/homebrew-experimental-tap/pull/700) |
+| localwp-linux | 10.1.2 | [#658](https://github.com/ublue-os/homebrew-experimental-tap/pull/658) |
+| positron-linux | 2026.09.1 | [#635](https://github.com/ublue-os/homebrew-experimental-tap/pull/635) |
+| jetbrains-gateway-linux | 2026.2.2 | [#632](https://github.com/ublue-os/homebrew-experimental-tap/pull/632) |
+
+</details>
+
+---
+
+## Ecosystem
+
+![area/brew](https://img.shields.io/badge/area%2Fbrew-E8590C?style=flat-square) ![area/bluespeed](https://img.shields.io/badge/area%2Fbluespeed-1D76DB?style=flat-square) ![area/flatpak](https://img.shields.io/badge/area%2Fflatpak-9333EA?style=flat-square)
+
+*Homebrew packages, AI/ML tools (Bluespeed), and Flatpak applications*
+
+#### Planned Work
+
+- test: repair broken-at-birth bats suites (test_ujust mock brew, powerwash bctl) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1106](https://github.com/projectbluefin/common/pull/1106)
+- feat(brew): update opencode to the v2 formula by [@​kronikpillow](https://github.com/kronikpillow) in [#1270](https://github.com/projectbluefin/common/pull/1270)
+- feat(damask): ship flatpak overrides and background systemd service by [@​repires](https://github.com/repires) in [#1187](https://github.com/projectbluefin/common/pull/1187)
+- feat(brew): remove RamaLama from Bluefin AI tools bundle by [@​kylerankin](https://github.com/kylerankin) in [#1204](https://github.com/projectbluefin/common/pull/1204)
+- feat(bazaar): Sept 2026 curation update, 7 new recs by [@​KiKaraage](https://github.com/KiKaraage) in [#1173](https://github.com/projectbluefin/common/pull/1173)
+- fix(brew): drop tremor-runtime, removed from Homebrew by [@​castrojo](https://github.com/castrojo) in [#1206](https://github.com/projectbluefin/common/pull/1206)
+- fix(brew): preserve user-owned preinstall packages by [@​Danathar](https://github.com/Danathar) in [#1109](https://github.com/projectbluefin/common/pull/1109)
+- fix: redirect Bazaar Zed installs by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1011](https://github.com/projectbluefin/common/pull/1011)
+- fix(brew): allow dedicated ChairLift migration by [@​ahmedadan](https://github.com/ahmedadan) in [#1100](https://github.com/projectbluefin/common/pull/1100)
+- fix(brew): replace invalid `brew tap --trust` with `brew tap` + `brew trust` by [@​castrojo](https://github.com/castrojo) in [#941](https://github.com/projectbluefin/common/pull/941)
+- fix(flatpak): correct metered check in appstream refresh service by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#1035](https://github.com/projectbluefin/common/pull/1035)
+
+#### Opportunistic Work
+
+- fix(packages): restore Copyous runtime and use Firefox Flatpak by [@​castrojo](https://github.com/castrojo) in [#1228](https://github.com/projectbluefin/bluefin/pull/1228)
+- test: BATS coverage for system_files setup hooks — 10-tailscale.sh, 99-flatpaks.sh, 99-privileged.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#642](https://github.com/projectbluefin/bluefin-lts/pull/642)
+- feat(chairlift): update to 26.09.0-alpha.4 by [@​castrojo](https://github.com/castrojo) in [#704](https://github.com/ublue-os/homebrew-tap/pull/704)
+- fix(chairlift): detect published alpha releases by [@​ahmedadan](https://github.com/ahmedadan) in [#703](https://github.com/ublue-os/homebrew-tap/pull/703)
+- fix(chairlift): detect published alpha releases by [@​ahmedadan](https://github.com/ahmedadan) in [#702](https://github.com/ublue-os/homebrew-tap/pull/702)
+- fix: remove leftover chairlift-flower.svg by [@​KiKaraage](https://github.com/KiKaraage) in [#699](https://github.com/ublue-os/homebrew-tap/pull/699)
+- chore(chairlift): update to 26.09.0-alpha.1 by [@​mendezr](https://github.com/mendezr) in [#696](https://github.com/ublue-os/homebrew-tap/pull/696)
+- fix agi-linux by [@​inffy](https://github.com/inffy) in [#670](https://github.com/ublue-os/homebrew-tap/pull/670)
+- fix: bluefin review style check failure by [@​ahmedadan](https://github.com/ahmedadan) in [#662](https://github.com/ublue-os/homebrew-tap/pull/662)
+- fix(asusctl): make uninstalling asusctl cask not spit out errors by [@​inffy](https://github.com/inffy) in [#660](https://github.com/ublue-os/homebrew-tap/pull/660)
+- fix: handle 1Password desktop rename and replay by [@​ahmedadan](https://github.com/ahmedadan) in [#650](https://github.com/ublue-os/homebrew-tap/pull/650)
+- fix(chairlift): use Project Bluefin releases by [@​ahmedadan](https://github.com/ahmedadan) in [#636](https://github.com/ublue-os/homebrew-tap/pull/636)
+- fix(chairlift): import cask with reliable Linux setup by [@​ahmedadan](https://github.com/ahmedadan) in [#635](https://github.com/ublue-os/homebrew-tap/pull/635)
+- fix: prevent cask sandbox installation failures by [@​ahmedadan](https://github.com/ahmedadan) in [#629](https://github.com/ublue-os/homebrew-tap/pull/629)
+- fix: agi-cli deprecated methods by [@​inffy](https://github.com/inffy) in [#626](https://github.com/ublue-os/homebrew-tap/pull/626)
+- fix(goose: drop deprecated methods by [@​inffy](https://github.com/inffy) in [#625](https://github.com/ublue-os/homebrew-tap/pull/625)
+- fix(goose: drop deprecated methods by [@​inffy](https://github.com/inffy) in [#624](https://github.com/ublue-os/homebrew-tap/pull/624)
+- fix: zed workflow uses deprecated methods by [@​inffy](https://github.com/inffy) in [#621](https://github.com/ublue-os/homebrew-tap/pull/621)
+- fix: update antigravity cask to liveupdate by [@​inffy](https://github.com/inffy) in [#615](https://github.com/ublue-os/homebrew-tap/pull/615)
+- lm-studio-linux: fix AppImage paths for 0.4.23 by [@​remkolems](https://github.com/remkolems) in [#603](https://github.com/ublue-os/homebrew-tap/pull/603)
+- chore: fix brew audit errors by [@​inffy](https://github.com/inffy) in [#604](https://github.com/ublue-os/homebrew-tap/pull/604)
+- Bottle workflow: match numbered bottle tarballs by [@​hanthor](https://github.com/hanthor) in [#721](https://github.com/ublue-os/homebrew-experimental-tap/pull/721)
+- fix(opencode-desktop-linux): track 2.x, which is not on GitHub releases by [@​kronikpillow](https://github.com/kronikpillow) in [#718](https://github.com/ublue-os/homebrew-experimental-tap/pull/718)
+- Add Compass launcher formula by [@​hanthor](https://github.com/hanthor) in [#719](https://github.com/ublue-os/homebrew-experimental-tap/pull/719)
+- fix(casks): resolve Landlock sandbox EISDIR conflicts across casks by [@​kronikpillow](https://github.com/kronikpillow) in [#701](https://github.com/ublue-os/homebrew-experimental-tap/pull/701)
+- fix: fix cask checks by [@​inffy](https://github.com/inffy) in [#656](https://github.com/ublue-os/homebrew-experimental-tap/pull/656)
+- feat(formula): add bluefin-contributor-tools by [@​castrojo](https://github.com/castrojo) in [#650](https://github.com/ublue-os/homebrew-experimental-tap/pull/650)
+- fix: migrate casks off deprecated Homebrew hooks by [@​ahmedadan](https://github.com/ahmedadan) in [#628](https://github.com/ublue-os/homebrew-experimental-tap/pull/628)
+- feat: app Proton Pass to tap by [@​inffy](https://github.com/inffy) in [#627](https://github.com/ublue-os/homebrew-experimental-tap/pull/627)
+
+##### Dakota (GNOME OS Prototype)
+
+- fix(brew): migrate ChairLift off the Frostyard tap by [@​ahmedadan](https://github.com/ahmedadan) in [#1542](https://github.com/projectbluefin/dakota/pull/1542)
+
+---
+
+## System Services & Policies
+
+![area/services](https://img.shields.io/badge/area%2Fservices-4A90E2?style=flat-square) ![area/policy](https://img.shields.io/badge/area%2Fpolicy-5B8BC1?style=flat-square)
+
+*Systemd services and system-level policies*
+
+#### Planned Work
+
+- fix(systemd): remove local-fs ordering cycle in rechunker-group-fix by [@​kylerankin](https://github.com/kylerankin) in [#1208](https://github.com/projectbluefin/common/pull/1208)
+- feat(countme): add dakota-scoped client and systemd units by [@​castrojo](https://github.com/castrojo) in [#1154](https://github.com/projectbluefin/common/pull/1154)
+- fix: empty hooks directory made setup services exit 127 by [@​kylerankin](https://github.com/kylerankin) in [#1193](https://github.com/projectbluefin/common/pull/1193)
+
+#### Opportunistic Work
+
+- fix(asusctl-linux): avoid symlink canonicalization for SELinux semanage path by [@​nileshchakraborty](https://github.com/nileshchakraborty) in [#654](https://github.com/ublue-os/homebrew-tap/pull/654)
+- fix(analytics): stop publishing internal service posture in a panel reason by [@​castrojo](https://github.com/castrojo) in [#1242](https://github.com/projectbluefin/documentation/pull/1242)
+
+##### Dakota (GNOME OS Prototype)
+
+- feat(bluefin): ship ChairLift's privileged helper, policy and schemas by [@​castrojo](https://github.com/castrojo) in [#1680](https://github.com/projectbluefin/dakota/pull/1680)
+
+---
+
+## Hardware
+
+![area/hardware](https://img.shields.io/badge/area%2Fhardware-F59E0B?style=flat-square) ![area/nvidia](https://img.shields.io/badge/area%2Fnvidia-76B900?style=flat-square) ![aarch64](https://img.shields.io/badge/aarch64-F59E0B?style=flat-square)
+
+*Hardware support, drivers, NVIDIA GPU, and ARM64 architecture*
+
+#### Planned Work
+
+- refactor: remove produced-but-unconsumed nvidia overlay by [@​mendezr](https://github.com/mendezr) in [#1263](https://github.com/projectbluefin/common/pull/1263)
+- fix(nvidia): pin suspend notifiers so sleep is not vetoed by [@​mendezr](https://github.com/mendezr) in [#1176](https://github.com/projectbluefin/common/pull/1176)
+- fix(apps): pin and sha256-verify OpenTabletDriver install fetches by [@​mendezr](https://github.com/mendezr) in [#1198](https://github.com/projectbluefin/common/pull/1198)
+- test(apps.just): BATS coverage for install-opentabletdriver and cncf by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1064](https://github.com/projectbluefin/common/pull/1064)
+
+#### Opportunistic Work
+
+- refactor(nvidia): ship bootc kernel args declaratively from the overlay by [@​mendezr](https://github.com/mendezr) in [#651](https://github.com/projectbluefin/bluefin-lts/pull/651)
+- fix(nvidia): drop obsolete ublue-nvctk-cdi enable, guard SELinux policy by [@​hanthor](https://github.com/hanthor) in [#629](https://github.com/projectbluefin/bluefin-lts/pull/629)
+- fix(kernel): provide the modprobe path the Fedora kernel expects by [@​Danathar](https://github.com/Danathar) in [#632](https://github.com/projectbluefin/bluefin-lts/pull/632)
+- fix(nvidia): forward-port CoreOS stable kernel 7.1.8-200.fc44 to testing by [@​hanthor](https://github.com/hanthor) in [#618](https://github.com/projectbluefin/bluefin-lts/pull/618)
+- fix(nvidia): bump CoreOS stable kernel to 7.1.8-200.fc44 by [@​Danathar](https://github.com/Danathar) in [#606](https://github.com/projectbluefin/bluefin-lts/pull/606)
+- fix(ci): use GET for workflow runs lookup in nvidia manifest by [@​castrojo](https://github.com/castrojo) in [#517](https://github.com/projectbluefin/bluefin-lts/pull/517)
+- test: BATS coverage for build_scripts/overrides/nvidia/20-nvidia.sh + overrides/x86_64/20-zfs.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#561](https://github.com/projectbluefin/bluefin-lts/pull/561)
+- fix(ci): verify NVIDIA manifest assembly runs on testing branch via API by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#545](https://github.com/projectbluefin/bluefin-lts/pull/545)
+- fix(ci): gate NVIDIA testing promotion on multi-arch E2E validation by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#532](https://github.com/projectbluefin/bluefin-lts/pull/532)
+- [quality] test(kernel-swap): add BATS unit tests for kernel-swap.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#483](https://github.com/projectbluefin/bluefin-lts/pull/483)
+- fix(driver-versions): order tabs Bluefin, Server, Classic, Utah by [@​castrojo](https://github.com/castrojo) in [#1368](https://github.com/projectbluefin/documentation/pull/1368)
+- fix(sbom): add Bluefin LTS NVIDIA stream and retire dx/gdx package queries by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1212](https://github.com/projectbluefin/documentation/pull/1212)
+- fix(driver-versions): generate Bluefin LTS release links with stable tags by [@​castrojo](https://github.com/castrojo) in [#1208](https://github.com/projectbluefin/documentation/pull/1208)
+- fix(feed-items): supply NVIDIA versions at the data shape the release feed consumes by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1178](https://github.com/projectbluefin/documentation/pull/1178)
+- fix(feed-items): supply NVIDIA versions at the data shape the release feed consumes by [@​castrojo](https://github.com/castrojo) in [#1123](https://github.com/projectbluefin/documentation/pull/1123)
+- fix(driver-versions): generate Bluefin LTS release links with stable tags by [@​castrojo](https://github.com/castrojo) in [#1104](https://github.com/projectbluefin/documentation/pull/1104)
+- feat: refine image navigation, fix driver versions catalog, and track stable streams by [@​castrojo](https://github.com/castrojo) in [#1050](https://github.com/projectbluefin/documentation/pull/1050)
+
+##### Dakota (GNOME OS Prototype)
+
+- fix(kernel): carry hid-asus build fix for OGC 7.2.6-ogc1 by [@​ahmedadan](https://github.com/ahmedadan) in [#1617](https://github.com/projectbluefin/dakota/pull/1617)
+- fix(kernel): carry hid-asus build fix for OGC 7.2.6-ogc1 on next by [@​ahmedadan](https://github.com/ahmedadan) in [#1616](https://github.com/projectbluefin/dakota/pull/1616)
+- chore(kernel): bump OGC gaming kernel to 7.2.6-ogc1 on testing by [@​ahmedadan](https://github.com/ahmedadan) in [#1613](https://github.com/projectbluefin/dakota/pull/1613)
+- chore(kernel): bump next to 7.3-rc3 and OGC 7.2.6-ogc1 by [@​ahmedadan](https://github.com/ahmedadan) in [#1612](https://github.com/projectbluefin/dakota/pull/1612)
+- fix(kernel): restore desktop capabilities across streams by [@​ahmedadan](https://github.com/ahmedadan) in [#1598](https://github.com/projectbluefin/dakota/pull/1598)
+- feat: NVIDIA 615.71.09 and freedesktop-sdk 26.08.1 on testing by [@​ahmedadan](https://github.com/ahmedadan) in [#1588](https://github.com/projectbluefin/dakota/pull/1588)
+- fix(scripts): gen-filemap refuses partial caches, tests pin kernel match by [@​ahmedadan](https://github.com/ahmedadan) in [#1484](https://github.com/projectbluefin/dakota/pull/1484)
+- feat(kernel): Linux 7.2 bump with Fedora-audited hardware enablement by [@​ahmedadan](https://github.com/ahmedadan) in [#1473](https://github.com/projectbluefin/dakota/pull/1473)
+- fix(ci): sync-next owns files/linux-ogc with the rest of the kernel set by [@​ahmedadan](https://github.com/ahmedadan) in [#1475](https://github.com/projectbluefin/dakota/pull/1475)
+
+---
+
+## Infrastructure
+
+![area/iso](https://img.shields.io/badge/area%2Fiso-A0522D?style=flat-square) ![area/upstream](https://img.shields.io/badge/area%2Fupstream-5CB85C?style=flat-square) ![area/buildstream](https://img.shields.io/badge/area%2Fbuildstream-0066FF?style=flat-square) ![area/finpilot](https://img.shields.io/badge/area%2Ffinpilot-7C3AED?style=flat-square) ![area/just](https://img.shields.io/badge/area%2Fjust-E99695?style=flat-square) ![area/testing](https://img.shields.io/badge/area%2Ftesting-F59E0B?style=flat-square)
+
+*ISO images, upstream integration, build systems, and testing frameworks*
+
+#### Planned Work
+
+- fix(chairlift): refresh vendored desktop entry and icons to v26.09.0-alpha.2 by [@​clubanderson](https://github.com/clubanderson) in [#1274](https://github.com/projectbluefin/common/pull/1274)
+- fix(ci): retry transient GHCR errors in check-oci-refs.py by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1122](https://github.com/projectbluefin/common/pull/1122)
+- fix: align ChairLift config and ship GSettings schemas by [@​mendezr](https://github.com/mendezr) in [#1265](https://github.com/projectbluefin/common/pull/1265)
+- fix: reconcile inert .github Renovate configuration by [@​repires](https://github.com/repires) in [#1183](https://github.com/projectbluefin/common/pull/1183)
+- ci: run all maintained unit suites in CI by [@​arteeh](https://github.com/arteeh) in [#1249](https://github.com/projectbluefin/common/pull/1249)
+- feat(testing): add a hardware-free eSCL scanner fixture by [@​sramkrishna](https://github.com/sramkrishna) in [#1225](https://github.com/projectbluefin/common/pull/1225)
+- fix(audio): make Bluetooth auto-switch opt-in instead of default by [@​mendezr](https://github.com/mendezr) in [#1179](https://github.com/projectbluefin/common/pull/1179)
+- fix: honor NO_COLOR in local override output by [@​Danathar](https://github.com/Danathar) in [#1190](https://github.com/projectbluefin/common/pull/1190)
+- fix: require review for GitHub Actions minor/patch updates by [@​Danathar](https://github.com/Danathar) in [#1146](https://github.com/projectbluefin/common/pull/1146)
+- fix: polkit org.ublue.privileged.user.setup defaults no/no/auth_admin — system_files/shared/usr/share/polkit-1/actions/org.ublue.privileged.user.setup.policy by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1108](https://github.com/projectbluefin/common/pull/1108)
+- ci: run the suite-registration drift gate on every PR by [@​kylerankin](https://github.com/kylerankin) in [#1192](https://github.com/projectbluefin/common/pull/1192)
+- feat: WSL/container machine equivalent developer environment via Lima by [@​repires](https://github.com/repires) in [#1175](https://github.com/projectbluefin/common/pull/1175)
+- ci: block unpinned git checkouts in Containerfile builder stages by [@​mendezr](https://github.com/mendezr) in [#1178](https://github.com/projectbluefin/common/pull/1178)
+- chore: update motd + config by [@​theMimolet](https://github.com/theMimolet) in [#1077](https://github.com/projectbluefin/common/pull/1077)
+- fix(countme): retry Dakota once per UTC week by [@​castrojo](https://github.com/castrojo) in [#1203](https://github.com/projectbluefin/common/pull/1203)
+- fix(chairlift): track rebranded projectbluefin/chairlift release by [@​eltorrero](https://github.com/eltorrero) in [#1121](https://github.com/projectbluefin/common/pull/1121)
+- fix(wireplumber): disable IR sensor on Kingcome hybrid webcam (2b7e:55c0) by [@​castrojo](https://github.com/castrojo) in [#1119](https://github.com/projectbluefin/common/pull/1119)
+- fix(bonedigger-report): derive booted image name from live bootc status by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1127](https://github.com/projectbluefin/common/pull/1127)
+- test: gate the Justfile test recipe against tests/ — tests/test_suite_registration.bats by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1166](https://github.com/projectbluefin/common/pull/1166)
+- test: BATS coverage for etc/profile.d/uwelcome.sh — tests/test_uwelcome_profile.bats by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1118](https://github.com/projectbluefin/common/pull/1118)
+- fix(skills): stop pipefail+SIGPIPE from failing check-skill-frontmatter by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1153](https://github.com/projectbluefin/common/pull/1153)
+- ci(actionlint): allow the ubuntu-26.04 runner labels by [@​Danathar](https://github.com/Danathar) in [#1151](https://github.com/projectbluefin/common/pull/1151)
+- fix: add consistent bootc sudo policy by [@​castrojo](https://github.com/castrojo) in [#932](https://github.com/projectbluefin/common/pull/932)
+- fix(sec): ship Sigstore trust materials (Fulcio root + Rekor key) by [@​hanthor](https://github.com/hanthor) in [#933](https://github.com/projectbluefin/common/pull/933)
+- feat: add llmman to ai-tools Brewfile by [@​ericcurtin](https://github.com/ericcurtin) in [#1097](https://github.com/projectbluefin/common/pull/1097)
+- test(system.just): BATS coverage for toggle-testing, toggle-vms, install-system-flatpaks by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1031](https://github.com/projectbluefin/common/pull/1031)
+- fix(ci): declare top-level permissions: \{\} in e2e.yml pr-e2e.yml promotion-candidate-e2e.yml by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#969](https://github.com/projectbluefin/common/pull/969)
+- test(default.just): BATS coverage for bios, bios-info, enroll-secure-boot-key, toggle-user-motd, check-local-overrides, check-idle-power-draw, benchmark by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1048](https://github.com/projectbluefin/common/pull/1048)
+- test(shared.just): BATS coverage for powerwash, toggle-tpm2 by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1034](https://github.com/projectbluefin/common/pull/1034)
+- fix(ci): unit-tests.yml add permissions block (contents: read) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#961](https://github.com/projectbluefin/common/pull/961)
+- fix: add Bluespeed setup recipe by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1023](https://github.com/projectbluefin/common/pull/1023)
+- fix: ignore fastfetch aliases by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1005](https://github.com/projectbluefin/common/pull/1005)
+- fix: configure opt-in bluespeed tools by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1007](https://github.com/projectbluefin/common/pull/1007)
+- refactor: single source of truth for setup hook dispatch — ublue-\{system,user,privileged\}-setup → hookrunner.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1063](https://github.com/projectbluefin/common/pull/1063)
+- refactor: single source of truth for image-name → upstream repo routing by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1045](https://github.com/projectbluefin/common/pull/1045)
+- test: isolate UWELCOME_SHOWN in test_motd_integration.bats by [@​castrojo](https://github.com/castrojo) in [#1088](https://github.com/projectbluefin/common/pull/1088)
+- refactor(just): move 00-entry.just to shared with optional imports by [@​Siddhj2206](https://github.com/Siddhj2206) in [#1042](https://github.com/projectbluefin/common/pull/1042)
+- fix: restore native recipes without bluefinctl by [@​ahmedadan](https://github.com/ahmedadan) in [#1083](https://github.com/projectbluefin/common/pull/1083)
+- fix: resolve cask references and expose validation errors by [@​ahmedadan](https://github.com/ahmedadan) in [#1084](https://github.com/projectbluefin/common/pull/1084)
+- fix: remove sudo from device info status by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1003](https://github.com/projectbluefin/common/pull/1003)
+- fix: update after hibernation resume by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1001](https://github.com/projectbluefin/common/pull/1001)
+- feat: add richer Bluefin fastfetch colors by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#980](https://github.com/projectbluefin/common/pull/980)
+- fix(uwelcome): skip greeting for root and dedupe chained shells by [@​ahmedadan](https://github.com/ahmedadan) in [#1059](https://github.com/projectbluefin/common/pull/1059)
+
+#### Opportunistic Work
+
+- Add usage instructions for ublue-os/bluefin by [@​castrojo](https://github.com/castrojo) in [#1324](https://github.com/projectbluefin/bluefin/pull/1324)
+- fix(factory): trim promote-testing-to-main caller below loc-drift threshold by [@​mendezr](https://github.com/mendezr) in [#1298](https://github.com/projectbluefin/bluefin/pull/1298)
+- test: add beta-path coverage for validate-repos.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1063](https://github.com/projectbluefin/bluefin/pull/1063)
+- refactor: remove unreachable 18-workarounds.sh + shared/build.sh, add build-stage reachability gate by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1148](https://github.com/projectbluefin/bluefin/pull/1148)
+- test: BATS coverage for build_files/shared/utils/ghcurl (_is_github_host token allowlist) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1168](https://github.com/projectbluefin/bluefin/pull/1168)
+- fix(sec): pin akmods secureboot signing cert to commit SHA + SHA-256 by [@​kylerankin](https://github.com/kylerankin) in [#1267](https://github.com/projectbluefin/bluefin/pull/1267)
+- feat(packages): add gstreamer1-plugin-gtk4 to base image by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1275](https://github.com/projectbluefin/bluefin/pull/1275)
+- fix(ci): retry transient COPR health checks by [@​Danathar](https://github.com/Danathar) in [#1242](https://github.com/projectbluefin/bluefin/pull/1242)
+- ci(actionlint): allow the ubuntu-26.04 runner labels by [@​Danathar](https://github.com/Danathar) in [#1311](https://github.com/projectbluefin/bluefin/pull/1311)
+- fix(release): ignore non-push build completions by [@​castrojo](https://github.com/castrojo) in [#1296](https://github.com/projectbluefin/bluefin/pull/1296)
+- fix(release): publish automatic E2E failures by [@​castrojo](https://github.com/castrojo) in [#1294](https://github.com/projectbluefin/bluefin/pull/1294)
+- fix(release): retry pending Tuesday releases hourly by [@​castrojo](https://github.com/castrojo) in [#1292](https://github.com/projectbluefin/bluefin/pull/1292)
+- fix(release): preserve pending Tuesday decision by [@​castrojo](https://github.com/castrojo) in [#1290](https://github.com/projectbluefin/bluefin/pull/1290)
+- fix(release): preserve release window recovery by [@​castrojo](https://github.com/castrojo) in [#1288](https://github.com/projectbluefin/bluefin/pull/1288)
+- fix(release): close automatic promotion gaps by [@​castrojo](https://github.com/castrojo) in [#1286](https://github.com/projectbluefin/bluefin/pull/1286)
+- fix(release): restore digest-bound E2E recovery by [@​castrojo](https://github.com/castrojo) in [#1284](https://github.com/projectbluefin/bluefin/pull/1284)
+- fix(release): remove broken lifecycle qualification by [@​castrojo](https://github.com/castrojo) in [#1282](https://github.com/projectbluefin/bluefin/pull/1282)
+- fix(release): qualify every promoted variant by [@​castrojo](https://github.com/castrojo) in [#1281](https://github.com/projectbluefin/bluefin/pull/1281)
+- fix(release): avoid duplicate E2E qualification by [@​castrojo](https://github.com/castrojo) in [#1280](https://github.com/projectbluefin/bluefin/pull/1280)
+- fix(release): recognize generated promotion commits by [@​castrojo](https://github.com/castrojo) in [#1278](https://github.com/projectbluefin/bluefin/pull/1278)
+- fix(release): gate Tuesday promotion on E2E by [@​castrojo](https://github.com/castrojo) in [#1274](https://github.com/projectbluefin/bluefin/pull/1274)
+- fix(ci): remove retired testing-lab integration by [@​castrojo](https://github.com/castrojo) in [#1256](https://github.com/projectbluefin/bluefin/pull/1256)
+- fix(factory): extract stable release window gate (#1232) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1239](https://github.com/projectbluefin/bluefin/pull/1239)
+- fix(ci): add missing top-level permissions: \{\} to workflows by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1238](https://github.com/projectbluefin/bluefin/pull/1238)
+- feat(packages): add ppp to base package manifest (#1073) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1234](https://github.com/projectbluefin/bluefin/pull/1234)
+- fix: workaround for fstrim to trim sysroot (#1138) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1235](https://github.com/projectbluefin/bluefin/pull/1235)
+- fix(sec): pin secureboot enrollment key fetch to akmods commit + SHA-256 by [@​hanthor](https://github.com/hanthor) in [#1241](https://github.com/projectbluefin/bluefin/pull/1241)
+- ci: restore upgrade-test (lifecycle) as a promotion gate (#400) by [@​kylerankin](https://github.com/kylerankin) in [#1101](https://github.com/projectbluefin/bluefin/pull/1101)
+- test(unit): add image-variant matrix drift gate against Justfile (#1164) by [@​castrojo](https://github.com/castrojo) in [#1195](https://github.com/projectbluefin/bluefin/pull/1195)
+- test(quality): add unit tests for check-testsuite-workflow-ref (#1169) by [@​castrojo](https://github.com/castrojo) in [#1196](https://github.com/projectbluefin/bluefin/pull/1196)
+- fix(worktree): guard against deleting branches with unpushed commits by [@​castrojo](https://github.com/castrojo) in [#1194](https://github.com/projectbluefin/bluefin/pull/1194)
+- fix(sec): pin coreos generator and firewalld zone fetch to sha256 by [@​castrojo](https://github.com/castrojo) in [#1193](https://github.com/projectbluefin/bluefin/pull/1193)
+- fix(security): consolidate Justfile supply-chain hardening (#1172, #1173) by [@​castrojo](https://github.com/castrojo) in [#1237](https://github.com/projectbluefin/bluefin/pull/1237)
+- fix(build): validate supported brew preinstall contract by [@​castrojo](https://github.com/castrojo) in [#1221](https://github.com/projectbluefin/bluefin/pull/1221)
+- fix(ci): report lab checks with GITHUB_TOKEN instead of MergeRaptor token by [@​eltorrero](https://github.com/eltorrero) in [#1213](https://github.com/projectbluefin/bluefin/pull/1213)
+- ci: consumer validation for testsuite#792 (issue #989) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1215](https://github.com/projectbluefin/bluefin/pull/1215)
+- ci: add top-level least-privilege permissions to moderator.yml by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1200](https://github.com/projectbluefin/bluefin/pull/1200)
+- ci: upload BATS coverage to Codecov by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1201](https://github.com/projectbluefin/bluefin/pull/1201)
+- fix(iso): keep /boot empty so derived images pass bootc container lint by [@​Danathar](https://github.com/Danathar) in [#1209](https://github.com/projectbluefin/bluefin/pull/1209)
+- fix(scanner): make framework AMD kargs cleanup retry-safe on failure by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1202](https://github.com/projectbluefin/bluefin/pull/1202)
+- fix(ci): correct jq quoting in cache maintenance workflow by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1203](https://github.com/projectbluefin/bluefin/pull/1203)
+- fix(sec): pin Anaconda install payload to a digest, not :stable by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1204](https://github.com/projectbluefin/bluefin/pull/1204)
+- test(ci): pin the Tuesday stable release window by [@​Danathar](https://github.com/Danathar) in [#1134](https://github.com/projectbluefin/bluefin/pull/1134)
+- fix(lab-check): serialise lifecycle events that share a head SHA by [@​Danathar](https://github.com/Danathar) in [#1133](https://github.com/projectbluefin/bluefin/pull/1133)
+- ci: consumer validation for actions/native-overlay fix by [@​KiKaraage](https://github.com/KiKaraage) in [#1177](https://github.com/projectbluefin/bluefin/pull/1177)
+- [quality] test: BATS coverage for .github/scripts/install-hooks.sh and worktree.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1162](https://github.com/projectbluefin/bluefin/pull/1162)
+- test(build): guard just and gum, the rest of the ujust chain (#965) by [@​Danathar](https://github.com/Danathar) in [#1149](https://github.com/projectbluefin/bluefin/pull/1149)
+- test(framework): stop the hook tests from driving the host's real rpm-ostree by [@​Danathar](https://github.com/Danathar) in [#1144](https://github.com/projectbluefin/bluefin/pull/1144)
+- test: add read-packages unit coverage by [@​castrojo](https://github.com/castrojo) in [#469](https://github.com/projectbluefin/bluefin-lts/pull/469)
+- refactor: single source of truth for variant override dispatch — build_scripts/build.sh apply_variant(), drop orphaned overrides/aarch64/hwe by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#553](https://github.com/projectbluefin/bluefin-lts/pull/553)
+- [quality] test: BATS coverage for 10-packages-image-base.sh and 00-packages.sh by [@​kylerankin](https://github.com/kylerankin) in [#655](https://github.com/projectbluefin/bluefin-lts/pull/655)
+- fix(sec): add top-level permissions: \{\} to unit-tests.yml and run-testsuite.yml by [@​castrojo](https://github.com/castrojo) in [#579](https://github.com/projectbluefin/bluefin-lts/pull/579)
+- ci: add check-base-branch guard to reject main-targeted PRs by [@​kylerankin](https://github.com/kylerankin) in [#635](https://github.com/projectbluefin/bluefin-lts/pull/635)
+- fix(ci): open PR for pkg-cadence instead of pushing to main (#503) by [@​kylerankin](https://github.com/kylerankin) in [#619](https://github.com/projectbluefin/bluefin-lts/pull/619)
+- [architect] refactor: delete unconsumed base-image ARGs (BASE_IMAGE_SHA, post-FROM MAJOR_VERSION, GNOME_VERSION) + Containerfile build-arg guard by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#600](https://github.com/projectbluefin/bluefin-lts/pull/600)
+- [quality] test: BATS coverage for build_scripts/26-packages-post.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#596](https://github.com/projectbluefin/bluefin-lts/pull/596)
+- ci: remove deprecated ghost lab check by [@​castrojo](https://github.com/castrojo) in [#637](https://github.com/projectbluefin/bluefin-lts/pull/637)
+- feat(countme): wire first-party countme reporting to countme.projectbluefin.io by [@​Danathar](https://github.com/Danathar) in [#604](https://github.com/projectbluefin/bluefin-lts/pull/604)
+- fix(ci): trigger unit-tests on PRs targeting testing and merge_group (#613) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#616](https://github.com/projectbluefin/bluefin-lts/pull/616)
+- ci(lab-check): use default GITHUB_TOKEN for testing-lab checks by [@​mrbobbytables](https://github.com/mrbobbytables) in [#590](https://github.com/projectbluefin/bluefin-lts/pull/590)
+- ci(promote): gate testing→main merge to Thursdays (weekly stable cadence) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#581](https://github.com/projectbluefin/bluefin-lts/pull/581)
+- fix: guard image-info-set against a missing flavor by [@​mrbobbytables](https://github.com/mrbobbytables) in [#583](https://github.com/projectbluefin/bluefin-lts/pull/583)
+- fix(ci): restore validate check context in pr-testsuite.yml by [@​castrojo](https://github.com/castrojo) in [#595](https://github.com/projectbluefin/bluefin-lts/pull/595)
+- fix: re-land dead Containerfile ARG removal on testing (#559) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#584](https://github.com/projectbluefin/bluefin-lts/pull/584)
+- [quality] test: BATS coverage for build_scripts/overrides/base/10-packages-image-base.sh and build_scripts/overrides/dx/00-packages.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#580](https://github.com/projectbluefin/bluefin-lts/pull/580)
+- fix(ci): enable SPDX SBOM generation for stable images by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#543](https://github.com/projectbluefin/bluefin-lts/pull/543)
+- [sec-check] fix: pr-testsuite.yml add permissions block (contents: read) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#505](https://github.com/projectbluefin/bluefin-lts/pull/505)
+- [quality] test: BATS coverage for build_scripts/scripts helpers — read-packages, ghcurl, image-info-set by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#554](https://github.com/projectbluefin/bluefin-lts/pull/554)
+- [sec-check] fix: declare top-level permissions: \{\} in pr-e2e.yml  by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#511](https://github.com/projectbluefin/bluefin-lts/pull/511)
+- [architect] refactor: drop dead Containerfile ARGs BASE_IMAGE_SHA + post-FROM MAJOR_VERSION, add tests/unit/containerfile_args_test.bats build-arg guard by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#560](https://github.com/projectbluefin/bluefin-lts/pull/560)
+- fix(sysusers): restore libstoragemgmt daemon account so lsmd starts by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#549](https://github.com/projectbluefin/bluefin-lts/pull/549)
+- fix(rpmdb): rebuild corrupt rpm database in cleanup before commit by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#538](https://github.com/projectbluefin/bluefin-lts/pull/538)
+- fix(boot): break rechunker ordering cycle by [@​HuntedRaven7](https://github.com/HuntedRaven7) in [#527](https://github.com/projectbluefin/bluefin-lts/pull/527)
+- fix(ci): use real merge queue validation by [@​castrojo](https://github.com/castrojo) in [#569](https://github.com/projectbluefin/bluefin-lts/pull/569)
+- follow homebrew actions releases not main by [@​inffy](https://github.com/inffy) in [#674](https://github.com/ublue-os/homebrew-tap/pull/674)
+- fix(vscode): pin stable cask download URL to the build commit by [@​ahmedadan](https://github.com/ahmedadan) in [#632](https://github.com/ublue-os/homebrew-tap/pull/632)
+- fix: restore tap CI on current Homebrew by [@​ahmedadan](https://github.com/ahmedadan) in [#627](https://github.com/ublue-os/homebrew-tap/pull/627)
+- fix: actions pinning by [@​inffy](https://github.com/inffy) in [#619](https://github.com/ublue-os/homebrew-tap/pull/619)
+- Add compass bottle build (both Linux arches) by [@​hanthor](https://github.com/hanthor) in [#720](https://github.com/ublue-os/homebrew-experimental-tap/pull/720)
+- use homebrew actions releases not main by [@​inffy](https://github.com/inffy) in [#679](https://github.com/ublue-os/homebrew-experimental-tap/pull/679)
+- Publish blog post on Ubuntu's community building by [@​castrojo](https://github.com/castrojo) in [#1440](https://github.com/projectbluefin/documentation/pull/1440)
+- perf(ci): build locales in parallel shards so build time stays flat by [@​castrojo](https://github.com/castrojo) in [#1420](https://github.com/projectbluefin/documentation/pull/1420)
+- fix: give Utah a real tag series in the update-churn pipeline by [@​dtg01100](https://github.com/dtg01100) in [#1419](https://github.com/projectbluefin/documentation/pull/1419)
+- perf(ci): cut pages.yml build time — parallel fetch-data, verify job, leaner caches by [@​castrojo](https://github.com/castrojo) in [#1411](https://github.com/projectbluefin/documentation/pull/1411)
+- feat(leaderboards): render Recent Milestones as horizontal scroller below Community Builders by [@​castrojo](https://github.com/castrojo) in [#1337](https://github.com/projectbluefin/documentation/pull/1337)
+- fix(ci): allow manual force refresh on update-hive-cache workflow by [@​castrojo](https://github.com/castrojo) in [#1331](https://github.com/projectbluefin/documentation/pull/1331)
+- test(knowledge-mcp): executed coverage for scripts/build-index.mjs — workers/knowledge-mcp/scripts/build-index-cli.test.mjs by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1312](https://github.com/projectbluefin/documentation/pull/1312)
+- fix(countme): rebadge upstream ublue-os/bluefin chart as Bluefin Classic by [@​castrojo](https://github.com/castrojo) in [#1301](https://github.com/projectbluefin/documentation/pull/1301)
+- [ci] skip open-discussion job when BLUEFIN_DISCUSSIONS_TOKEN is unset by [@​castrojo](https://github.com/castrojo) in [#1296](https://github.com/projectbluefin/documentation/pull/1296)
+- ci: run the unit-test gate on every PR and run the knowledge-mcp suite by [@​Danathar](https://github.com/Danathar) in [#1290](https://github.com/projectbluefin/documentation/pull/1290)
+- refactor: remove dead Justfile recipe invoking a nonexistent npm script — Justfile only by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1269](https://github.com/projectbluefin/documentation/pull/1269)
+- test(portal): tolerate absent build-generated static/data JSON by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1277](https://github.com/projectbluefin/documentation/pull/1277)
+- ci: add unit test gate for scripts by [@​castrojo](https://github.com/castrojo) in [#1226](https://github.com/projectbluefin/documentation/pull/1226)
+- fix(countme): ink the upstream chart title by [@​castrojo](https://github.com/castrojo) in [#1248](https://github.com/projectbluefin/documentation/pull/1248)
+- feat(countme): serve the upstream chart in the Bluefin palette by [@​castrojo](https://github.com/castrojo) in [#1247](https://github.com/projectbluefin/documentation/pull/1247)
+- feat(analytics): fold game mode into its image and show the upstream series by [@​castrojo](https://github.com/castrojo) in [#1245](https://github.com/projectbluefin/documentation/pull/1245)
+- [quality] test: unit coverage for markdown-generator report-section builders (generateBuildHealthSection, generateBotDetailsList, generateCategorySectionWithSubsections) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1229](https://github.com/projectbluefin/documentation/pull/1229)
+- test(scripts): silence unused-arg lint warning in build-metrics test by [@​castrojo](https://github.com/castrojo) in [#1225](https://github.com/projectbluefin/documentation/pull/1225)
+- fix: consolidate CI supply-chain pins, light-mode repairs, and scripts/lib test coverage by [@​castrojo](https://github.com/castrojo) in [#1223](https://github.com/projectbluefin/documentation/pull/1223)
+- fix(ci): make generate-social-cards exit 0 when converters are missing by [@​castrojo](https://github.com/castrojo) in [#1182](https://github.com/projectbluefin/documentation/pull/1182)
+- feat(analytics): add update churn rate pipeline, analytics charts, and trigger workflow by [@​castrojo](https://github.com/castrojo) in [#1070](https://github.com/projectbluefin/documentation/pull/1070)
+- [architect] refactor: single source of truth for cosign trust policy — new scripts/lib/signing-trust.js, fetch-github-sbom.js STREAM_SPECS + fetch-github-images.js buildSecurityInfo derive from it by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1047](https://github.com/projectbluefin/documentation/pull/1047)
+- fix(e2e): deliver the kickstart through an initramfs overlay by [@​Danathar](https://github.com/Danathar) in [#74](https://github.com/projectbluefin/iso/pull/74)
+- fix(ci): restore ISO rename output and soft-fail arm64 legs by [@​hanthor](https://github.com/hanthor) in [#70](https://github.com/projectbluefin/iso/pull/70)
+- test(justfile): executed coverage for _build-bib and the iso/*.toml BIB contract — tests/template/justfile-build-bib_test.bats by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#408](https://github.com/projectbluefin/finpilot/pull/408)
+- fix(just): resolve sudo via PATH in sudoif and pass arguments without word-splitting by [@​castrojo](https://github.com/castrojo) in [#394](https://github.com/projectbluefin/finpilot/pull/394)
+- fix(justfile): make the final artifact move idempotent in _build-bib by [@​mendezr](https://github.com/mendezr) in [#412](https://github.com/projectbluefin/finpilot/pull/412)
+- ci(workflow): correct sync-stable-to-main header comment by [@​kylerankin](https://github.com/kylerankin) in [#413](https://github.com/projectbluefin/finpilot/pull/413)
+- ci(workflow): retry just download in unit-tests by [@​kylerankin](https://github.com/kylerankin) in [#414](https://github.com/projectbluefin/finpilot/pull/414)
+- fix(build): write an unverified update ref instead of a signed one by [@​Danathar](https://github.com/Danathar) in [#406](https://github.com/projectbluefin/finpilot/pull/406)
+- test(build): executed coverage for build/*.sh.example — tests/template/build-examples_test.bats by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#398](https://github.com/projectbluefin/finpilot/pull/398)
+- fix(ci): skip Renovate when the token is not set by [@​Siddhj2206](https://github.com/Siddhj2206) in [#395](https://github.com/projectbluefin/finpilot/pull/395)
+- test(justfile): executed coverage for vm-artifact and the VM artifact-path contract — tests/template/justfile-vm-artifact_test.bats by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#400](https://github.com/projectbluefin/finpilot/pull/400)
+- ci(promote): stop citing the deleted scheduled approver by [@​Danathar](https://github.com/Danathar) in [#404](https://github.com/projectbluefin/finpilot/pull/404)
+- fix(renovate): require human review for third-party GitHub Actions bumps by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#416](https://github.com/projectbluefin/finpilot/pull/416)
+- fix(ci): restore merge_group trigger to pr-validation and unit-tests by [@​castrojo](https://github.com/castrojo) in [#418](https://github.com/projectbluefin/finpilot/pull/418)
+- [quality] test: executed coverage for Justfile clean, sudo-clean and sudoif recipes by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#365](https://github.com/projectbluefin/finpilot/pull/365)
+- [architect] refactor: single implementation for flatpak preinstall validation — build/validate-flatpaks.sh + just recipe + bats gate by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#359](https://github.com/projectbluefin/finpilot/pull/359)
+- [quality] test: BATS coverage for .github/actions/check-token-health/check_token_health.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#340](https://github.com/projectbluefin/finpilot/pull/340)
+- ci: auto-approve action_required checks on trusted promotion PRs by [@​mrbobbytables](https://github.com/mrbobbytables) in [#335](https://github.com/projectbluefin/finpilot/pull/335)
+- [architect] refactor: single source of truth for Brewfile validation — .pre-commit-config.yaml delegates to build/validate-brewfiles.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#325](https://github.com/projectbluefin/finpilot/pull/325)
+- [sec-check] fix: iso/iso.toml kickstart bootc switch → ostree-image-signed transport by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#331](https://github.com/projectbluefin/finpilot/pull/331)
+- fix(ci): validate Brewfiles statically instead of evaluating them as Ruby by [@​Siddhj2206](https://github.com/Siddhj2206) in [#320](https://github.com/projectbluefin/finpilot/pull/320)
+- fix(just): use a per-invocation temp file for the registry tag list by [@​Siddhj2206](https://github.com/Siddhj2206) in [#314](https://github.com/projectbluefin/finpilot/pull/314)
+- ci: run BATS unit tests on PRs touching build, tests, or Justfile by [@​Siddhj2206](https://github.com/Siddhj2206) in [#317](https://github.com/projectbluefin/finpilot/pull/317)
+- fix(ci): stop inheriting all repo secrets in label-enforcement by [@​Siddhj2206](https://github.com/Siddhj2206) in [#318](https://github.com/projectbluefin/finpilot/pull/318)
+- fix(just): build IMAGE_NAME from target_image so renames upgrade correctly by [@​Siddhj2206](https://github.com/Siddhj2206) in [#313](https://github.com/projectbluefin/finpilot/pull/313)
+- fix(ci): derive ghcr-cleanup target from the repository name by [@​Siddhj2206](https://github.com/Siddhj2206) in [#319](https://github.com/projectbluefin/finpilot/pull/319)
+- fix(just): repair clean recipe so it finishes and removes all artifacts by [@​Siddhj2206](https://github.com/Siddhj2206) in [#312](https://github.com/projectbluefin/finpilot/pull/312)
+- [quality] test(Justfile): BATS unit tests for the tag-images recipe by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#299](https://github.com/projectbluefin/finpilot/pull/299)
+- [quality] test: BATS coverage for build/00-image-info.sh and build/10-build.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#295](https://github.com/projectbluefin/finpilot/pull/295)
+- [quality] test: BATS coverage for Justfile build and tag-images recipes by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#296](https://github.com/projectbluefin/finpilot/pull/296)
+- [quality] test: BATS coverage for custom/ujust/custom-apps.just and custom-system.just recipes by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#293](https://github.com/projectbluefin/finpilot/pull/293)
+- [sec-check] fix: renovate.json — human-review gate for GitHub Actions updates (.github/renovate.json packageRules) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#306](https://github.com/projectbluefin/finpilot/pull/306)
+- [quality] test: add BATS unit tests for build/clean-stage.sh and build/copr-helpers.sh by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#285](https://github.com/projectbluefin/finpilot/pull/285)
+
+##### Dakota (GNOME OS Prototype)
+
+- fix(next): apply Dakota fdsdk patches and mesa-extra on next by [@​ahmedadan](https://github.com/ahmedadan) in [#1700](https://github.com/projectbluefin/dakota/pull/1700)
+- fix(next): apply Dakota fdsdk patches and mesa-extra on next by [@​ahmedadan](https://github.com/ahmedadan) in [#1696](https://github.com/projectbluefin/dakota/pull/1696)
+- feat(image): enable hardware video codecs for host apps by [@​ahmedadan](https://github.com/ahmedadan) in [#1687](https://github.com/projectbluefin/dakota/pull/1687)
+- fix(ghostscript): avoid CMYK crash in ROM profiles by [@​ahmedadan](https://github.com/ahmedadan) in [#1682](https://github.com/projectbluefin/dakota/pull/1682)
+- feat(image): ship nspawn for OCI-backed nspawn machines by [@​ahmedadan](https://github.com/ahmedadan) in [#1681](https://github.com/projectbluefin/dakota/pull/1681)
+- fix(libvirt): restore PolicyKit-authorized access by [@​ahmedadan](https://github.com/ahmedadan) in [#1673](https://github.com/projectbluefin/dakota/pull/1673)
+- fix(image): make /usr/local a real link to /var/usrlocal by [@​ahmedadan](https://github.com/ahmedadan) in [#1661](https://github.com/projectbluefin/dakota/pull/1661)
+- fix(ci): require diagnostic report intake by [@​castrojo](https://github.com/castrojo) in [#1528](https://github.com/projectbluefin/dakota/pull/1528)
+- feat(bluefin): add user-configured IBus Rime with Lua support by [@​KOTONEX](https://github.com/KOTONEX) in [#1662](https://github.com/projectbluefin/dakota/pull/1662)
+- revert(countme): restore pre-session common pin (#1649, #1656) by [@​castrojo](https://github.com/castrojo) in [#1657](https://github.com/projectbluefin/dakota/pull/1657)
+- fix(countme): pin shared weekly reporter by [@​castrojo](https://github.com/castrojo) in [#1656](https://github.com/projectbluefin/dakota/pull/1656)
+- fix(image): vendor libvirt and make shadowed packages actually ship by [@​ahmedadan](https://github.com/ahmedadan) in [#1651](https://github.com/projectbluefin/dakota/pull/1651)
+- fix(countme): ship shared Dakota reporter by [@​castrojo](https://github.com/castrojo) in [#1649](https://github.com/projectbluefin/dakota/pull/1649)
+- feat(countme): remove local countme client and units by [@​castrojo](https://github.com/castrojo) in [#1622](https://github.com/projectbluefin/dakota/pull/1622)
+- ci(release): require explicit stable promotion by [@​ahmedadan](https://github.com/ahmedadan) in [#1637](https://github.com/projectbluefin/dakota/pull/1637)
+- fix(virtualization): prevent default NAT firewall failures by [@​ahmedadan](https://github.com/ahmedadan) in [#1625](https://github.com/projectbluefin/dakota/pull/1625)
+- fix(bluefin): stop GDM fingerprint retry loop on unenrolled readers by [@​ahmedadan](https://github.com/ahmedadan) in [#1627](https://github.com/projectbluefin/dakota/pull/1627)
+- ci: gate merges on the PR build when a PR is labeled build by [@​ahmedadan](https://github.com/ahmedadan) in [#1618](https://github.com/projectbluefin/dakota/pull/1618)
+- ci: label-gated PR builds and SBOM job repair by [@​ahmedadan](https://github.com/ahmedadan) in [#1610](https://github.com/projectbluefin/dakota/pull/1610)
+- fix(ci): smoke-test the image Publish built, not the default-branch tip by [@​Danathar](https://github.com/Danathar) in [#1605](https://github.com/projectbluefin/dakota/pull/1605)
+- fix(ci): pin cosign to a digest-pinned installer instead of releases/latest by [@​Danathar](https://github.com/Danathar) in [#1606](https://github.com/projectbluefin/dakota/pull/1606)
+- chore(just): drop the monitor-pipeline recipe whose script no longer exists by [@​Danathar](https://github.com/Danathar) in [#1607](https://github.com/projectbluefin/dakota/pull/1607)
+- ci(next): empty NEXT_MERGED and track GBM master by [@​ahmedadan](https://github.com/ahmedadan) in [#1590](https://github.com/projectbluefin/dakota/pull/1590)
+- ci(arm): pause automation until boot validation works by [@​ahmedadan](https://github.com/ahmedadan) in [#1566](https://github.com/projectbluefin/dakota/pull/1566)
+- fix(chunkah): fetch remote companion data before reading by [@​ahmedadan](https://github.com/ahmedadan) in [#1564](https://github.com/projectbluefin/dakota/pull/1564)
+- feat(chunkah): generate ownership during image builds by [@​ahmedadan](https://github.com/ahmedadan) in [#1563](https://github.com/projectbluefin/dakota/pull/1563)
+- fix(ci): isolate ChairLift tests from runner defaults by [@​ahmedadan](https://github.com/ahmedadan) in [#1550](https://github.com/projectbluefin/dakota/pull/1550)
+- fix(desktop): avoid broken and intrusive defaults by [@​ahmedadan](https://github.com/ahmedadan) in [#1538](https://github.com/projectbluefin/dakota/pull/1538)
+- fix(next): avoid adjacent dependency sync conflict by [@​ahmedadan](https://github.com/ahmedadan) in [#1526](https://github.com/projectbluefin/dakota/pull/1526)
+- fix(skills): make factory frontmatter parseable by [@​ahmedadan](https://github.com/ahmedadan) in [#1525](https://github.com/projectbluefin/dakota/pull/1525)
+- feat(launcher): package vicinae and bind launcher toggle to Super+Space by [@​castrojo](https://github.com/castrojo) in [#1515](https://github.com/projectbluefin/dakota/pull/1515)
+- fix(devmode): adapt developer setup to Dakota by [@​ahmedadan](https://github.com/ahmedadan) in [#1509](https://github.com/projectbluefin/dakota/pull/1509)
+- fix(fastfetch): inherit Bluefin presentation from common by [@​ahmedadan](https://github.com/ahmedadan) in [#1507](https://github.com/projectbluefin/dakota/pull/1507)
+- chore(build): remove unreachable architecture configuration by [@​ahmedadan](https://github.com/ahmedadan) in [#1499](https://github.com/projectbluefin/dakota/pull/1499)
+- ci: revalidate retargeted PRs and document CI-run Justfile recipes by [@​ahmedadan](https://github.com/ahmedadan) in [#1485](https://github.com/projectbluefin/dakota/pull/1485)
+- [quality] test: unit coverage for .github/scripts/image_variants.py — new scripts/test_image_variants.py by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1476](https://github.com/projectbluefin/dakota/pull/1476)
+- fix(ci): open monthly filemap PRs against testing, not main by [@​ahmedadan](https://github.com/ahmedadan) in [#1467](https://github.com/projectbluefin/dakota/pull/1467)
+- [quality] test: add unit tests for scripts/gen-filemap.py by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1420](https://github.com/projectbluefin/dakota/pull/1420)
+- [quality] test: unit coverage for .github/scripts/render_card.py — scripts/test_render_card.py by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1453](https://github.com/projectbluefin/dakota/pull/1453)
+- [architect] refactor: single source of truth for dakota image-variant set — .github/image-variants.json + check-publish-workflow drift gate by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1437](https://github.com/projectbluefin/dakota/pull/1437)
+- chore(packages): bump uwelcome to v0.3.5 for the portal timeout fix by [@​ahmedadan](https://github.com/ahmedadan) in [#1462](https://github.com/projectbluefin/dakota/pull/1462)
+
+---
+
+## Documentation
+
+![kind/documentation](https://img.shields.io/badge/kind%2Fdocumentation-0066FF?style=flat-square)
+
+*Documentation improvements and additions*
+
+#### Planned Work
+
+- docs: record that system_files/nvidia/ is unconsumed and has no CDI preset — docs/skills/nvidia/\{SKILL.md,references/architecture.md\}, system_files/nvidia/README.md by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1125](https://github.com/projectbluefin/common/pull/1125)
+- fix(ci): report required checks on docs-only PRs by [@​Danathar](https://github.com/Danathar) in [#1181](https://github.com/projectbluefin/common/pull/1181)
+- docs(secrets-policy): record Cloudflare secrets as provisioned by [@​clubanderson](https://github.com/clubanderson) in [#1275](https://github.com/projectbluefin/common/pull/1275)
+- docs(ci-tooling): record Renovate fork processing for the printer forks by [@​sramkrishna](https://github.com/sramkrishna) in [#1259](https://github.com/projectbluefin/common/pull/1259)
+- docs(release-promotion): record printer testing-to-stable promotion proof by [@​kylerankin](https://github.com/kylerankin) in [#1257](https://github.com/projectbluefin/common/pull/1257)
+- docs(ci-pitfalls): correct create-github-app-token owner/repositories scoping by [@​castrojo](https://github.com/castrojo) in [#1269](https://github.com/projectbluefin/common/pull/1269)
+- docs(chairlift): fix broken brew-lifecycle doc reference in config.yml by [@​buggtb](https://github.com/buggtb) in [#1273](https://github.com/projectbluefin/common/pull/1273)
+- docs(contributing): add per-repo reviewer coverage map with refresh procedure by [@​mendezr](https://github.com/mendezr) in [#1248](https://github.com/projectbluefin/common/pull/1248)
+- docs: inventory printer and scanner driver projects by [@​arteeh](https://github.com/arteeh) in [#1221](https://github.com/projectbluefin/common/pull/1221)
+- docs: record printer application upstream source baseline by [@​buggtb](https://github.com/buggtb) in [#1251](https://github.com/projectbluefin/common/pull/1251)
+- docs(skills): track PAPPL scanning API upstream status and ownership boundary by [@​buggtb](https://github.com/buggtb) in [#1218](https://github.com/projectbluefin/common/pull/1218)
+- docs(printer-apps): add release-contract evidence matrix by [@​buggtb](https://github.com/buggtb) in [#1222](https://github.com/projectbluefin/common/pull/1222)
+- docs(ci-tooling): correct stale claim about dockerfile manager and COPY --from by [@​buggtb](https://github.com/buggtb) in [#1255](https://github.com/projectbluefin/common/pull/1255)
+- docs(skills): correct renovate versioned-binary tracking wording by [@​mendezr](https://github.com/mendezr) in [#1250](https://github.com/projectbluefin/common/pull/1250)
+- docs: assess native HP PCL app against HPLIP OCI coverage by [@​buggtb](https://github.com/buggtb) in [#1236](https://github.com/projectbluefin/common/pull/1236)
+- docs: evaluate LPrint v1.4.0 as FSDK OCI label-printer appliance by [@​kylerankin](https://github.com/kylerankin) in [#1235](https://github.com/projectbluefin/common/pull/1235)
+- docs: correct reusable lifecycle automation ownership (bonedigger, not actions) by [@​buggtb](https://github.com/buggtb) in [#1227](https://github.com/projectbluefin/common/pull/1227)
+- docs(scanner): evaluate scanApp POC and pappl-retrofit scanning feasibility by [@​buggtb](https://github.com/buggtb) in [#1220](https://github.com/projectbluefin/common/pull/1220)
+- docs: evaluate legacy SANE scanning appliance without claiming driverless parity by [@​buggtb](https://github.com/buggtb) in [#1219](https://github.com/projectbluefin/common/pull/1219)
+- docs(contributing): add self-collision preflight draft for intra-lane duplicate PRs by [@​sramkrishna](https://github.com/sramkrishna) in [#1201](https://github.com/projectbluefin/common/pull/1201)
+- docs(contributing): add agent-lane-throttle.md — demand-side throttle for the hold-gate queue by [@​sramkrishna](https://github.com/sramkrishna) in [#1197](https://github.com/projectbluefin/common/pull/1197)
+- docs(contributing): add triage-sla.md — 14-day first-response SLA proposal for human-authored issues by [@​mendezr](https://github.com/mendezr) in [#1195](https://github.com/projectbluefin/common/pull/1195)
+- docs(skills): record image-identity ownership decision — docs/skills/image-identity.md by [@​sramkrishna](https://github.com/sramkrishna) in [#1191](https://github.com/projectbluefin/common/pull/1191)
+- docs: add systemd-homed-by-default decision record by [@​eltorrero](https://github.com/eltorrero) in [#1200](https://github.com/projectbluefin/common/pull/1200)
+- docs(bluespeed): mark bluefin-mcp as archived in the specification by [@​kylerankin](https://github.com/kylerankin) in [#1199](https://github.com/projectbluefin/common/pull/1199)
+- docs(contributing): add hold-gate PR queue prioritization rubric by [@​repires](https://github.com/repires) in [#1188](https://github.com/projectbluefin/common/pull/1188)
+- docs: correct secrets-policy enforcement claim and add credential preflight rule by [@​sramkrishna](https://github.com/sramkrishna) in [#1180](https://github.com/projectbluefin/common/pull/1180)
+- docs: document downstream label subsets separate from core factory catalog by [@​mendezr](https://github.com/mendezr) in [#1177](https://github.com/projectbluefin/common/pull/1177)
+- docs(skills): widen category enum to include platform and product by [@​repires](https://github.com/repires) in [#1182](https://github.com/projectbluefin/common/pull/1182)
+- docs(factory): ban COMMENT-only PR reviews and comment spam by [@​castrojo](https://github.com/castrojo) in [#1174](https://github.com/projectbluefin/common/pull/1174)
+- docs(skills): add GPU vendor toolkit interface spec by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#971](https://github.com/projectbluefin/common/pull/971)
+- docs(contributing): add reviewer-ladder.md — concrete proposal for the reviewer-scaling rung by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1080](https://github.com/projectbluefin/common/pull/1080)
+- docs(skills): maintainer-driven tool actions and duplicate-cluster resolution by [@​castrojo](https://github.com/castrojo) in [#970](https://github.com/projectbluefin/common/pull/970)
+- docs: fix grammatical and readability problems README.md by [@​xHope-tech](https://github.com/xHope-tech) in [#1017](https://github.com/projectbluefin/common/pull/1017)
+- docs: expose Flatpak update schedule by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1000](https://github.com/projectbluefin/common/pull/1000)
+
+#### Opportunistic Work
+
+- docs(ci): record firefox.feature AT-SPI blocker resolution (#989) by [@​mendezr](https://github.com/mendezr) in [#1301](https://github.com/projectbluefin/bluefin/pull/1301)
+- docs(ci): note the reusable-build rechunk opt-in in build-image-testing by [@​mendezr](https://github.com/mendezr) in [#1314](https://github.com/projectbluefin/bluefin/pull/1314)
+- docs(ci): re-verify #989 firefox.feature blocker persists after rpmdb fix by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1199](https://github.com/projectbluefin/bluefin/pull/1199)
+- docs(security): track CVE-2026-56854 across container-tools and tailscale by [@​Danathar](https://github.com/Danathar) in [#1211](https://github.com/projectbluefin/bluefin/pull/1211)
+- docs(ci): document GH006 merge-queue promotion conflict failure mode by [@​Danathar](https://github.com/Danathar) in [#1212](https://github.com/projectbluefin/bluefin/pull/1212)
+- docs(ci): resolve the common-b toggle-updates blocker as a freeze artifact by [@​Danathar](https://github.com/Danathar) in [#1154](https://github.com/projectbluefin/bluefin/pull/1154)
+- [quality] test: unit coverage for .github/scripts/validate-docs.py (docs contract gate) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1151](https://github.com/projectbluefin/bluefin/pull/1151)
+- docs(agents): document testing as the PR target branch by [@​mendezr](https://github.com/mendezr) in [#652](https://github.com/projectbluefin/bluefin-lts/pull/652)
+- docs: require GitHub Actions boot coverage by [@​castrojo](https://github.com/castrojo) in [#639](https://github.com/projectbluefin/bluefin-lts/pull/639)
+- docs: document GitHub Actions testing paths by [@​castrojo](https://github.com/castrojo) in [#638](https://github.com/projectbluefin/bluefin-lts/pull/638)
+- docs: add trust for tap by [@​renner0e](https://github.com/renner0e) in [#681](https://github.com/ublue-os/homebrew-tap/pull/681)
+- Rename 2026-12-30-brazilian-bluefin.md to 2026-09-30-brazilian-bluefi… by [@​castrojo](https://github.com/castrojo) in [#1442](https://github.com/projectbluefin/documentation/pull/1442)
+- feat(blog): draft post for How We Built Ubuntu's 65M+ Community by [@​castrojo](https://github.com/castrojo) in [#1439](https://github.com/projectbluefin/documentation/pull/1439)
+- Add brazilian-bluefins blog post by [@​delphicmelody](https://github.com/delphicmelody) in [#1428](https://github.com/projectbluefin/documentation/pull/1428)
+- chore(deps): clear high npm audit advisories without a Docusaurus major by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1373](https://github.com/projectbluefin/documentation/pull/1373)
+- docs(analytics): describe the daily projectbluefin-countme ping by [@​castrojo](https://github.com/castrojo) in [#1355](https://github.com/projectbluefin/documentation/pull/1355)
+- Add download section to Utah documentation by [@​castrojo](https://github.com/castrojo) in [#1403](https://github.com/projectbluefin/documentation/pull/1403)
+- docs(skills): add countme reporting diagnosis procedure by [@​castrojo](https://github.com/castrojo) in [#1354](https://github.com/projectbluefin/documentation/pull/1354)
+- Change header style in blog post by [@​castrojo](https://github.com/castrojo) in [#1378](https://github.com/projectbluefin/documentation/pull/1378)
+- Update blog on Bluefin development insights by [@​castrojo](https://github.com/castrojo) in [#1377](https://github.com/projectbluefin/documentation/pull/1377)
+- Add section on project visualization with gource by [@​castrojo](https://github.com/castrojo) in [#1376](https://github.com/projectbluefin/documentation/pull/1376)
+- Revise Bluefin development visualization blog post by [@​castrojo](https://github.com/castrojo) in [#1375](https://github.com/projectbluefin/documentation/pull/1375)
+- feat: Bluefin development visualized blog post by [@​castrojo](https://github.com/castrojo) in [#1374](https://github.com/projectbluefin/documentation/pull/1374)
+- fix(docs): point the Dakota page's Bluefin Classic link at /classic by [@​castrojo](https://github.com/castrojo) in [#1369](https://github.com/projectbluefin/documentation/pull/1369)
+- Update Dakota alpha information and add Bluefin Classic note by [@​castrojo](https://github.com/castrojo) in [#1367](https://github.com/projectbluefin/documentation/pull/1367)
+- Revise Dakota description and alpha status by [@​castrojo](https://github.com/castrojo) in [#1366](https://github.com/projectbluefin/documentation/pull/1366)
+- Revise Bluefin Classic documentation by [@​castrojo](https://github.com/castrojo) in [#1365](https://github.com/projectbluefin/documentation/pull/1365)
+- fix(images): name the catalog cards Bluefin and Bluefin Classic by [@​castrojo](https://github.com/castrojo) in [#1364](https://github.com/projectbluefin/documentation/pull/1364)
+- feat(docs): order the Images catalog Bluefin, Classic, Utah by [@​castrojo](https://github.com/castrojo) in [#1363](https://github.com/projectbluefin/documentation/pull/1363)
+- feat(docs): order Images sidebar and add the Classic legacy ISOs by [@​castrojo](https://github.com/castrojo) in [#1362](https://github.com/projectbluefin/documentation/pull/1362)
+- feat(docs): remove Bluefin LTS and GDX from the site by [@​castrojo](https://github.com/castrojo) in [#1361](https://github.com/projectbluefin/documentation/pull/1361)
+- Rename Dakota to Bluefin and update content by [@​castrojo](https://github.com/castrojo) in [#1360](https://github.com/projectbluefin/documentation/pull/1360)
+- Revise Utah documentation for alpha status by [@​castrojo](https://github.com/castrojo) in [#1359](https://github.com/projectbluefin/documentation/pull/1359)
+- Update warning message for legacy ISOs by [@​castrojo](https://github.com/castrojo) in [#1358](https://github.com/projectbluefin/documentation/pull/1358)
+- Modify sidebar items and remove Donations category by [@​castrojo](https://github.com/castrojo) in [#1357](https://github.com/projectbluefin/documentation/pull/1357)
+- Update Docusaurus config for Bluefin documentation by [@​castrojo](https://github.com/castrojo) in [#1356](https://github.com/projectbluefin/documentation/pull/1356)
+- feat(analytics): read the Bluefin card from daily pings too by [@​castrojo](https://github.com/castrojo) in [#1350](https://github.com/projectbluefin/documentation/pull/1350)
+- feat(analytics): add a Bluefin Utah chart between Bluefin and Bluefin Classic by [@​castrojo](https://github.com/castrojo) in [#1349](https://github.com/projectbluefin/documentation/pull/1349)
+- docs(ai): replace ramalama with llmman by [@​castrojo](https://github.com/castrojo) in [#1348](https://github.com/projectbluefin/documentation/pull/1348)
+- refactor(countme): cut /v1 to a daily ping counted per image by [@​castrojo](https://github.com/castrojo) in [#1347](https://github.com/projectbluefin/documentation/pull/1347)
+- feat(countme): allowlist Bluefin image names and split daily counts per image by [@​castrojo](https://github.com/castrojo) in [#1346](https://github.com/projectbluefin/documentation/pull/1346)
+- fix(countme): create eos tables in the Worker, drop the migration step by [@​castrojo](https://github.com/castrojo) in [#1345](https://github.com/projectbluefin/documentation/pull/1345)
+- feat(countme): receive eos-phone-home pings in the canonical Worker by [@​castrojo](https://github.com/castrojo) in [#1344](https://github.com/projectbluefin/documentation/pull/1344)
+- feat(countme): chart Bluefin stable and testing check-ins by [@​castrojo](https://github.com/castrojo) in [#1343](https://github.com/projectbluefin/documentation/pull/1343)
+- feat(portal): source PortalNews from local blog index and align unavailable state by [@​repires](https://github.com/repires) in [#1340](https://github.com/projectbluefin/documentation/pull/1340)
+- fix(countme): preserve raw pings outside published Dakota series by [@​castrojo](https://github.com/castrojo) in [#1342](https://github.com/projectbluefin/documentation/pull/1342)
+- fix(countme): acknowledge Dakota reports after storage by [@​castrojo](https://github.com/castrojo) in [#1339](https://github.com/projectbluefin/documentation/pull/1339)
+- feat(images): rework catalog for Bluefin Classic at ublue-os, Dakota, and Utah by [@​castrojo](https://github.com/castrojo) in [#1335](https://github.com/projectbluefin/documentation/pull/1335)
+- feat(leaderboards): add Recent Milestones leaderboard as a ledger of teamwork by [@​castrojo](https://github.com/castrojo) in [#1336](https://github.com/projectbluefin/documentation/pull/1336)
+- fix(deps): npm audit fix — resolve image-size, lodash-es, qs advisories (package-lock.json) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1293](https://github.com/projectbluefin/documentation/pull/1293)
+- feat(knowledge-mcp): search citations and repo filter, get_repo_conventions, in-flight work queue by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1317](https://github.com/projectbluefin/documentation/pull/1317)
+- refactor: route remaining hand-rolled GitHub auth sites through shared clients by [@​sramkrishna](https://github.com/sramkrishna) in [#1327](https://github.com/projectbluefin/documentation/pull/1327)
+- fix(registry): support REGISTRY_CACHE_HOURS=0 to keep live task data fresh on deploy by [@​castrojo](https://github.com/castrojo) in [#1332](https://github.com/projectbluefin/documentation/pull/1332)
+- fix(leaderboard): restore freshness and accurate contributor ranking by [@​castrojo](https://github.com/castrojo) in [#1330](https://github.com/projectbluefin/documentation/pull/1330)
+- fix: typo in contributors name by [@​ahmedadan](https://github.com/ahmedadan) in [#1329](https://github.com/projectbluefin/documentation/pull/1329)
+- refactor: route sbom GHCR token reads through shared githubToken by [@​mendezr](https://github.com/mendezr) in [#1315](https://github.com/projectbluefin/documentation/pull/1315)
+- fix(branding): make the monthly social preview card actually rotate by [@​Danathar](https://github.com/Danathar) in [#1313](https://github.com/projectbluefin/documentation/pull/1313)
+- docs: record the green-skip signature for a missing BLUEFIN_DISCUSSIONS_TOKEN by [@​Danathar](https://github.com/Danathar) in [#1299](https://github.com/projectbluefin/documentation/pull/1299)
+- Fix link text for latest Dakota daily snapshot by [@​castrojo](https://github.com/castrojo) in [#1325](https://github.com/projectbluefin/documentation/pull/1325)
+- refactor(fetch-data): propagate fetch script exit codes via scripts/run-parallel.mjs by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1300](https://github.com/projectbluefin/documentation/pull/1300)
+- fix(blog): use plain anchor for full resolution link in ImageCarousel by [@​castrojo](https://github.com/castrojo) in [#1323](https://github.com/projectbluefin/documentation/pull/1323)
+- Revise bug reporting link and add lore content by [@​castrojo](https://github.com/castrojo) in [#1322](https://github.com/projectbluefin/documentation/pull/1322)
+- fix(blog): use group role and aria-current for ImageCarousel thumbnail strip by [@​castrojo](https://github.com/castrojo) in [#1321](https://github.com/projectbluefin/documentation/pull/1321)
+- feat(blog): add ImageCarousel component and gallery to Dakota Alpha 6 post by [@​castrojo](https://github.com/castrojo) in [#1320](https://github.com/projectbluefin/documentation/pull/1320)
+- docs(blog): Dakota Alpha 6 release announcement and downloads by [@​castrojo](https://github.com/castrojo) in [#1319](https://github.com/projectbluefin/documentation/pull/1319)
+- docs(analytics): switch countme opt-out instructions to systemctl disable timer by [@​castrojo](https://github.com/castrojo) in [#1308](https://github.com/projectbluefin/documentation/pull/1308)
+- fix(countme): scope first-party telemetry tracking exclusively to dakota by [@​castrojo](https://github.com/castrojo) in [#1307](https://github.com/projectbluefin/documentation/pull/1307)
+- fix/countme dakota exclusive by [@​castrojo](https://github.com/castrojo) in [#1306](https://github.com/projectbluefin/documentation/pull/1306)
+- fix(countme): label dakota first-party charts as Bluefin by [@​castrojo](https://github.com/castrojo) in [#1305](https://github.com/projectbluefin/documentation/pull/1305)
+- fix(analytics): focus first-party active systems chart solely on dakota by [@​castrojo](https://github.com/castrojo) in [#1304](https://github.com/projectbluefin/documentation/pull/1304)
+- fix(countme): map root chart aliases to dakota by [@​castrojo](https://github.com/castrojo) in [#1303](https://github.com/projectbluefin/documentation/pull/1303)
+- docs(skills): document Bluefin Classic rebadge in cloudflare-workers by [@​castrojo](https://github.com/castrojo) in [#1302](https://github.com/projectbluefin/documentation/pull/1302)
+- [architect] fix: propagate typecheck and lint exit codes in pages.yml validation step by [@​castrojo](https://github.com/castrojo) in [#1297](https://github.com/projectbluefin/documentation/pull/1297)
+- refactor: converge CJS GitHub fetchers onto the shared request-queue client (#1232) by [@​castrojo](https://github.com/castrojo) in [#1295](https://github.com/projectbluefin/documentation/pull/1295)
+- fix(blog): restore scrollable viewport constraint to left sidebar by [@​castrojo](https://github.com/castrojo) in [#1284](https://github.com/projectbluefin/documentation/pull/1284)
+- test: unit coverage for scripts/lib/load-tsx.js loadTsxModule — new scripts/lib/load-tsx.test.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1271](https://github.com/projectbluefin/documentation/pull/1271)
+- test: black-box coverage for scripts/fetch-registry-data.js — new scripts/fetch-registry-data.test.js only by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1263](https://github.com/projectbluefin/documentation/pull/1263)
+- fix: sanitize release HTML at fetch time — scripts/fetch-feeds.js (mapApiRelease, parseAtomEntry) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1266](https://github.com/projectbluefin/documentation/pull/1266)
+- fix(downloads): import DakotaSection and restore the warning admonition by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1283](https://github.com/projectbluefin/documentation/pull/1283)
+- Revise warning about Dakotaraptor and legacy ISOs by [@​castrojo](https://github.com/castrojo) in [#1280](https://github.com/projectbluefin/documentation/pull/1280)
+- Add warning for unsupported images in downloads by [@​castrojo](https://github.com/castrojo) in [#1278](https://github.com/projectbluefin/documentation/pull/1278)
+- [quality] test: cover harvestPortalContributors in scripts/fetch-portal-contributors.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1235](https://github.com/projectbluefin/documentation/pull/1235)
+- [architect] test: SBOM stream-id drift gate — PRODUCT_SPECS/OS_STREAM_SPECS/IMAGE_CONFIGS must resolve against fetch-github-sbom STREAM_SPECS by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1233](https://github.com/projectbluefin/documentation/pull/1233)
+- [sec-check] fix: sanitize external release HTML at fetch time (fetch-firehose.js sanitizeRemoteApp, sanitize-html allowlist) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1215](https://github.com/projectbluefin/documentation/pull/1215)
+- Factory: Optimize layout by combining data sections into 2-column rows on desktop by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1228](https://github.com/projectbluefin/documentation/pull/1228)
+- fix(cards): parse HTML release-feed tables before generating Bluefin cards by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1213](https://github.com/projectbluefin/documentation/pull/1213)
+- [architect] Converge ESM GitHub fetch sites onto lib/gh.js (#1232) by [@​kylerankin](https://github.com/kylerankin) in [#1236](https://github.com/projectbluefin/documentation/pull/1236)
+- fix(countme): count every published image variant under its family by [@​castrojo](https://github.com/castrojo) in [#1250](https://github.com/projectbluefin/documentation/pull/1250)
+- test: add update artwork seams by [@​TB516](https://github.com/TB516) in [#1238](https://github.com/projectbluefin/documentation/pull/1238)
+- fix(analytics): name the legacy panel for the image it counts by [@​castrojo](https://github.com/castrojo) in [#1251](https://github.com/projectbluefin/documentation/pull/1251)
+- fix(repos): repair moved GitHub slugs and preserve partial repository-stat cache by [@​kylerankin](https://github.com/kylerankin) in [#1256](https://github.com/projectbluefin/documentation/pull/1256)
+- test: cover safeNum and loadHistory in fetch-hive-history.js by [@​kylerankin](https://github.com/kylerankin) in [#1255](https://github.com/projectbluefin/documentation/pull/1255)
+- [architect] converge hive-live + factory-stats fetchers onto shared lib/gh.js by [@​kylerankin](https://github.com/kylerankin) in [#1257](https://github.com/projectbluefin/documentation/pull/1257)
+- test: cover scripts/lib coverage-gap modules (#905) by [@​kylerankin](https://github.com/kylerankin) in [#1254](https://github.com/projectbluefin/documentation/pull/1254)
+- Add link to wolves.projectbluefin.io and follow-up note by [@​castrojo](https://github.com/castrojo) in [#1252](https://github.com/projectbluefin/documentation/pull/1252)
+- fix(analytics): make the weekly active systems labels readable by [@​castrojo](https://github.com/castrojo) in [#1249](https://github.com/projectbluefin/documentation/pull/1249)
+- Revise analytics documentation for Project Bluefin by [@​castrojo](https://github.com/castrojo) in [#1246](https://github.com/projectbluefin/documentation/pull/1246)
+- fix(analytics): serve weekly active systems from the first-party aggregate by [@​castrojo](https://github.com/castrojo) in [#1244](https://github.com/projectbluefin/documentation/pull/1244)
+- fix(analytics): remove manufactured copy from the weekly active systems panel by [@​castrojo](https://github.com/castrojo) in [#1243](https://github.com/projectbluefin/documentation/pull/1243)
+- fix(analytics): count our own images, and drop the last bar charts by [@​castrojo](https://github.com/castrojo) in [#1241](https://github.com/projectbluefin/documentation/pull/1241)
+- feat(analytics): put the charts on the Bluefin palette and the real image matrix by [@​castrojo](https://github.com/castrojo) in [#1240](https://github.com/projectbluefin/documentation/pull/1240)
+- feat(analytics): rebuild the charts around the full image matrix by [@​castrojo](https://github.com/castrojo) in [#1239](https://github.com/projectbluefin/documentation/pull/1239)
+- feat(portal): add brand iconography, Karl backlog callout, and quotes to Users and Developers scenes by [@​castrojo](https://github.com/castrojo) in [#1211](https://github.com/projectbluefin/documentation/pull/1211)
+- [quality] test: unit coverage for scripts/lib/sbom/api.js (GHCR tags, oras download, cosign verification) by [@​Danathar](https://github.com/Danathar) in [#1210](https://github.com/projectbluefin/documentation/pull/1210)
+- test(portal): provide fixture data in PortalContributors static render test by [@​castrojo](https://github.com/castrojo) in [#1209](https://github.com/projectbluefin/documentation/pull/1209)
+- fix(cards): preserve prevVersion on header chips by [@​castrojo](https://github.com/castrojo) in [#1174](https://github.com/projectbluefin/documentation/pull/1174)
+- feat(portal): implement PortalPageLoading overlay and character asset preloader by [@​castrojo](https://github.com/castrojo) in [#1207](https://github.com/projectbluefin/documentation/pull/1207)
+- fix(portal): resolve nested <main> landmark, focus suppression, and WCAG AA contrast by [@​castrojo](https://github.com/castrojo) in [#1206](https://github.com/projectbluefin/documentation/pull/1206)
+- feat(portal): implement PortalNews component consuming blog feed by [@​castrojo](https://github.com/castrojo) in [#1205](https://github.com/projectbluefin/documentation/pull/1205)
+- feat(portal): implement PortalFlock section with DNF Count Me growth chart by [@​castrojo](https://github.com/castrojo) in [#1204](https://github.com/projectbluefin/documentation/pull/1204)
+- feat(portal): add "Try Out" secondary hero CTA and seasonal raptor character rotation by [@​castrojo](https://github.com/castrojo) in [#1202](https://github.com/projectbluefin/documentation/pull/1202)
+- fix(analytics): align Countme family sparkline domains with rendered images by [@​castrojo](https://github.com/castrojo) in [#1201](https://github.com/projectbluefin/documentation/pull/1201)
+- fix(portal): update navbar test links to match production navbar by [@​castrojo](https://github.com/castrojo) in [#1200](https://github.com/projectbluefin/documentation/pull/1200)
+- fix(analytics): include Dakota and Utah in edition and workstation chart series by [@​Danathar](https://github.com/Danathar) in [#1194](https://github.com/projectbluefin/documentation/pull/1194)
+- fix(analytics): retain Countme zeros and preserve missing values as gaps by [@​Danathar](https://github.com/Danathar) in [#1191](https://github.com/projectbluefin/documentation/pull/1191)
+- fix(portal): reconcile TopNavbar navigation links and Docusaurus layout header by [@​Danathar](https://github.com/Danathar) in [#1169](https://github.com/projectbluefin/documentation/pull/1169)
+- feat(portal): restore complete mission statements, Edith Wharton quote, and punchline by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1155](https://github.com/projectbluefin/documentation/pull/1155)
+- [quality] test: unit coverage for scripts/lib/graphql-queries.mjs (fetchClosedItemsFromRepo pagination, date window, partial-result contract) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1184](https://github.com/projectbluefin/documentation/pull/1184)
+- [quality] test: unit coverage for scripts/lib/card-template.mjs (renderCard, W/H) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1170](https://github.com/projectbluefin/documentation/pull/1170)
+- fix(profiles): remove nonexistent chandeleer1698 GitHub username by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1151](https://github.com/projectbluefin/documentation/pull/1151)
+- fix(pin-state): replace removed Bluefin LTS HWE workflow paths by [@​Danathar](https://github.com/Danathar) in [#1185](https://github.com/projectbluefin/documentation/pull/1185)
+- fix(factory): calculate merged-this-week from merged pull requests by [@​Danathar](https://github.com/Danathar) in [#1190](https://github.com/projectbluefin/documentation/pull/1190)
+- fix(factory): replace the Hive snapshot CTA hostname with a valid TLS endpoint by [@​Danathar](https://github.com/Danathar) in [#1189](https://github.com/projectbluefin/documentation/pull/1189)
+- fix(factory): use a public queue-data fallback for anonymous visitors by [@​Danathar](https://github.com/Danathar) in [#1188](https://github.com/projectbluefin/documentation/pull/1188)
+- fix(factory): render an unavailable change-failure rate instead of 0.0 percent by [@​Danathar](https://github.com/Danathar) in [#1187](https://github.com/projectbluefin/documentation/pull/1187)
+- fix(sbom): migrate Bluefin LTS stream specs to its package and stable tags by [@​Danathar](https://github.com/Danathar) in [#1186](https://github.com/projectbluefin/documentation/pull/1186)
+- fix(contributors): prevent visitor-side GitHub requests when contributor data is unavailable by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1197](https://github.com/projectbluefin/documentation/pull/1197)
+- fix(countme): recognize Dakota and Utah without misclassifying Bluefin variants by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1198](https://github.com/projectbluefin/documentation/pull/1198)
+- fix(blog): replace Printful CDN hotlinks blocked on five-years-of-bluefin by [@​Danathar](https://github.com/Danathar) in [#1196](https://github.com/projectbluefin/documentation/pull/1196)
+- fix(catalog): generate Bluefin LTS rebases against the bluefin-lts package by [@​Danathar](https://github.com/Danathar) in [#1195](https://github.com/projectbluefin/documentation/pull/1195)
+- fix(images): hide unpublished Utah testing image commands and attestations by [@​Danathar](https://github.com/Danathar) in [#1193](https://github.com/projectbluefin/documentation/pull/1193)
+- fix(blog): remove expired Discourse CDN images from ublue-2024 wrap-up by [@​Danathar](https://github.com/Danathar) in [#1199](https://github.com/projectbluefin/documentation/pull/1199)
+- fix(sbom): support version-qualified live tags in recent-release discovery by [@​Danathar](https://github.com/Danathar) in [#1163](https://github.com/projectbluefin/documentation/pull/1163)
+- feat(portal): resolve 7 package version rows for Dakota product card by [@​Danathar](https://github.com/Danathar) in [#1164](https://github.com/projectbluefin/documentation/pull/1164)
+- feat(analytics): modernize analytics and churn charts, promote page to top level by [@​castrojo](https://github.com/castrojo) in [#1181](https://github.com/projectbluefin/documentation/pull/1181)
+- feat(branding): implement new social preview cards for documentation by [@​castrojo](https://github.com/castrojo) in [#1068](https://github.com/projectbluefin/documentation/pull/1068)
+- fix(cards): parse HTML release-feed tables before generating Bluefin cards by [@​castrojo](https://github.com/castrojo) in [#1126](https://github.com/projectbluefin/documentation/pull/1126)
+- fix(blog): replace Printful CDN hotlinks blocked on five-years-of-bluefin by [@​castrojo](https://github.com/castrojo) in [#1125](https://github.com/projectbluefin/documentation/pull/1125)
+- fix(contributors): prevent visitor-side GitHub requests when contributor data is unavailable by [@​castrojo](https://github.com/castrojo) in [#1124](https://github.com/projectbluefin/documentation/pull/1124)
+- fix(pin-state): replace removed Bluefin LTS HWE workflow paths by [@​castrojo](https://github.com/castrojo) in [#1121](https://github.com/projectbluefin/documentation/pull/1121)
+- fix(factory): render an unavailable change-failure rate instead of 0.0 percent by [@​castrojo](https://github.com/castrojo) in [#1120](https://github.com/projectbluefin/documentation/pull/1120)
+- fix(factory): use a public queue-data fallback for anonymous visitors by [@​castrojo](https://github.com/castrojo) in [#1119](https://github.com/projectbluefin/documentation/pull/1119)
+- fix(factory): replace the Hive snapshot CTA hostname with a valid TLS endpoint by [@​castrojo](https://github.com/castrojo) in [#1118](https://github.com/projectbluefin/documentation/pull/1118)
+- fix(factory): calculate merged-this-week from merged pull requests by [@​castrojo](https://github.com/castrojo) in [#1117](https://github.com/projectbluefin/documentation/pull/1117)
+- fix(analytics): calculate and format hero deltas for the selected range by [@​castrojo](https://github.com/castrojo) in [#1116](https://github.com/projectbluefin/documentation/pull/1116)
+- fix(blog): remove expired Discourse CDN images from ublue-2024 wrap-up by [@​castrojo](https://github.com/castrojo) in [#1114](https://github.com/projectbluefin/documentation/pull/1114)
+- fix(images): hide unpublished Utah testing image commands and attestations by [@​castrojo](https://github.com/castrojo) in [#1113](https://github.com/projectbluefin/documentation/pull/1113)
+- fix(analytics): include Dakota and Utah in edition and workstation chart series by [@​castrojo](https://github.com/castrojo) in [#1111](https://github.com/projectbluefin/documentation/pull/1111)
+- fix(analytics): retain Countme zeros and preserve missing values as gaps by [@​castrojo](https://github.com/castrojo) in [#1110](https://github.com/projectbluefin/documentation/pull/1110)
+- fix(analytics): align Countme family sparkline domains with rendered images by [@​castrojo](https://github.com/castrojo) in [#1109](https://github.com/projectbluefin/documentation/pull/1109)
+- fix(repos): repair moved GitHub slugs and preserve partial repository-stat cache by [@​castrojo](https://github.com/castrojo) in [#1107](https://github.com/projectbluefin/documentation/pull/1107)
+- fix(sbom): migrate Bluefin LTS stream specs to its package and stable tags by [@​castrojo](https://github.com/castrojo) in [#1106](https://github.com/projectbluefin/documentation/pull/1106)
+- fix(countme): recognize Dakota and Utah without misclassifying Bluefin variants by [@​castrojo](https://github.com/castrojo) in [#1105](https://github.com/projectbluefin/documentation/pull/1105)
+- [sec-check] fix: pin wrangler 4.129.1 via package-lock (deploy-countme-worker.yml / copilot-setup-steps.yml wrangler@latest) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1075](https://github.com/projectbluefin/documentation/pull/1075)
+- fix(catalog): generate Bluefin LTS rebases against the bluefin-lts package by [@​castrojo](https://github.com/castrojo) in [#1102](https://github.com/projectbluefin/documentation/pull/1102)
+- [quality] test: unit coverage for scripts/lib/gh.js and scripts/lib/sbom/writer.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1167](https://github.com/projectbluefin/documentation/pull/1167)
+- [quality] test: unit coverage for scripts/lib/contributor-tracker.mjs, github-sponsors.mjs, sbom-versions.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1150](https://github.com/projectbluefin/documentation/pull/1150)
+- fix(profiles): remove nonexistent chandeleer1698 GitHub username by [@​castrojo](https://github.com/castrojo) in [#1101](https://github.com/projectbluefin/documentation/pull/1101)
+- feat(portal): implement PortalNavigation floating dock and section scroll spy by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1153](https://github.com/projectbluefin/documentation/pull/1153)
+- feat(portal): implement PortalContributors component and contributor harvester workflow by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1156](https://github.com/projectbluefin/documentation/pull/1156)
+- fix(portal): update deprecated ublue-os links and synchronize Discord invite code by [@​Danathar](https://github.com/Danathar) in [#1165](https://github.com/projectbluefin/documentation/pull/1165)
+- fix(portal): align Utah ecosystem card link destination to devconf.us by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1159](https://github.com/projectbluefin/documentation/pull/1159)
+- test: add coverage reporting for data-fetching script tests by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1061](https://github.com/projectbluefin/documentation/pull/1061)
+- [quality] test: unit coverage for scripts/lib/label-mapping.mjs (category fallback chain, badge encoding) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1147](https://github.com/projectbluefin/documentation/pull/1147)
+- fix(sbom): support version-qualified live tags in recent-release discovery by [@​mrbobbytables](https://github.com/mrbobbytables) in [#1128](https://github.com/projectbluefin/documentation/pull/1128)
+- feat(portal): add interactive image picker by [@​castrojo](https://github.com/castrojo) in [#1131](https://github.com/projectbluefin/documentation/pull/1131)
+- feat(portal): complete static landing sections by [@​castrojo](https://github.com/castrojo) in [#1130](https://github.com/projectbluefin/documentation/pull/1130)
+- feat(portal): add parallax portal prototype by [@​castrojo](https://github.com/castrojo) in [#1127](https://github.com/projectbluefin/documentation/pull/1127)
+- docs: add Copilot workflow instructions by [@​castrojo](https://github.com/castrojo) in [#1108](https://github.com/projectbluefin/documentation/pull/1108)
+- fix: link leaderboard contributor dossiers by [@​castrojo](https://github.com/castrojo) in [#1103](https://github.com/projectbluefin/documentation/pull/1103)
+- fix: restore Hive leaderboard data and styling by [@​castrojo](https://github.com/castrojo) in [#1076](https://github.com/projectbluefin/documentation/pull/1076)
+- feat: add standalone Hive leaderboards by [@​castrojo](https://github.com/castrojo) in [#1071](https://github.com/projectbluefin/documentation/pull/1071)
+- [quality] test: unit coverage for scripts/lib/sbom/parser.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1064](https://github.com/projectbluefin/documentation/pull/1064)
+- feat: add Hive leaderboards landing by [@​castrojo](https://github.com/castrojo) in [#1069](https://github.com/projectbluefin/documentation/pull/1069)
+- feat(nav): rename Factory to Hive in navbar linking to hive.projectbluefin.io by [@​castrojo](https://github.com/castrojo) in [#1058](https://github.com/projectbluefin/documentation/pull/1058)
+- docs: announce Bluefin Server by [@​castrojo](https://github.com/castrojo) in [#1066](https://github.com/projectbluefin/documentation/pull/1066)
+- fix(images): point bluefin-lts to projectbluefin/bluefin-lts package and update catalog by [@​castrojo](https://github.com/castrojo) in [#1067](https://github.com/projectbluefin/documentation/pull/1067)
+- feat(analytics): unify Bluefin family countme charts and multi-image catalog by [@​castrojo](https://github.com/castrojo) in [#1065](https://github.com/projectbluefin/documentation/pull/1065)
+- feat(analytics): add legacy bluefins and ecosystem countme analytics charts by [@​castrojo](https://github.com/castrojo) in [#1063](https://github.com/projectbluefin/documentation/pull/1063)
+- [sec-check] fix: pin Bun install in copilot-codespace.yml to v1.4.2 + SHA-256 (cluster: agent-env tool installs) by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1049](https://github.com/projectbluefin/documentation/pull/1049)
+- test: cover extractMetrics in scripts/fetch-hive-history.js — 9 cases appended to scripts/fetch-hive-history.test.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1045](https://github.com/projectbluefin/documentation/pull/1045)
+- test: make npm test collect scripts/lib tests — package.json "test" script + new scripts/test-discovery.test.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1044](https://github.com/projectbluefin/documentation/pull/1044)
+- test: unit coverage for scripts/lib/sbom/\{parser,bst,slim\}.js — new scripts/sbom-parser.test.js, scripts/sbom-bst.test.js by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1040](https://github.com/projectbluefin/documentation/pull/1040)
+- feat(reports): migrate monthly reports to blog with infograms and Hive Leaderboard by [@​castrojo](https://github.com/castrojo) in [#1059](https://github.com/projectbluefin/documentation/pull/1059)
+- fix: restrict countme worker entrypoint exports to default handler by [@​castrojo](https://github.com/castrojo) in [#1060](https://github.com/projectbluefin/documentation/pull/1060)
+- docs: announce mcp.projectbluefin.io and update hive links by [@​castrojo](https://github.com/castrojo) in [#1057](https://github.com/projectbluefin/documentation/pull/1057)
+- feat(mcp): serve the org knowledge base at mcp.projectbluefin.io by [@​castrojo](https://github.com/castrojo) in [#1055](https://github.com/projectbluefin/documentation/pull/1055)
+- feat(branding): use new Bluefin wordmark in docs and drop ublue 'u' by [@​castrojo](https://github.com/castrojo) in [#1043](https://github.com/projectbluefin/documentation/pull/1043)
+- Add link to upstream doc about IME setup by [@​sebjag](https://github.com/sebjag) in [#1038](https://github.com/projectbluefin/documentation/pull/1038)
+- [architect] test: image-identity drift gate — tests/unit/image-identity_test.bats + README rename checklist by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#368](https://github.com/projectbluefin/finpilot/pull/368)
+- docs: document E2E gap as intentional release risk (#281) by [@​mrbobbytables](https://github.com/mrbobbytables) in [#328](https://github.com/projectbluefin/finpilot/pull/328)
+- [architect] refactor: remove orphaned iso/rclone subsystem — iso/rclone/\{README.md,aws-s3,backblaze-b2,cloudflare-r2,sftp,scp\}.conf, .dockerignore, .github/commit-convention.md by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#302](https://github.com/projectbluefin/finpilot/pull/302)
+- [architect] refactor: make image-identity rename sites self-consistent — Containerfile header, iso/iso.toml kickstart, custom/ujust/README.md by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#292](https://github.com/projectbluefin/finpilot/pull/292)
+
+##### Dakota (GNOME OS Prototype)
+
+- docs(factory): audit documentation and standardize skills by [@​castrojo](https://github.com/castrojo) in [#1516](https://github.com/projectbluefin/dakota/pull/1516)
+
+---
+
+## Tech Debt
+
+![kind/tech-debt](https://img.shields.io/badge/kind%2Ftech-debt-D4A259?style=flat-square) ![kind/parity](https://img.shields.io/badge/kind%2Fparity-9333EA?style=flat-square)
+
+*Maintenance work and feature parity between variants*
+
+> Status: _ChillOps_
+
+---
+
+## Automation
+
+![kind/automation](https://img.shields.io/badge/kind%2Fautomation-5B8BC1?style=flat-square) ![kind/github-action](https://img.shields.io/badge/kind%2Fgithub-action-2088FF?style=flat-square) ![kind/renovate](https://img.shields.io/badge/kind%2Frenovate-3B82F6?style=flat-square)
+
+*CI/CD pipelines, GitHub Actions, and automated dependency updates*
+
+> Status: _ChillOps_
+
+---
+
+## Localization
+
+![kind/translation](https://img.shields.io/badge/kind%2Ftranslation-8B5CF6?style=flat-square)
+
+*Translation and internationalization work*
+
+#### Planned Work
+
+> Status: _ChillOps_
+
+#### Opportunistic Work
+
+- fix(i18n): correct Indonesian translation details by [@​hivecommons-hive](https://github.com/hivecommons-hive) in [#1422](https://github.com/projectbluefin/documentation/pull/1422)
+- docs(i18n): translate installation, mission, values, command-line into Czech by [@​Danathar](https://github.com/Danathar) in [#1423](https://github.com/projectbluefin/documentation/pull/1423)
+- fix(i18n): correct ExtensionManager Flathub link casing across 5 locales by [@​castrojo](https://github.com/castrojo) in [#1424](https://github.com/projectbluefin/documentation/pull/1424)
+- i18n(de): translate index.md and UI strings for German by [@​castrojo](https://github.com/castrojo) in [#1421](https://github.com/projectbluefin/documentation/pull/1421)
+- i18n(sv): translate index.md and UI strings for Swedish by [@​kylerankin](https://github.com/kylerankin) in [#1409](https://github.com/projectbluefin/documentation/pull/1409)
+- feat(i18n): translate docs: Indonesian (id) by [@​kylerankin](https://github.com/kylerankin) in [#1413](https://github.com/projectbluefin/documentation/pull/1413)
+- feat(i18n): translate core docs and UI strings into Vietnamese (vi) by [@​kylerankin](https://github.com/kylerankin) in [#1405](https://github.com/projectbluefin/documentation/pull/1405)
+- docs: translate index.md and UI strings to Spanish by [@​kylerankin](https://github.com/kylerankin) in [#1414](https://github.com/projectbluefin/documentation/pull/1414)
+- i18n(uk): translate index.md and UI strings for Ukrainian by [@​kylerankin](https://github.com/kylerankin) in [#1416](https://github.com/projectbluefin/documentation/pull/1416)
+- i18n(ko): translate index.md and UI strings for Korean by [@​dtg01100](https://github.com/dtg01100) in [#1418](https://github.com/projectbluefin/documentation/pull/1418)
+- docs: add Czech (cs) i18n translations by [@​castrojo](https://github.com/castrojo) in [#1408](https://github.com/projectbluefin/documentation/pull/1408)
+- i18n(fr): translate index.md and UI strings for French by [@​castrojo](https://github.com/castrojo) in [#1415](https://github.com/projectbluefin/documentation/pull/1415)
+- i18n(hi): translate index.md and UI strings for Hindi by [@​dtg01100](https://github.com/dtg01100) in [#1410](https://github.com/projectbluefin/documentation/pull/1410)
+- i18n(tr): translate index.md and UI strings for Turkish by [@​dtg01100](https://github.com/dtg01100) in [#1407](https://github.com/projectbluefin/documentation/pull/1407)
+- i18n(ar): translate index.md and UI strings for Arabic by [@​dtg01100](https://github.com/dtg01100) in [#1406](https://github.com/projectbluefin/documentation/pull/1406)
+- docs: translate docs into Chinese (Traditional) (zh-Hant) by [@​castrojo](https://github.com/castrojo) in [#1401](https://github.com/projectbluefin/documentation/pull/1401)
+- docs: add Chinese (Simplified) zh-Hans docs translation by [@​kylerankin](https://github.com/kylerankin) in [#1404](https://github.com/projectbluefin/documentation/pull/1404)
+- i18n(pl): translate index.md and UI strings for Polish by [@​kylerankin](https://github.com/kylerankin) in [#1402](https://github.com/projectbluefin/documentation/pull/1402)
+- fix(i18n): close review gaps in translated builds by [@​castrojo](https://github.com/castrojo) in [#1400](https://github.com/projectbluefin/documentation/pull/1400)
+- feat(i18n): open 20 locales for PR-based docs translation by [@​castrojo](https://github.com/castrojo) in [#1379](https://github.com/projectbluefin/documentation/pull/1379)
+
+---
+
+## Bot Activity
+
+**Automation Percentage:** 41.7% (419 bot PRs out of 1004 total PRs)
+
+| Repository | Bot PRs | % of Total |
+|------------|---------|------------|
+| dakota | 69 | 6.9% |
+| finpilot | 46 | 4.6% |
+| bluefin-lts | 43 | 4.3% |
+| bluefin | 32 | 3.2% |
+| common | 27 | 2.7% |
+| documentation | 20 | 2.0% |
+| artwork | 1 | 0.1% |
+
+<details>
+<summary>View bot activity details</summary>
+
+- chore(deps): update projectbluefin/actions digest to 0debf71 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1276](https://github.com/projectbluefin/common/pull/1276)
+- chore(deps): update projectbluefin/actions digest to f862ab6 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1256](https://github.com/projectbluefin/common/pull/1256)
+- chore(deps): update projectbluefin/actions digest to 38cebd9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1237](https://github.com/projectbluefin/common/pull/1237)
+- chore(deps): update homebrew/actions digest to e99025e by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1238](https://github.com/projectbluefin/common/pull/1238)
+- chore(deps): update github/codeql-action digest to 2892aa5 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1202](https://github.com/projectbluefin/common/pull/1202)
+- chore(deps): update projectbluefin/actions digest to 4441ece by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1172](https://github.com/projectbluefin/common/pull/1172)
+- chore(deps): update projectbluefin/actions digest to 9d9e2a4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1171](https://github.com/projectbluefin/common/pull/1171)
+- chore(deps): update docker.io/library/golang:alpine docker digest to 8a5910f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1168](https://github.com/projectbluefin/common/pull/1168)
+- chore(deps): update projectbluefin/actions digest to 837850b by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1135](https://github.com/projectbluefin/common/pull/1135)
+- chore(deps): update dependency ubuntu to v26 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1142](https://github.com/projectbluefin/common/pull/1142)
+- chore(deps): update docker.io/library/alpine:latest docker digest to 294b683 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1140](https://github.com/projectbluefin/common/pull/1140)
+- chore(deps): update docker.io/library/golang:alpine docker digest to 4cb7ac9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1141](https://github.com/projectbluefin/common/pull/1141)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1144](https://github.com/projectbluefin/common/pull/1144)
+- chore(deps): update homebrew/actions digest to 3b81d43 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1101](https://github.com/projectbluefin/common/pull/1101)
+- chore(deps): update projectbluefin/actions digest to 4d3b97e by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1111](https://github.com/projectbluefin/common/pull/1111)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1096](https://github.com/projectbluefin/common/pull/1096)
+- chore(deps): update projectbluefin/actions digest to 2564c7b by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1095](https://github.com/projectbluefin/common/pull/1095)
+- chore(deps): update homebrew/actions digest to 6373c73 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1094](https://github.com/projectbluefin/common/pull/1094)
+- chore(deps): update projectbluefin/actions digest to e2ccd51 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1089](https://github.com/projectbluefin/common/pull/1089)
+- chore(deps): update projectbluefin/actions digest to 1ca03ea by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1086](https://github.com/projectbluefin/common/pull/1086)
+- chore(deps): update homebrew/actions digest to f8d4222 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1076](https://github.com/projectbluefin/common/pull/1076)
+- chore(deps): update projectbluefin/actions digest to 9c69981 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1081](https://github.com/projectbluefin/common/pull/1081)
+- chore(deps): update projectbluefin/actions digest to a4bd91d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1079](https://github.com/projectbluefin/common/pull/1079)
+- chore(deps): update homebrew/actions digest to c69e528 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1071](https://github.com/projectbluefin/common/pull/1071)
+- chore(deps): update docker.io/library/golang:alpine docker digest to cf6fca6 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1070](https://github.com/projectbluefin/common/pull/1070)
+- chore(deps): update docker.io/library/golang:alpine docker digest to 26402d8 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/common#1069](https://github.com/projectbluefin/common/pull/1069)
+- chore(deps): update taiki-e/install-action digest to b6a061a by [@​renovate](https://github.com/renovate) in [projectbluefin/common#1260](https://github.com/projectbluefin/common/pull/1260)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1263](https://github.com/projectbluefin/bluefin/pull/1263)
+- chore(deps): update dependency ubuntu to v26 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1307](https://github.com/projectbluefin/bluefin/pull/1307)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to e9a7257 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1310](https://github.com/projectbluefin/bluefin/pull/1310)
+- chore(deps): update gnome extensions (major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1313](https://github.com/projectbluefin/bluefin/pull/1313)
+- chore(deps): update system_files/shared/usr/share/gnome-shell/extensions/blur-my-shell@aunetx digest to f787135 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1317](https://github.com/projectbluefin/bluefin/pull/1317)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to 60ada2d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1248](https://github.com/projectbluefin/bluefin/pull/1248)
+- chore(deps): update system_files/shared/usr/share/gnome-shell/extensions/blur-my-shell@aunetx digest to f69c69e by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1230](https://github.com/projectbluefin/bluefin/pull/1230)
+- chore(deps): update github/codeql-action digest to b96794f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1224](https://github.com/projectbluefin/bluefin/pull/1224)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to a8e4087 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1219](https://github.com/projectbluefin/bluefin/pull/1219)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to ceb9b56 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1217](https://github.com/projectbluefin/bluefin/pull/1217)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 879201f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1206](https://github.com/projectbluefin/bluefin/pull/1206)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to d52b3f5 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1191](https://github.com/projectbluefin/bluefin/pull/1191)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 0f58c6d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1190](https://github.com/projectbluefin/bluefin/pull/1190)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 6474619 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1187](https://github.com/projectbluefin/bluefin/pull/1187)
+- chore(deps): update system_files/shared/usr/share/gnome-shell/extensions/blur-my-shell@aunetx digest to b689b99 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1185](https://github.com/projectbluefin/bluefin/pull/1185)
+- chore(deps): update system_files/shared/usr/share/gnome-shell/extensions/blur-my-shell@aunetx digest to b911ec5 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1184](https://github.com/projectbluefin/bluefin/pull/1184)
+- chore(deps): update system_files/shared/usr/share/gnome-shell/extensions/blur-my-shell@aunetx digest to f6454e6 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1183](https://github.com/projectbluefin/bluefin/pull/1183)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to a6e5369 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1182](https://github.com/projectbluefin/bluefin/pull/1182)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 71cf1d9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1181](https://github.com/projectbluefin/bluefin/pull/1181)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to cbcf13f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1180](https://github.com/projectbluefin/bluefin/pull/1180)
+- chore(deps): update system_files/shared/usr/share/gnome-shell/extensions/custom-command-list@storageb.github.com digest to 66e5d62 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin#1179](https://github.com/projectbluefin/bluefin/pull/1179)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1297](https://github.com/projectbluefin/bluefin/pull/1297)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1295](https://github.com/projectbluefin/bluefin/pull/1295)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1293](https://github.com/projectbluefin/bluefin/pull/1293)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1291](https://github.com/projectbluefin/bluefin/pull/1291)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1289](https://github.com/projectbluefin/bluefin/pull/1289)
+- ci: bootstrap release automation fixes by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1287](https://github.com/projectbluefin/bluefin/pull/1287)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1285](https://github.com/projectbluefin/bluefin/pull/1285)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1283](https://github.com/projectbluefin/bluefin/pull/1283)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1279](https://github.com/projectbluefin/bluefin/pull/1279)
+- ci(promote): bluefin testing → main 2026-09-17 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1233](https://github.com/projectbluefin/bluefin/pull/1233)
+- ci(promote): bluefin testing → main 2026-09-08 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin#1115](https://github.com/projectbluefin/bluefin/pull/1115)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to f1f9f80 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#683](https://github.com/projectbluefin/bluefin-lts/pull/683)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to 57cabe5 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#682](https://github.com/projectbluefin/bluefin-lts/pull/682)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 3d4322d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#681](https://github.com/projectbluefin/bluefin-lts/pull/681)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 99f7333 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#679](https://github.com/projectbluefin/bluefin-lts/pull/679)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to bc6f5a9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#678](https://github.com/projectbluefin/bluefin-lts/pull/678)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to 23fa15d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#677](https://github.com/projectbluefin/bluefin-lts/pull/677)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to c38d2e0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#676](https://github.com/projectbluefin/bluefin-lts/pull/676)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 27b1c4b by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#675](https://github.com/projectbluefin/bluefin-lts/pull/675)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to ef75348 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#673](https://github.com/projectbluefin/bluefin-lts/pull/673)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to 0ea20bc by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#674](https://github.com/projectbluefin/bluefin-lts/pull/674)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 3c49104 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#672](https://github.com/projectbluefin/bluefin-lts/pull/672)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 90edbd3 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#671](https://github.com/projectbluefin/bluefin-lts/pull/671)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to a5aaa4a by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#670](https://github.com/projectbluefin/bluefin-lts/pull/670)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 15002a8 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#669](https://github.com/projectbluefin/bluefin-lts/pull/669)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to b042a80 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#668](https://github.com/projectbluefin/bluefin-lts/pull/668)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to 7fc7b03 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#667](https://github.com/projectbluefin/bluefin-lts/pull/667)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 523fe30 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#666](https://github.com/projectbluefin/bluefin-lts/pull/666)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 9ece33f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#664](https://github.com/projectbluefin/bluefin-lts/pull/664)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to 011641e by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#663](https://github.com/projectbluefin/bluefin-lts/pull/663)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to 01b8db8 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#662](https://github.com/projectbluefin/bluefin-lts/pull/662)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to eff8ca9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#661](https://github.com/projectbluefin/bluefin-lts/pull/661)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to e3688e9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#660](https://github.com/projectbluefin/bluefin-lts/pull/660)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to e9a7257 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#659](https://github.com/projectbluefin/bluefin-lts/pull/659)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to b7e3487 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#658](https://github.com/projectbluefin/bluefin-lts/pull/658)
+- chore(deps): update quay.io/centos-bootc/centos-bootc:c10s docker digest to e09c917 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#654](https://github.com/projectbluefin/bluefin-lts/pull/654)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 2268101 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#649](https://github.com/projectbluefin/bluefin-lts/pull/649)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to 60ada2d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#627](https://github.com/projectbluefin/bluefin-lts/pull/627)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to cba9a07 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#601](https://github.com/projectbluefin/bluefin-lts/pull/601)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 79f91c2 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#599](https://github.com/projectbluefin/bluefin-lts/pull/599)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to b3c4e8f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#598](https://github.com/projectbluefin/bluefin-lts/pull/598)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 56762e4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#594](https://github.com/projectbluefin/bluefin-lts/pull/594)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 654560e by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#592](https://github.com/projectbluefin/bluefin-lts/pull/592)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 2e2e369 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#586](https://github.com/projectbluefin/bluefin-lts/pull/586)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to d52b3f5 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#577](https://github.com/projectbluefin/bluefin-lts/pull/577)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to fd36c86 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#576](https://github.com/projectbluefin/bluefin-lts/pull/576)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 69e96be by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#573](https://github.com/projectbluefin/bluefin-lts/pull/573)
+- chore(deps): update ghcr.io/projectbluefin/common:latest docker digest to 44c7c59 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#526](https://github.com/projectbluefin/bluefin-lts/pull/526)
+- chore(deps): update ghcr.io/ublue-os/brew:latest docker digest to bed0568 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#525](https://github.com/projectbluefin/bluefin-lts/pull/525)
+- chore(deps): update redhat-actions/buildah-build digest to 719e3c4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/bluefin-lts#537](https://github.com/projectbluefin/bluefin-lts/pull/537)
+- ci(promote): bluefin-lts testing → main 2026-09-05 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin-lts#570](https://github.com/projectbluefin/bluefin-lts/pull/570)
+- ci(promote): bluefin-lts testing → main 2026-09-04 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin-lts#567](https://github.com/projectbluefin/bluefin-lts/pull/567)
+- ci(promote): bluefin-lts testing → main 2026-09-02 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin-lts#565](https://github.com/projectbluefin/bluefin-lts/pull/565)
+- ci(promote): bluefin-lts testing → main 2026-09-01 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/bluefin-lts#564](https://github.com/projectbluefin/bluefin-lts/pull/564)
+- chore(deps): update docker/build-push-action digest to f9f3042 by [@​renovate](https://github.com/renovate) in [ublue-os/artwork#90](https://github.com/ublue-os/artwork/pull/90)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1412](https://github.com/projectbluefin/documentation/pull/1412)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1371](https://github.com/projectbluefin/documentation/pull/1371)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1352](https://github.com/projectbluefin/documentation/pull/1352)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1351](https://github.com/projectbluefin/documentation/pull/1351)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1341](https://github.com/projectbluefin/documentation/pull/1341)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1334](https://github.com/projectbluefin/documentation/pull/1334)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1324](https://github.com/projectbluefin/documentation/pull/1324)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1291](https://github.com/projectbluefin/documentation/pull/1291)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1259](https://github.com/projectbluefin/documentation/pull/1259)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1180](https://github.com/projectbluefin/documentation/pull/1180)
+- chore(analytics): update release churn statistics by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1149](https://github.com/projectbluefin/documentation/pull/1149)
+- docs(reports): Monthly report for September 2026 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/documentation#1039](https://github.com/projectbluefin/documentation/pull/1039)
+- chore(deps): lock file maintenance by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1370](https://github.com/projectbluefin/documentation/pull/1370)
+- chore(deps): lock file maintenance by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1309](https://github.com/projectbluefin/documentation/pull/1309)
+- chore(deps): lock file maintenance by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1258](https://github.com/projectbluefin/documentation/pull/1258)
+- chore(deps): update dependency node to v24 by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1224](https://github.com/projectbluefin/documentation/pull/1224)
+- chore(deps): update actions/upload-artifact action to v7 by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1157](https://github.com/projectbluefin/documentation/pull/1157)
+- chore(deps): update actions/upload-artifact action to v7 by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1148](https://github.com/projectbluefin/documentation/pull/1148)
+- chore(deps): lock file maintenance by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1051](https://github.com/projectbluefin/documentation/pull/1051)
+- chore(deps): lock file maintenance by [@​renovate](https://github.com/renovate) in [projectbluefin/documentation#1009](https://github.com/projectbluefin/documentation/pull/1009)
+- chore(deps): update common: v2026.08-204 -> v2026.08-207 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1683](https://github.com/projectbluefin/dakota/pull/1683)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1694](https://github.com/projectbluefin/dakota/pull/1694)
+- chore(deps): update common: v2026.08-163 -> v2026.08-204 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1671](https://github.com/projectbluefin/dakota/pull/1671)
+- chore(deps): update dash-to-dock extension by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1670](https://github.com/projectbluefin/dakota/pull/1670)
+- chore(deps): update taiki-e/install-action digest to 4cef141 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1677](https://github.com/projectbluefin/dakota/pull/1677)
+- chore(deps): update gum v2.0.1 -> v2.0.2 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1666](https://github.com/projectbluefin/dakota/pull/1666)
+- chore(deps): update core junctions (gnome-build-meta + freedesktop-sdk) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1664](https://github.com/projectbluefin/dakota/pull/1664)
+- chore(deps): update common: v2026.08-137 -> v2026.08-163 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1665](https://github.com/projectbluefin/dakota/pull/1665)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1655](https://github.com/projectbluefin/dakota/pull/1655)
+- chore(deps): update gsconnect extension by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1653](https://github.com/projectbluefin/dakota/pull/1653)
+- chore(deps): update common: v2026.08-120 -> v2026.08-137 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1644](https://github.com/projectbluefin/dakota/pull/1644)
+- chore(deps): update bootc: v1.16.13-0 -> v1.16.14-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1645](https://github.com/projectbluefin/dakota/pull/1645)
+- chore(deps): update dash-to-dock extension by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1643](https://github.com/projectbluefin/dakota/pull/1643)
+- chore(deps): update taiki-e/install-action digest to 7623a79 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1646](https://github.com/projectbluefin/dakota/pull/1646)
+- chore(deps): update core junctions (gnome-build-meta + freedesktop-sdk) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1639](https://github.com/projectbluefin/dakota/pull/1639)
+- chore(deps): update app-indicators extension by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1638](https://github.com/projectbluefin/dakota/pull/1638)
+- chore(deps): update common: v2026.08-112 -> v2026.08-120 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1633](https://github.com/projectbluefin/dakota/pull/1633)
+- chore(deps): update nautilus-python: 4.1.0-12 -> 4.2.0-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1632](https://github.com/projectbluefin/dakota/pull/1632)
+- chore(deps): update dash-to-dock extension by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1631](https://github.com/projectbluefin/dakota/pull/1631)
+- chore(deps): update dependency ubuntu to v26 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1592](https://github.com/projectbluefin/dakota/pull/1592)
+- chore(deps): update taiki-e/install-action digest to dfae9bf by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1640](https://github.com/projectbluefin/dakota/pull/1640)
+- chore(deps): update taiki-e/install-action digest to 94c31af by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1620](https://github.com/projectbluefin/dakota/pull/1620)
+- chore(deps): update nautilus-python: 4.1.0-4 -> 4.1.0-12 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1619](https://github.com/projectbluefin/dakota/pull/1619)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1615](https://github.com/projectbluefin/dakota/pull/1615)
+- chore(deps): update common: v2026.08-107 -> v2026.08-112 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1581](https://github.com/projectbluefin/dakota/pull/1581)
+- chore(deps): update uutils-coreutils: 0.11.0-0 -> 0.12.0-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1582](https://github.com/projectbluefin/dakota/pull/1582)
+- chore(deps): update core junctions (gnome-build-meta + freedesktop-sdk) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1602](https://github.com/projectbluefin/dakota/pull/1602)
+- chore(deps): update nautilus-python: 4.1.0-0 -> 4.1.0-4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1603](https://github.com/projectbluefin/dakota/pull/1603)
+- chore(deps): update taiki-e/install-action digest to 9114bf4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1601](https://github.com/projectbluefin/dakota/pull/1601)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1594](https://github.com/projectbluefin/dakota/pull/1594)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1596](https://github.com/projectbluefin/dakota/pull/1596)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1586](https://github.com/projectbluefin/dakota/pull/1586)
+- chore(deps): update taiki-e/install-action digest to 76c2e64 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1584](https://github.com/projectbluefin/dakota/pull/1584)
+- chore(deps): update bootc: v1.16.12-0 -> v1.16.13-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1574](https://github.com/projectbluefin/dakota/pull/1574)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1578](https://github.com/projectbluefin/dakota/pull/1578)
+- chore(deps): update taiki-e/install-action digest to 26e9283 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1570](https://github.com/projectbluefin/dakota/pull/1570)
+- chore(deps): update common: v2026.08-106 -> v2026.08-107 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1568](https://github.com/projectbluefin/dakota/pull/1568)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1565](https://github.com/projectbluefin/dakota/pull/1565)
+- chore(deps): update common: v2026.08-105 -> v2026.08-106 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1562](https://github.com/projectbluefin/dakota/pull/1562)
+- chore(deps): update taiki-e/install-action digest to 3f74d7c by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1558](https://github.com/projectbluefin/dakota/pull/1558)
+- chore(deps): update taiki-e/install-action digest to 9534c84 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1549](https://github.com/projectbluefin/dakota/pull/1549)
+- chore(deps): update tailscale 1.102.3 -> 1.102.4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1552](https://github.com/projectbluefin/dakota/pull/1552)
+- chore(deps): update common: v2026.08-99 -> v2026.08-105
+v0.12.2-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1546](https://github.com/projectbluefin/dakota/pull/1546)
+- chore(deps): update gum v2.0.0 -> v2.0.1 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1551](https://github.com/projectbluefin/dakota/pull/1551)
+- chore(deps): update bootc: v1.16.11-0 -> v1.16.12-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1545](https://github.com/projectbluefin/dakota/pull/1545)
+- chore(deps): update core junctions (gnome-build-meta + freedesktop-sdk) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1553](https://github.com/projectbluefin/dakota/pull/1553)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1537](https://github.com/projectbluefin/dakota/pull/1537)
+- chore(deps): update taiki-e/install-action digest to d438492 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1520](https://github.com/projectbluefin/dakota/pull/1520)
+- chore(deps): update common: v2026.08-80 -> v2026.08-90 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1517](https://github.com/projectbluefin/dakota/pull/1517)
+- chore(deps): update taiki-e/install-action digest to 84f5ac3 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1506](https://github.com/projectbluefin/dakota/pull/1506)
+- chore(deps): update common: v2026.08-73 -> v2026.08-80 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1503](https://github.com/projectbluefin/dakota/pull/1503)
+- chore(deps): update taiki-e/install-action digest to 7b8d471 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1501](https://github.com/projectbluefin/dakota/pull/1501)
+- chore(deps): update common: v2026.08-72 -> v2026.08-73 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1500](https://github.com/projectbluefin/dakota/pull/1500)
+- chore(deps): update common: v2026.08-70 -> v2026.08-72 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1478](https://github.com/projectbluefin/dakota/pull/1478)
+- chore(deps): update bootc: v1.16.10-0 -> v1.16.11-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1490](https://github.com/projectbluefin/dakota/pull/1490)
+- chore(deps): update taiki-e/install-action digest to 5bf6ce0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1496](https://github.com/projectbluefin/dakota/pull/1496)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1495](https://github.com/projectbluefin/dakota/pull/1495)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1482](https://github.com/projectbluefin/dakota/pull/1482)
+- chore(deps): update common: v2026.08-69 -> v2026.08-70 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1469](https://github.com/projectbluefin/dakota/pull/1469)
+- chore(deps): update taiki-e/install-action digest to e67fa11 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1468](https://github.com/projectbluefin/dakota/pull/1468)
+- chore(deps): update taiki-e/install-action digest to 0758d23 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1464](https://github.com/projectbluefin/dakota/pull/1464)
+- chore(deps): update common: v2026.08-68 -> v2026.08-69 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1466](https://github.com/projectbluefin/dakota/pull/1466)
+- chore(deps): update custom-command-menu extension by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1465](https://github.com/projectbluefin/dakota/pull/1465)
+- chore(deps): update sudo-rs: v0.2.14-0 -> v0.2.15-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1458](https://github.com/projectbluefin/dakota/pull/1458)
+- chore(deps): update uutils-coreutils: 0.10.0-0 -> 0.11.0-0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1456](https://github.com/projectbluefin/dakota/pull/1456)
+- chore(deps): update brew by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1445](https://github.com/projectbluefin/dakota/pull/1445)
+- chore(deps): update core junctions (next branch) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/dakota#1461](https://github.com/projectbluefin/dakota/pull/1461)
+- chore: regenerate chunkah filemap and fakecap manifest by [@​github-actions](https://github.com/github-actions) in [projectbluefin/dakota#1483](https://github.com/projectbluefin/dakota/pull/1483)
+- chore: regenerate chunkah filemap and fakecap manifest by [@​github-actions](https://github.com/github-actions) in [projectbluefin/dakota#1460](https://github.com/projectbluefin/dakota/pull/1460)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to fca34a7 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#450](https://github.com/projectbluefin/finpilot/pull/450)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 0c39b76 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#446](https://github.com/projectbluefin/finpilot/pull/446)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to f8fbefe by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#447](https://github.com/projectbluefin/finpilot/pull/447)
+- chore(deps): update projectbluefin/actions digest to 0debf71 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#445](https://github.com/projectbluefin/finpilot/pull/445)
+- chore(deps): update projectbluefin/actions digest to b4b35cf by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#442](https://github.com/projectbluefin/finpilot/pull/442)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to 937bce2 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#441](https://github.com/projectbluefin/finpilot/pull/441)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 9054c09 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#440](https://github.com/projectbluefin/finpilot/pull/440)
+- chore(deps): update projectbluefin/actions digest to 0642c0d by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#438](https://github.com/projectbluefin/finpilot/pull/438)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to 6d34b4a by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#437](https://github.com/projectbluefin/finpilot/pull/437)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 7e691ae by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#435](https://github.com/projectbluefin/finpilot/pull/435)
+- chore(deps): update projectbluefin/actions digest to f862ab6 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#434](https://github.com/projectbluefin/finpilot/pull/434)
+- chore(deps): update projectbluefin/actions digest to 4fb3236 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#431](https://github.com/projectbluefin/finpilot/pull/431)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to d85c3dd by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#432](https://github.com/projectbluefin/finpilot/pull/432)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to 79dfbb6 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#429](https://github.com/projectbluefin/finpilot/pull/429)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to cf819dd by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#428](https://github.com/projectbluefin/finpilot/pull/428)
+- chore(deps): update projectbluefin/actions digest to 38cebd9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#427](https://github.com/projectbluefin/finpilot/pull/427)
+- chore(deps): update homebrew/actions digest to e99025e by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#430](https://github.com/projectbluefin/finpilot/pull/430)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to 0daf706 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#426](https://github.com/projectbluefin/finpilot/pull/426)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 653d8c4 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#425](https://github.com/projectbluefin/finpilot/pull/425)
+- chore(deps): update projectbluefin/actions digest to 4441ece by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#423](https://github.com/projectbluefin/finpilot/pull/423)
+- chore(deps): update projectbluefin/actions digest to 722bdf2 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#419](https://github.com/projectbluefin/finpilot/pull/419)
+- chore(deps): update projectbluefin/actions digest to 4f6c41f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#417](https://github.com/projectbluefin/finpilot/pull/417)
+- chore(deps): update ghcr.io/osbuild/bootc-image-builder:latest docker digest to 4cd0deb by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#411](https://github.com/projectbluefin/finpilot/pull/411)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 399fae9 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#402](https://github.com/projectbluefin/finpilot/pull/402)
+- chore(deps): update homebrew/actions digest to 6373c73 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#338](https://github.com/projectbluefin/finpilot/pull/338)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 065a194 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#345](https://github.com/projectbluefin/finpilot/pull/345)
+- chore(deps): update projectbluefin/actions digest to 2564c7b by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#341](https://github.com/projectbluefin/finpilot/pull/341)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to c05886f by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#336](https://github.com/projectbluefin/finpilot/pull/336)
+- chore(deps): update renovatebot/github-action action to v46.2.6 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#332](https://github.com/projectbluefin/finpilot/pull/332)
+- chore(deps): update projectbluefin/actions digest to e2ccd51 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#327](https://github.com/projectbluefin/finpilot/pull/327)
+- chore(deps): update dependency casey/just to v1.58.0 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#322](https://github.com/projectbluefin/finpilot/pull/322)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 3756011 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#311](https://github.com/projectbluefin/finpilot/pull/311)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to b4bcc28 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#309](https://github.com/projectbluefin/finpilot/pull/309)
+- chore(deps): update projectbluefin/actions digest to 9c69981 by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#310](https://github.com/projectbluefin/finpilot/pull/310)
+- chore(deps): update github-actions (non-major) by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#290](https://github.com/projectbluefin/finpilot/pull/290)
+- chore(deps): update quay.io/fedora-ostree-desktops/silverblue:44 docker digest to 4c501ef by [@​mergeraptor](https://github.com/mergeraptor) in [projectbluefin/finpilot#283](https://github.com/projectbluefin/finpilot/pull/283)
+- ci(promote): finpilot main → stable 2026-09-29 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#444](https://github.com/projectbluefin/finpilot/pull/444)
+- ci(promote): finpilot main → stable 2026-09-27 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#433](https://github.com/projectbluefin/finpilot/pull/433)
+- ci(promote): finpilot main → stable 2026-09-25 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#424](https://github.com/projectbluefin/finpilot/pull/424)
+- ci(promote): finpilot main → stable 2026-09-04 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#282](https://github.com/projectbluefin/finpilot/pull/282)
+- ci(promote): finpilot main → stable 2026-09-21 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#401](https://github.com/projectbluefin/finpilot/pull/401)
+- ci(promote): finpilot main → stable 2026-09-06 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#307](https://github.com/projectbluefin/finpilot/pull/307)
+- ci(promote): finpilot main → stable 2026-09-06 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#316](https://github.com/projectbluefin/finpilot/pull/316)
+- ci(promote): finpilot main → stable 2026-09-07 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#321](https://github.com/projectbluefin/finpilot/pull/321)
+- ci(promote): finpilot main → stable 2026-09-08 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#333](https://github.com/projectbluefin/finpilot/pull/333)
+- ci(promote): finpilot main → stable 2026-09-08 by [@​github-actions](https://github.com/github-actions) in [projectbluefin/finpilot#337](https://github.com/projectbluefin/finpilot/pull/337)
+
+</details>
+
+## Contributors
+
+### Wayfinders
+
+> "Define yourself by your actions."
+> 
+> —Lord Saladin
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem', marginBottom: '2rem' }}>
+
+<GitHubProfileCard username="hivecommons-hive" />
+
+<GitHubProfileCard username="Danathar" />
+
+<GitHubProfileCard username="clubanderson" />
+
+<GitHubProfileCard username="mendezr" />
+
+<GitHubProfileCard username="sramkrishna" />
+
+<GitHubProfileCard username="kylerankin" />
+
+<GitHubProfileCard username="kronikpillow" />
+
+<GitHubProfileCard username="castrojo" sponsorUrl="https://github.com/sponsors/castrojo" />
+
+<GitHubProfileCard username="buggtb" />
+
+<GitHubProfileCard username="KiKaraage" />
+
+<GitHubProfileCard username="repires" />
+
+<GitHubProfileCard username="arteeh" />
+
+<GitHubProfileCard username="theMimolet" />
+
+<GitHubProfileCard username="eltorrero" />
+
+<GitHubProfileCard username="xHope-tech" />
+
+<GitHubProfileCard username="hanthor" sponsorUrl="https://github.com/sponsors/hanthor" />
+
+<GitHubProfileCard username="ericcurtin" />
+
+<GitHubProfileCard username="ahmedadan" sponsorUrl="https://github.com/sponsors/ahmedadan" />
+
+<GitHubProfileCard username="Siddhj2206" />
+
+<GitHubProfileCard username="HuntedRaven7" />
+
+<GitHubProfileCard username="mrbobbytables" />
+
+<GitHubProfileCard username="TB516" />
+
+<GitHubProfileCard username="renner0e" />
+
+<GitHubProfileCard username="inffy" sponsorUrl="https://github.com/sponsors/inffy" />
+
+<GitHubProfileCard username="nileshchakraborty" />
+
+<GitHubProfileCard username="remkolems" />
+
+<GitHubProfileCard username="delphicmelody" />
+
+<GitHubProfileCard username="dtg01100" />
+
+<GitHubProfileCard username="sebjag" />
+
+<GitHubProfileCard username="KOTONEX" />
+
+</div>
+
+---
+
+*Want to see the latest OS releases? Check out the [Changelogs](/changelogs). For announcements and deep dives, read our [Blog](/blog).*
+
+*This report was automatically generated from [todo.projectbluefin.io](https://todo.projectbluefin.io).*
+
+---
+
+*Generated on 2026-10-07*  
+[View Project Board](https://todo.projectbluefin.io) | [Report an Issue](https://github.com/projectbluefin/common/issues/new)
